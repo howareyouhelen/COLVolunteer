@@ -51,15 +51,40 @@
     </head>
 
     <body>
-        <h1>
-            Test
-        </h1>
+        <h1> Test </h1>
+
+        <h2>Let's read from the database: <span id="stuff"> stuff </span></h2>
 
 
         <script>
-            db.collection('Test').doc('7890').set({
-                name: "hssssssssssxxxs"
+            db.collection('quotes').doc('789').onSnapshot(function (snap) {
+                console.log("current data is ...", snap.data());
+                document.getElementById("stuff").innerHTML = snap.data().message;
+                //another way is snap.data()["message"]
+            });
+
+            db.collection('quotes').doc('789').set({
+                message: "this is test"
+            });
+
+            var citiesRef = db.collection("citieserf");
+            citiesRef.doc("SF").set({
+                name: "San Francisco",
+                state: "CA",
+                country: "USA",
+                capital: false,
+                population: 860000,
+                regions: ["west_coast", "norcal"]
+            });
+            citiesRef.doc("LA").set({
+                name: "Los Angeles",
+                state: "CA",
+                country: "USA",
+                capital: false,
+                population: 3900000,
+                regions: ["west_coast", "socal"]
             });
         </script>
     </body>
+
 </html>
