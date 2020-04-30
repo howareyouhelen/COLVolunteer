@@ -57,10 +57,6 @@
 
 
         <script>
-            db.collection('quotes').doc('789').set({
-                name: "this is test"
-            });
-
             db.collection('quotes').doc('789').onSnapshot(function (snap) {
                 console.log("current data is ...", snap.data());
                 document.getElementById("stuff").innerHTML = snap.data().message;
