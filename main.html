@@ -5,30 +5,32 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CoVolunteer</title>
-        <style>
 
-        </style>
-    </head>
-
-    <body>
-
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="/__/firebase/7.14.2/firebase-app.js"></script>
-
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-        <script src="/__/firebase/7.14.2/firebase-analytics.js"></script>
-
-        <!-- Initialize Firebase -->
-        <script src="/__/firebase/init.js"></script>
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for main page                                  -->
+        <!------------------------------------------------------------------------------>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script src="js/main.js"></script>
 
         <script>
             // Your web app's Firebase configuration
@@ -44,9 +46,20 @@
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
-            firebase.analytics();
+            var db = firebase.firestore();
         </script>
+    </head>
 
+    <body>
+        <h1>
+            Test
+        </h1>
+
+
+        <script>
+            db.collection('Test').doc('7890').set({
+                name: "hssssssssssxxxs"
+            });
+        </script>
     </body>
-
 </html>
