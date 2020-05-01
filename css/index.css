@@ -1,3 +1,121 @@
+
+/*Document Reset */
+aside, article, section, header, footer, nav, a {
+    display: block;
+}
+aside, article, section, header, footer, nav, html, body, p, h1, h2, h3, div, a {
+    margin: 0;
+    padding: 0;
+}
+html {
+    background: white;
+    height:100%;
+    font-family: 'Lato', sans-serif;
+}
 body {
+    margin: 0 auto;
+    line-height: 1.6;
+    width: 80%;
+    display: flex;
+    flex-flow: column;
+    height:100%;
+}
+/* header/nav */
+header {
+    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
+    color: white;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+}
+header>*{
+    margin: 20px;
+}
+header>*.navTitle {
+    flex-grow: 1;
+}
+header>h4.navLogin{
+    margin-right: 30px;
+}
+#logo {
+    width: 80px;
+}
+a{
+    color:white;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+a:hover {
+    cursor: pointer;
+    border-bottom: 2px solid blue;
+}
+#login {
     background-color: white;
+    color: #00BCE7;
+    width: 140px;
+    border-radius: 45px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 4px 0 rgba(2,79,192,.34);
+}
+#login:hover {
+    color: white;
+    background-color: #2E3192;
+    border-bottom: 2px solid transparent;
+}
+
+/* main */
+main {
+    background-color:#FFE338;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 120px 200px 200px 0;
+    clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+}
+/*section in main (the shopping cart) */
+section{
+    padding-left: 200px;
+}
+section>img {
+    width: 300px;
+    filter: saturate(15);
+}
+#shopping {
+    transition: all 2s ease;
+}
+#shopping:hover {
+    padding-left: 50px;
+}
+/*aside in main (the slogans)*/
+aside{
+    display: flex;
+    flex-flow: column;
+    margin-left: 100px;
+}
+aside>div.main {
+    margin-top: 30px;
+}
+aside>div[class^="slogan"]{
+    background-position: 0 1.8em;
+    background-repeat:repeat-x;
+    background-size: 16px;
+    width:8em;
+    padding-bottom: 10px;
+    margin-bottom: -10px;
+}
+aside>div.main {
+    margin-top: 70px;
+    font-size: larger;
+}
+aside>div.slogan1{
+    margin-left: 120px;
+    background-image: url("img/sunnyEgg.png");
+}
+aside>div.slogan2{
+margin-left: 170px;
+background-image: url("img/prezel.png");
+}
+aside>div.slogan3{
+    margin-left: 220px;
+    background-image: url("img/frenchFries.png");
 }

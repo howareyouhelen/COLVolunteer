@@ -4,116 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>CoVolunteer</title>
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <script src="js/index.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-        <style>
-        /*Document Reset */
-        aside, article, section, header, footer, nav, a {
-            display: block;
-        }
-        aside, article, section, header, footer, nav, html, body, p, h1, h2, h3, div, a {
-            margin: 0;
-            padding: 0;
-        }
-        html {
-            background: #D2B78F;
-            height:100%;
-            font-family: 'Lato', sans-serif;
-        }
-        body {
-            margin: 0 auto;
-            line-height: 1.6;
-            width: 80%;
-            display: flex;
-            flex-flow: column;
-            height:100%;
-        }
-        /* header/nav */
-        header {
-            background-color: rgb(75, 75, 75);
-            color: white;
-            height: 100px;
-            display: flex;
-            align-items: flex-end;
-        }
-        header>*{
-            margin: 20px;
-        }
-        header>*.navTitle {
-            flex-grow: 1;
-        }
-        header>h4.navLogin{
-            margin-right: 30px;
-        }
-        a{
-            color:white;
-            text-decoration: none;
-        }
-        a:hover {
-            cursor: pointer;
-            border-bottom: 2px solid blue;
-        }
-        
-        /* main */
-        main {
-            background-color: antiquewhite;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 200px;
-        }
-        section>img {
-            width: 300px;
-        }
-        aside{
-            display: flex;
-            flex-flow: column;
-        }
-        aside>div.main {
-            margin-top: 30px;
-        }
-        aside>div[class^="slogan"]{
-            background-position: 0 1.8em;
-        background-repeat: repeat-x;
-        background-size: 9px;
-        width:8em;
-        }
-        aside>div.main {
-            margin-top: 70px;
-        }
-        aside>div.slogan1{
-            margin-left: 120px;
-            background-image: url("img/waterMelon.png");
-        }
-        aside>div.slogan2{
-        margin-left: 170px;
-        background-image: url("img/prezel.png");
-        }
-        aside>div.slogan3{
-            margin-left: 220px;
-            background-image: url("img/frenchFries.png");
-        }
-        /* footer*/
-        footer {
-            background-color: antiquewhite;
-            flex-grow: 1;
-        }
 
-        </style>
+        <!-- CSS Styles -->
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="js/index.js"></script>
+        <script src="js/firebase_config.js"></script>
+        <script src="js/user.js"></script>
+       
+
     </head>
     <body>
         <header>
-            <img src="https://via.placeholder.com/30"> 
+            <img id="logo" src="img/logo.png"> 
             <h1 class="navTitle">CoVolunteer</h1>
-            <h4><a>Features</a></h4>
-            <h4><a>About</a></h4>
-            <h4 class="navLogin"><a href="./login.html">Login/Signup</a></h4>
+            <h4 class="navFeatures"><a href="features.html">Features</a></h4>
+            <h4 class="navAbout"><a href="about.html">About</a></h4>
+            <h4 class="navLogin"><a id="login" href="login.html">Login/Signup</a></h4>
 
 
         </header>
         <main>
-            <section>
-                <img id="logoShopping" src="img/shoppingCart.png">
+            <section id="shopping">
+                <img src="img/shoppingCart.png">
             </section>
             <aside>
                 <div class="main"><h1>Groceries</h1></div>
