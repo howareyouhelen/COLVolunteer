@@ -51,19 +51,16 @@
     </head>
 
     <body>
-        
-        <header>
-            <img class="header_logo" src="images and logos/Logo-01.png" />
-        </header>
-
-        
-
-            <div id="side_profile">
-                <a id="i1" href=""><img class="profile_photo" src="images and logos/virat.jpg" /></a>
-                <h4>Animesh kaushal</h4>
-                <h4>My profile</h4>
-
-            </div>
+        <!--Nav and sidebar-->
+        <div id="navbar-placeholder"></div>
+        <div id="sidebar-placeholder"></div>
+        <script>
+            $(function(){
+            $("#navbar-placeholder").load("nav.html");
+            $("#sidebar-placeholder").load("sidebar.html");
+            });
+        </script>
+        <!--end of Nav and sidebar-->
 
             <section class="posts">
                 <div class="card">
