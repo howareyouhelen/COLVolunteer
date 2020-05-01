@@ -1,16 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>login/sign-up</title>
-        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <title>CoVolunteer login/sign-up</title>
+        
+
+
+        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+        <!-- CSS Styles -->
+        <link type="text/css" rel="stylesheet" href="css/login.css" />
+        <!-- Scripts -->
+        <script src="js/firebase_config.js"></script>
         <script src="js/login.js"></script>
     </head>
     <body>
+        <header>
+            <a class="navLeft" href="index.html"><img id="logo" src="img/logo.png"></a>
+            <h1><a class="navLeft" href="index.html">CoVolunteer</a></h1>
+            <div class="title"></div>
+            <h4><a class="nav" href="features.html">Features</a></h4>
+            <h4><a class="nav" href="about.html">About</a></h4>
+            <h4 class="navLogin"><a class="nav" id="login" href="login.html">Login/Signup</a></h4>
+        </header>
+        <main>
+            <div id="space"></div>
+            <div id="firebaseui-auth-container"></div>
+            <div id="loader">Loading...</div>
+            <div id="img"><img src="./img/shoppingCart.png"></div>
+        </main>
+        
+        <script>
+            // Initialize the FirebaseUI Widget using Firebase.
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            var uiConfig = {
+                callbacks: {
+                    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+                        // User successfully signed in.
+                        // Return type determines whether we continue the redirect automatically
+                        // or whether we leave that to developer to handle.
+                        return true;
+                    },
+                    uiShown: function () {
+                        // The widget is rendered.
+                        // Hide the loader.
+                        document.getElementById('loader').style.display = 'none';
+                    }
+                },
+                // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+                signInFlow: 'popup',
+                signInSuccessUrl: 'main.html',
+                signInOptions: [
+                    // Leave the lines as is for the providers you want to offer your users.
+                    //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                    //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                    //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                    //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                    //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+                ],
+                // Terms of service url.
+                tosUrl: 'main.html',
+                // Privacy policy url.
+                privacyPolicyUrl: 'main.html'
+            };
+
+            // The start method will wait until the DOM is loaded.
+            ui.start('#firebaseui-auth-container', uiConfig);
+        </script>
+
 
     </body>
     <footer>
 
     </footer>
+
 </html>

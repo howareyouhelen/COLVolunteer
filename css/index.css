@@ -1,3 +1,196 @@
+/*Document Reset */
+aside, article, section, header, footer, nav, a {
+    display: block;
+}
+aside, article, section, header, footer, nav, html, body, p, h1, h2, h3, div, a {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: white;
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+}
+
 body {
+    margin: 0 auto;
+    line-height: 1.6;
+    width: 80%;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+/* header/nav */
+header {
+    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
+    color: white;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+}
+
+header>* {
+    margin: 20px;
+}
+
+header>*.title {
+    flex-grow: 1;
+    color:white;
+}
+
+header>h4.navLogin {
+    margin-right: 30px;
+}
+
+#logo {
+    width: 60px;
+    padding-left: 20px;
+}
+
+a.nav, a.navLeft {
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    align-self: flex-start;
+}
+
+a.nav:hover {
+    cursor: pointer;
+    border-bottom: 2px solid blue;
+}
+
+#login {
     background-color: white;
+    color: #00BCE7;
+    width: 140px;
+    border-radius: 45px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 4px 0 rgba(2, 79, 192, .34);
+}
+
+#login:hover {
+    color: white;
+    background-color: #2E3192;
+    border-bottom: 2px solid transparent;
+}
+
+/* main */
+main {
+    background-image: url(../img/fruitAndVegetables.jpg);
+    background-size: 100% auto;
+    padding: 120px 200px 200px 0;
+    clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+}
+/* article is inside main, inside article there are two areas (section on left, aside on right)*/
+article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+article:hover > #shopping {
+    padding-left: 50px;
+}
+#shopping {
+    transition: all 2s ease;
+}
+/*section in main > article (the shopping cart) */
+section {
+    padding-left: 200px;
+}
+section>img {
+    width: 300px;
+    filter: saturate(15);
+}
+/*aside in main > article (the slogans)*/
+aside {
+    display: flex;
+    flex-flow: column;
+    margin-left: 100px;
+}
+
+aside>div.main {
+    margin-top: 30px;
+}
+
+aside>div[class^="slogan"] {
+    background-position: 2.5em 0.5em;
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    width: 8em;
+    padding-bottom: 50px;
+    margin-bottom: -50px;
+    background-image: url("../img/stroke.png");
+    text-shadow:
+        1px 1px 0 #FFF,
+        -1px -1px 0 #FFF,
+        1px -1px 0 #FFF,
+        -1px 1px 0 #FFF,
+        1px 1px 0 #FFF;
+}
+
+aside>div.main {
+    margin-top: 70px;
+    font-size: 20pt;
+    color: white;
+    text-shadow:
+        3px 3px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+aside>div.slogan1 {
+    margin-left: 120px;
+    background-position: 3.3em 0.5em;
+}
+
+aside>div.slogan2 {
+    margin-left: 170px;
+    padding-left: 30px;
+}
+
+aside>div.slogan3 {
+    margin-left: 220px;
+}
+
+/* Apply these styles when the width is between
+400 and 1024px (Tablet View)     */
+@media (min-width: 400px) and (max-width: 1024px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    aside>section {
+        grid-template-columns: repeat(4, auto);
+    }
+}
+
+/* Apply these styles when the width is < 400 px */
+@media (max-width: 399px) {
+    nav {
+        display: inherit;
+    }
+
+    nav>a {
+        display: block;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    article>section.secMain {
+        grid-column: auto;
+    }
+
+    article {
+        grid-template-columns: 1fr;
+    }
+
+    aside>section {
+        grid-template-columns: 1fr 1fr;
+    }
 }
