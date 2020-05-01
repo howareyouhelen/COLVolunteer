@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -51,40 +51,89 @@
     </head>
 
     <body>
-        <h1> Test </h1>
-
-        <h2>Let's read from the database: <span id="stuff"> stuff </span></h2>
-
-
+        <!--Nav and sidebar-->
+        <div id="navbar-placeholder"></div>
+        <div id="sidebar-placeholder"></div>
         <script>
-            db.collection('quotes').doc('789').onSnapshot(function (snap) {
-                console.log("current data is ...", snap.data());
-                document.getElementById("stuff").innerHTML = snap.data().message;
-                //another way is snap.data()["message"]
-            });
-
-            db.collection('quotes').doc('789').set({
-                message: "this is test"
-            });
-
-            var citiesRef = db.collection("citieserf");
-            citiesRef.doc("SF").set({
-                name: "San Francisco",
-                state: "CA",
-                country: "USA",
-                capital: false,
-                population: 860000,
-                regions: ["west_coast", "norcal"]
-            });
-            citiesRef.doc("LA").set({
-                name: "Los Angeles",
-                state: "CA",
-                country: "USA",
-                capital: false,
-                population: 3900000,
-                regions: ["west_coast", "socal"]
+            $(function(){
+            $("#navbar-placeholder").load("nav.html");
+            $("#sidebar-placeholder").load("sidebar.html");
             });
         </script>
+        <!--end of Nav and sidebar-->
+
+            <section class="posts">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Animesh Kaushal</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
+                        <p class="card-text">
+                            I am going to liqour depot.
+                        </p>
+                        <button type="button" class="btn btn-outline-info">Make a request</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Animesh Kaushal</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
+                        <p class="card-text">
+                            I am going to liqour depot.
+                        </p>
+                        <button type="button" class="btn btn-outline-info">Make a request</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Animesh Kaushal</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
+                        <p class="card-text">
+                            I am going to liqour depot.
+                        </p>
+                        <button type="button" class="btn btn-outline-info">Make a request</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Animesh Kaushal</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
+                        <p class="card-text">
+                            I am going to liqour depot.
+                        </p>
+                        <button type="button" class="btn btn-outline-info">Make a request</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Animesh Kaushal</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
+                        <p class="card-text">
+                            I am going to liqour depot.
+                        </p>
+                        <button type="button" class="btn btn-outline-info">Make a request</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Animesh Kaushal</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
+                        <p class="card-text">
+                            I am going to liqour depot.
+                        </p>
+                        <button type="button" class="btn btn-outline-info">Make a request</button>
+                    </div>
+                </div>
+
+
+
+            </section>
+        
+
     </body>
 
 </html>

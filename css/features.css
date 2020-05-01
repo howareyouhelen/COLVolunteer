@@ -1,3 +1,109 @@
-body {
-    background-color: white;
+/*Document Reset */
+aside, article, section, header, footer, nav, a {
+    display: block;
 }
+aside, article, section, header, footer, nav, html, body, p, h1, h2, h3, div, a {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: white;
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    margin: 0 auto;
+    line-height: 1.6;
+    width: 80%;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+/* header/nav */
+header {
+    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
+    color: white;
+    height: 100px;
+    display: flex;
+    flex-flow: row;
+    align-items: flex-end;
+}
+
+header>* {
+    margin: 20px;
+}
+
+header>*.title {
+    flex-grow: 1;
+    color:white;
+}
+
+header>h4.navLogin {
+    margin-right: 30px;
+}
+
+#logo {
+    width: 60px;
+    padding-left: 20px;
+}
+
+a.nav, a.navLeft {
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    align-self: flex-start;
+}
+
+a.nav:hover {
+    cursor: pointer;
+    border-bottom: 2px solid blue;
+}
+
+#login {
+    background-color: white;
+    color: #00BCE7;
+    width: 140px;
+    border-radius: 45px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    box-shadow: 0 2px 4px 0 rgba(2, 79, 192, .34);
+}
+
+#login:hover {
+    color: white;
+    background-color: #2E3192;
+    border-bottom: 2px solid transparent;
+}
+
+
+
+/* main Content */
+
+main h1, main h2, main h3, main footer{
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+p {
+    text-align: center;
+    font-size: 15px;
+}
+footer {
+    font-size: 10px;
+}
+#about-content {
+    text-align: center;
+}
+.card {
+    margin: 40px;
+    width: 230px;
+    font-size: 15px;    
+}
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+
