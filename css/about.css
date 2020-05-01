@@ -1,3 +1,19 @@
+aside, article, section, header, footer, nav, a {
+    display: block;
+}
+aside, article, section, header, footer, nav, html, body, p, h1, h2, h3, div, a {
+    margin: 0;
+    padding: 0;
+}
+html {
+    background: white;
+    height:100%;
+}
 body {
-    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 3;
+    width: 80%;
+    height:100%;
+    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
 }
