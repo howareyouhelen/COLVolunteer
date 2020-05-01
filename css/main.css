@@ -1,3 +1,56 @@
-body {
-    background-color: white;
+body{
+    background-color:gainsboro;
 }
+.profile_photo {
+    position: relative;
+    left:20%;
+    margin: 20px;
+    height: 100px;
+    width: 100px;
+    border-radius:50px;
+}
+
+.header_logo {
+    position:absolute;
+    margin: 5px;
+    height: 70px;
+    width: 70px;
+}
+
+.btn btn-outline-info {
+    float: right;
+}
+
+header {
+
+    margin: 10px;
+   
+    height: 100px;
+    background-color: darkmagenta;
+}
+
+
+.posts {
+    margin-left:10px;
+    float:left;
+    width:82%;
+
+}
+
+.card {
+    background-color: lightgreen;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#side_profile {
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+    width: 15%;
+    background-color: darkcyan;
+    background-size: 15% 100%;
+}
+
+
+    
