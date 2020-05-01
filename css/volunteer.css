@@ -1,3 +1,28 @@
 body {
     background-color: white;
 } 
+#create-post-form {
+ display:grid;
+ border-left: 1px solid gray;
+ padding-left: 5%;
+ padding-right: 5%;
+ padding-top: 1.5%;
+ padding-bottom: 1.5%;
+}
+
+label {
+    margin-top: 5%;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    font-size: larger;
+}
+
+#vol-submit-btn .btn .btn-primary {
+    color: #2E3192;
+}
+
