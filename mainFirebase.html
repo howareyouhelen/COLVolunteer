@@ -51,9 +51,9 @@
                 //another way is snap.data()["message"]
             });
 
-            // db.collection('quotes').doc('789').set({
-            //     message: "this is test"
-            // });
+            db.collection('quotes').doc('789').set({
+                message: "this is test123123"
+            });
 
             var citiesRef = db.collection("citieserf");
             citiesRef.doc("SF").set({
