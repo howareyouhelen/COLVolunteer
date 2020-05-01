@@ -30,24 +30,10 @@
         <!-- CSS styles and scripts of for main page                                  -->
         <!------------------------------------------------------------------------------>
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script src="js/firebase_config.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/user.js"></script>
 
-        <script>
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8",
-                authDomain: "covolunteer-7d403.firebaseapp.com",
-                databaseURL: "https://covolunteer-7d403.firebaseio.com",
-                projectId: "covolunteer-7d403",
-                storageBucket: "covolunteer-7d403.appspot.com",
-                messagingSenderId: "527782242122",
-                appId: "1:527782242122:web:f76d0e8d7c0976f37c03b3",
-                measurementId: "G-263Q15GFFF"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            var db = firebase.firestore();
-        </script>
     </head>
 
     <body>
@@ -55,7 +41,9 @@
 
         <h2>Let's read from the database: <span id="stuff"> stuff </span></h2>
 
+        <h2>Hello  <span id="hello">user</span></h2>
 
+        <button id="logout">Logout</button>
         <script>
             db.collection('quotes').doc('789').onSnapshot(function (snap) {
                 console.log("current data is ...", snap.data());
@@ -63,9 +51,9 @@
                 //another way is snap.data()["message"]
             });
 
-            db.collection('quotes').doc('789').set({
-                message: "this is test"
-            });
+            // db.collection('quotes').doc('789').set({
+            //     message: "this is test"
+            // });
 
             var citiesRef = db.collection("citieserf");
             citiesRef.doc("SF").set({
@@ -84,6 +72,13 @@
                 population: 3900000,
                 regions: ["west_coast", "socal"]
             });
+        </script>
+
+
+        <script>
+            createUser();
+            showName();
+            logout();
         </script>
     </body>
 
