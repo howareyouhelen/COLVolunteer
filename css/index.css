@@ -66,7 +66,8 @@ a:hover {
 
 /* main */
 main {
-    background-color:#FFE338;
+    background-image: url(../img/fruitAndVegetables.jpg);
+    background-size: 100% auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 120px 200px 200px 0;
@@ -86,6 +87,7 @@ section>img {
 #shopping:hover {
     padding-left: 50px;
 }
+
 /*aside in main (the slogans)*/
 aside{
     display: flex;
@@ -96,26 +98,53 @@ aside>div.main {
     margin-top: 30px;
 }
 aside>div[class^="slogan"]{
-    background-position: 0 1.8em;
-    background-repeat:repeat-x;
-    background-size: 16px;
+    background-position: 2.5em 0.5em;
+    background-repeat:no-repeat;
+    background-size: 50px 50px;
     width:8em;
-    padding-bottom: 10px;
-    margin-bottom: -10px;
+    padding-bottom: 50px;
+    margin-bottom: -50px;
 }
 aside>div.main {
     margin-top: 70px;
     font-size: larger;
+    color:white;
+    text-shadow:
+    3px  3px 0 #000,
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
 }
 aside>div.slogan1{
     margin-left: 120px;
-    background-image: url("img/sunnyEgg.png");
+    background-position: 3.3em 0.5em;
+    background-image: url("../img/stroke.png");
+    text-shadow:
+    1px  1px 0 #FFF,
+   -1px -1px 0 #FFF,  
+    1px -1px 0 #FFF,
+   -1px  1px 0 #FFF,
+    1px  1px 0 #FFF;
 }
 aside>div.slogan2{
 margin-left: 170px;
-background-image: url("img/prezel.png");
+padding-left: 30px;
+background-image: url("../img/stroke.png");
+text-shadow:
+    1px  1px 0 #FFF,
+   -1px -1px 0 #FFF,  
+    1px -1px 0 #FFF,
+   -1px  1px 0 #FFF,
+    1px  1px 0 #FFF;
 }
 aside>div.slogan3{
     margin-left: 220px;
-    background-image: url("img/frenchFries.png");
+    background-image: url("../img/stroke.png");
+    text-shadow:
+    1px  1px 0 #FFF,
+   -1px -1px 0 #FFF,  
+    1px -1px 0 #FFF,
+   -1px  1px 0 #FFF,
+    1px  1px 0 #FFF;
 }
