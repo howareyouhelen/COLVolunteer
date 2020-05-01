@@ -10,16 +10,85 @@
         <script src="https://code.jquery.com/jquery.min.js"></script>
     </head>
     <body>
-    <!--Navigation bar-->
-    <div id="navbar-placeholder"></div>
-    <div id="sidebar-placeholder"></div>
-    <script>
-        $(function(){
-        $("#navbar-placeholder").load("nav.html");
-        $("#sidebar-placeholder").load("sidebar.html");
-        });
-    </script>
-    <!--end of Navigation bar-->
+        <!--Nav and sidebar-->
+        <div id="navbar-placeholder"></div>
+        <div id="sidebar-placeholder"></div>
+        <script>
+            $(function(){
+            $("#navbar-placeholder").load("nav.html");
+            $("#sidebar-placeholder").load("sidebar.html");
+            });
+        </script>
+        <!--end of Nav and sidebar-->
+        <h1>Create Volunteer Post for Errands/Groceries</h1>
+        <form id="create-post-form" class="validate">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">First name</label>
+                <input type="text" class="form-control" placeholder="First name" required>
+                <div class="invalid-feedback">Please at least provide your first name</div>
+
+                <label for="exampleFormControlInput1">Last name</label>
+                <input type="text" class="form-control" placeholder="Last name">
+
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email@email.com" required>
+                <div class="invalid-feedback">Please enter an email</div>
+                
+                <div class="form-group">
+                    <label for="exampleFormControlInput2">Which store(s) will you head to?</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="store(s) name" required>
+                    <div class="invalid-feedback">Please tell us which store you will visit</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput2">When are you heading to the store?</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="MM-DD" required>
+                </div>
+                
+                <label for="exampleFormControlInput1">Which city are you in?</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Abbotsford</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Burnaby</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Coquitlam</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Delta</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Langely</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">North Vancouver</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Port Coquitlam</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Richmond</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Vancouver</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">West Vancouver</label>
+                </div>
+            </div>
+            <button id="vol-submit-btn" type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </body>
     <footer>
         
