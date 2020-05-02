@@ -80,24 +80,24 @@ a.nav:hover {
 /* main */
 main {
     background-image: url(../img/fruitAndVegetables.jpg);
-    background-size: 100% auto;
+    background-size: cover;
     padding: 120px 200px 200px 0;
     clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
 }
 /* article is inside main, inside article there are two areas (section on left, aside on right)*/
 article {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
 }
 article:hover > #shopping {
-    padding-left: 50px;
+    margin-left: 60px;
 }
 #shopping {
     transition: all 2s ease;
 }
 /*section in main > article (the shopping cart) */
 section {
-    padding-left: 200px;
+    margin-left: 200px;
 }
 section>img {
     width: 300px;
@@ -133,6 +133,7 @@ aside>div[class^="slogan"] {
 aside>div.main {
     margin-top: 70px;
     font-size: 26pt;
+    /* font-size: 10rem; */
     color: white;
     text-shadow:
         3px 3px 0 #000,
@@ -196,3 +197,9 @@ aside>div.slogan3 {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* 945width 334 head3er */
+
+
+
+/* 1206  section */
