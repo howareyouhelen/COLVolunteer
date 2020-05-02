@@ -16,7 +16,6 @@ html {
 body {
     margin: 0 auto;
     line-height: 1.6;
-    width: 80%;
     display: flex;
     flex-flow: column;
     height: 100%;
@@ -24,12 +23,14 @@ body {
 
 /* header/nav */
 header {
-    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
     color: white;
     height: 100px;
     display: flex;
     flex-flow: row;
     align-items: flex-end;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 header>* {
@@ -51,7 +52,7 @@ header>h4.navLogin {
 }
 
 a.nav, a.navLeft {
-    color: white;
+    color: grey;
     text-decoration: none;
     border-bottom: 2px solid transparent;
     align-self: flex-start;
@@ -63,8 +64,8 @@ a.nav:hover {
 }
 
 #login {
-    background-color: white;
-    color: #00BCE7;
+    background-color: rgb(92, 213, 240);
+    color: white;
     width: 140px;
     border-radius: 45px;
     transition: background-color 0.3s ease;
@@ -80,12 +81,20 @@ a.nav:hover {
 
 
 
+
+
+
 /* main Content */
 
-main h1, main h2, main h3, main footer{
+main h1, main h2, main h3, footer{
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+main h1 {
+    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
+    color:white;
+    padding: 40px;
 }
 p {
     text-align: center;
