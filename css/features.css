@@ -92,7 +92,7 @@ main h1, main h2, main h3, footer{
     padding-bottom: 25px;
 }
 main h1 {
-    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
+    background-image: linear-gradient(to right, rgba(12, 158, 243, 0.918), #00BCE7, rgb(108, 228, 255));
     color:white;
     padding: 40px;
 }

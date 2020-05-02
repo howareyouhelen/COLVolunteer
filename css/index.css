@@ -24,7 +24,7 @@ body {
 
 /* header/nav */
 header {
-    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
+    background-image: linear-gradient(to right, rgba(12, 158, 243, 0.918), #00BCE7, rgb(108, 228, 255));
     color: white;
     height: 100px;
     display: flex;
@@ -132,7 +132,7 @@ aside>div[class^="slogan"] {
 
 aside>div.main {
     margin-top: 70px;
-    font-size: 20pt;
+    font-size: 26pt;
     color: white;
     text-shadow:
         3px 3px 0 #000,
@@ -141,7 +141,9 @@ aside>div.main {
         -1px 1px 0 #000,
         1px 1px 0 #000;
 }
-
+aside>div[class^="slogan"]{
+    font-size: 18pt;
+}
 aside>div.slogan1 {
     margin-left: 120px;
     background-position: 3.3em 0.5em;
@@ -153,7 +155,7 @@ aside>div.slogan2 {
 }
 
 aside>div.slogan3 {
-    margin-left: 220px;
+    margin-left: 230px;
 }
 
 /* Apply these styles when the width is between
