@@ -16,7 +16,8 @@ html {
 body {
     margin: 0 auto;
     line-height: 1.6;
-    width: 80%;
+    /* width: 80%; */
+    max-width: 1170px;
     display: flex;
     flex-flow: column;
     height: 100%;
@@ -199,7 +200,9 @@ aside>div.slogan3 {
 }
 
 /* 945width 334 head3er */
+/* 759width header*/
 
 
 
 /* 1206  section */
+/*970 slection*/
