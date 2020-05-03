@@ -1,102 +1,21 @@
-/*Document Reset */
-aside, article, section, header, footer, nav, a {
-    display: block;
-}
-aside, article, section, header, footer, nav, html, body, p, h1, h2, h3, div, a {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    background: white;
-    height: 100%;
-    font-family: 'Lato', sans-serif;
-}
-
-body {
-    margin: 0 auto;
-    line-height: 1.6;
-    width: 80%;
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-}
-
-/* header/nav */
-header {
-    color: white;
-    height: 100px;
-    display: flex;
-    align-items: flex-end;
-}
-
-header>* {
-    margin: 20px;
-}
-
-header>*.title {
-    flex-grow: 1;
-    color:white;
-}
-
-header>h4.navLogin {
-    margin-right: 30px;
-}
-
-#logo {
-    width: 60px;
-    padding-left: 20px;
-}
-
-a.nav, a.navLeft {
-    color: white;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    align-self: flex-start;
-}
-
-a.nav:hover {
-    cursor: pointer;
-    border-bottom: 2px solid blue;
-}
-
-#login {
-    background-color: white;
-    color: #00BCE7;
-    width: 140px;
-    border-radius: 45px;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    box-shadow: 0 2px 4px 0 rgba(2, 79, 192, .34);
-}
-
-#login:hover {
-    color: white;
-    background-color: #2E3192;
-    border-bottom: 2px solid transparent;
-}
-
-
 /* Body */
-body {
-    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
-    
-    clip-path: polygon(0% 0%, 100% 0%, 100% 65.5%, 0% 90%);
+main {
+    background-image: linear-gradient(to right, rgba(12, 158, 243, 0.918), #00BCE7, rgb(108, 228, 255));
+    clip-path: polygon(0% 0%, 100% 0%, 100% 420px, 0% 600px);
 }
 #space {
     height: 50px;
 }
-img {
+#cart {
     width:50px;
     float:right;
-    transform: rotate(341deg);
-    transition: all 5s;
+    transition: all 9s;
 }
-#img {
+#imgDiv {
     width: 100%;
     height: 300px;
 }
-#img:hover >img {
-    padding-right: 1130px;
+div#firebaseui-auth-container:hover + div >img {
+    padding-right: 95%;
 }
 

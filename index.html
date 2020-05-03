@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CoVolunteer</title>
 
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!-- CSS Styles -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/index_nav_popup.css">
     <!-- Scripts -->
-    <script src="js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/pre_login_nav_bar.js"></script>
 
 </head>
 <body>
@@ -21,7 +23,15 @@
         <h4><a class="nav" href="features.html">Features</a></h4>
         <h4><a class="nav" href="about.html">About</a></h4>
         <h4 class="navLogin"><a class="nav" id="login" href="login.html">Login/Signup</a></h4>
+        <img id="bars" src="img/bars.png">
     </header>
+    <nav id="navPopUp">
+        <div id="popupSpace"></div>
+        <h1><a class="nav" id="navPopupBack">CoVolunteer</a></h1>
+        <h4><a class="nav" href="features.html">Features</a></h4>
+        <h4><a class="nav" href="about.html">About</a></h4>
+        <h4 class="nav"><a class="navLeft" id="login" href="login.html">Login/Signup</a></h4>
+    </nav>
     <main>
         <article>
             <section id="shopping">
@@ -29,9 +39,9 @@
             </section>
             <aside>
                 <div class="main" id="main"><h1>Groceries</h1></div>
-                <div class="slogan1"><h1>Painless</h1></div>
-                <div class="slogan2"><h1>Fun</h1></div>
-                <div class="slogan3"><h1>Instant</h1></div>
+                <div class="slogan1 slogan"><h1>Painless</h1></div>
+                <div class="slogan2 slogan"><h1>Fun</h1></div>
+                <div class="slogan3 slogan"><h1>Instant</h1></div>
             </aside>
         </article>
     </main>
