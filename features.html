@@ -5,13 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Features</title>
 
-        <!-- CSS LINKS-->
-        <link rel="stylesheet" type="text/css" href="css/index_nav_white.css">
-        <link rel="stylesheet" type="text/css" href="css/features.css">
-        <!-- JavaScript-->
-        <script src="js/features.js"></script>
         <!-- Font -->
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <!-- CSS LINKS-->
+        <link rel="stylesheet" type="text/css" href="css/index_nav_white.css">
+        <link rel="stylesheet" type="text/css" href="css/index_nav_popup.css">
+        <link rel="stylesheet" type="text/css" href="css/features.css">
+        <!-- JavaScript-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/pre_login_nav_bar.js"></script>
     </head>
     <body>
         <header>
@@ -21,9 +23,17 @@
                 <div class="space"></div>
                 <h4><a class="nav" href="features.html">Features</a></h4>
                 <h4><a class="nav" href="about.html">About</a></h4>
-                <h4 class="navLogin"><a class="nav" id="login" href="login.html">Login/Signup</a></h4>   
+                <h4 class="navLogin"><a class="nav" id="login" href="login.html">Login/Signup</a></h4>  
+                <img id="bars" src="img/bars.png"> 
             </div>      
         </header>
+        <nav id="navPopUp">
+            <div id="popupSpace"></div>
+            <h1><a class="nav" id="navPopupBack">CoVolunteer</a></h1>
+            <h4><a class="nav" href="features.html">Features</a></h4>
+            <h4><a class="nav" href="about.html">About</a></h4>
+            <h4 class="nav"><a class="navLeft" id="login" href="login.html">Login/Signup</a></h4>
+        </nav>
         <!--feature content-->
         <main>
             <h1>CoVolunteer Features</h1>

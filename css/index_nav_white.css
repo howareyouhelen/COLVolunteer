@@ -12,6 +12,9 @@ html {
 }
 
 /* header/nav */
+#bars {
+    display:none;
+}
 header{
     display: flex;
     flex-direction: column;
@@ -61,4 +64,21 @@ a.nav:hover {
     color: white;
     background-color: #2E3192;
     border-bottom: 2px solid transparent;
+}
+
+
+/* Apply these styles when the width is < 765 px */
+@media (max-width: 765px){
+    .header_inner>h4{
+        display:none;
+    }
+    #bars {
+        display: block;
+    }
+}
+/* Apply these styles when the width is < 500 px */
+@media (max-width: 500px) {
+    header>h1{
+        display:none;
+    }
 }

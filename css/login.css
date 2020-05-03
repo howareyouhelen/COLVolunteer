@@ -6,12 +6,12 @@ main {
 #space {
     height: 50px;
 }
-img {
+#cart {
     width:50px;
     float:right;
     transition: all 9s;
 }
-#img {
+#imgDiv {
     width: 100%;
     height: 300px;
 }

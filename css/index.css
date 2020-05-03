@@ -70,22 +70,14 @@ a.nav:hover {
     text-align: center;
     box-shadow: 0 2px 4px 0 rgba(2, 79, 192, .34);
 }
-
 #login:hover {
     color: white;
     background-color: #2E3192;
     border-bottom: 2px solid transparent;
 }
-
-
-
-
-
-
 #bars {
     display:none;
 }
-
 
 
 /* main */
