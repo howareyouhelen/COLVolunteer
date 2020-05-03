@@ -1,0 +1,19 @@
+nav {
+    background-image: linear-gradient(to right, rgba(12, 158, 243, 0.918), #00BCE7, rgb(108, 228, 255));
+    
+    display: none;
+    height: 100%;
+}
+nav a {
+    margin: auto;
+    width: min-content;
+    text-align: center;
+}
+#popupSpace{
+    height: 100px;
+}
+nav a.nav:hover {
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    text-decoration: underline;
+}
