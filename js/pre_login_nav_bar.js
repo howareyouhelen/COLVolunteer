@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    console.log("read1y");
-
     $("#bars").on("click", showNav);
     $("#navPopupBack").on("click", hideNav);
     $("nav").on("click", hideNav);
+    //media query: hides the navPopUp if window size > 766px
+    window.matchMedia("(min-width: 766px)").addListener(hideNav);
 
     function showNav() {
         $("header").css("display", "none");
