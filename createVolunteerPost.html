@@ -27,6 +27,23 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8",
+            authDomain: "covolunteer-7d403.firebaseapp.com",
+            databaseURL: "https://covolunteer-7d403.firebaseio.com",
+            projectId: "covolunteer-7d403",
+            storageBucket: "covolunteer-7d403.appspot.com",
+            messagingSenderId: "527782242122",
+            appId: "1:527782242122:web:f76d0e8d7c0976f37c03b3",
+            measurementId: "G-263Q15GFFF"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    </script>
 </head>
     <body>
         <!--Nav and sidebar-->
@@ -107,10 +124,28 @@
                 </div>
             </div>
             
-            <button id="vol-submit-btn" type="submit" class="btn btn-primary">Submit</button>
+            <button onclick="submitpost()" id="vol-submit-btn" type="button" class="btn btn-primary">Submit</button>
         </form>
+
+        <script>
+            function submitpost() {
+                console.log("asd");
+                var fName = $('#fName').val();
+                var lName = $('#lName').val();
+                var email = $('#exampleFormControlInput1').val();
+                var store = $('#exampleFormControlInput2').val();
+                var date = $('#exampleFormControlInput3').val();
+                console.log("asd");
+                db.collection("volunteerPosts").add({
+                    firstName: fName,
+                    lastName: lName,
+                    email: email,
+                    store: store,
+                    date:date
+            });
+                
+            }
+        </script>
     </body>
-    <footer>
-        
-    </footer>
+    
 </html>
