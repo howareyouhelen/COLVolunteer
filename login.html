@@ -32,6 +32,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="js/pre_login_nav_bar.js"></script>
         <script src="js/firebase_config.js"></script>
+        <script src="js/login.js"></script>
     </head>
     <body>
         <header>
@@ -56,7 +57,7 @@
             <div id="space"></div>
             <div id="loader"></div>
             <div id="firebaseui-auth-container"></div>
-            <div id="imgDiv"><img id="cart" src="./img/shoppingCart.png"></div>
+            <div id="imgDiv"></div>
         </main>
         
         <script>
@@ -97,8 +98,9 @@
             // The start method will wait until the DOM is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
         </script>
-
-
+        <script>
+            createCart();
+        </script>
     </body>
     <footer>
 

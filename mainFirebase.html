@@ -43,7 +43,14 @@
 
         <h2>Hello  <span id="hello">user</span></h2>
 
+        <span id="testuser">address</span>
+
         <button id="logout">Logout</button>
+
+        <span id="result">storage test</span>
+
+
+        <a href="map.html">map</a>
         <script>
             db.collection('quotes').doc('789').onSnapshot(function (snap) {
                 console.log("current data is ...", snap.data());
@@ -72,6 +79,8 @@
                 population: 3900000,
                 regions: ["west_coast", "socal"]
             });
+            // citiesRef.doc().collection("test").doc().set({test: "test"});
+            db.collection("test").add({thetest: "test"});
         </script>
 
 
@@ -79,6 +88,8 @@
             createUser();
             showName();
             logout();
+            storeAddress();
+            showTest();
         </script>
     </body>
 
