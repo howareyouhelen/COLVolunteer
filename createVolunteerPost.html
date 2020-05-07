@@ -130,12 +130,13 @@
         <script>
             function submitpost() {
                 console.log("asd");
+                var userId = firebase.auth().currentUser.uid;
                 var fName = $('#fName').val();
                 var lName = $('#lName').val();
                 var email = $('#exampleFormControlInput1').val();
                 var store = $('#exampleFormControlInput2').val();
                 var date = $('#exampleFormControlInput3').val();
-                console.log("asd");
+                console.log(userid);
                 db.collection("volunteerPosts").add({
                     firstName: fName,
                     lastName: lName,
