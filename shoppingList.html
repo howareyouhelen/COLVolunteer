@@ -6,6 +6,15 @@
       <title>Shopping List</title>
 
       <!------------------------------------------------------------------------------>
+      <!-- Bootstrap for Mobile-first                                               -->
+      <!------------------------------------------------------------------------------>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>              <!-- Jquery-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>           
+
+      <!------------------------------------------------------------------------------>
       <!-- Add Firebase products that you want to use                               -->
       <!------------------------------------------------------------------------------>
       <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
@@ -17,17 +26,13 @@
       <!------------------------------------------------------------------------------>
       <!-- CSS styles and scripts of for this page                                  -->
       <!------------------------------------------------------------------------------>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    <!-- jquery -->   
-      <script type='text/javascript' src='config.js'></script>                                    <!-- API Key-->
+      <script src='config.js' type='text/javascript'></script>                                    <!-- API Key-->
       <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
       <script src="js/user.js"></script>                                                          <!-- firebase User -->
       <!-- This Page's JavaScript and CSS-->
       <script src="js/shoppingList.js"></script>
-      <!-- CSS -->
-      <!-- <link rel="stylesheet" type="text/css" href="css/accept.css"> -->
-      <!-- BootStrap -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+      <link rel="stylesheet" type="text/css" href="css/accept.css">                               <!-- CSS -->
+      
     </head>
     <body>
      
@@ -41,34 +46,31 @@
           });
       </script> -->
       <!--end of Nav and sidebar-->
-      <!-- Create Shopping List -->
+      <!-- Create Shopping List TEXT BOX -->
       <div>
         <Form id="listForm">
           <fieldset class="shopping-list">
             <legend class="shopping-list__title">Enter Items</legend>
             <textarea type="text" name="ListTextArea" id="listEntry" required></textarea>
             <button id="addToList" type="button"> Add Item </button>
-            <button id="submitList" type="button"> Save List </button>
         </fieldset>
         </Form>
       </div>
       
-      <!--Current Shopping Lists-->
+      <!--Current Shopping List-->
         <div class="card-container">
-
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Current List</h5>
               <h6 class="card-subtitle">
               </h6>
               <ul class="list-group current-list-group" id="currentList">
-                <li class="list-group-item">16oz box spagetti</li>
               </ul>
-              <a href="complete.html" class="btn btn-secondary" id="submitList">Save List</a>
+            <button id="submitList" type="button" class="btn btn-secondary"> Save List </button>
             </div>
           </div>
-
-
+        </div>
+          
 
     </body>
     <footer>

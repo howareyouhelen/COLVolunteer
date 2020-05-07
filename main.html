@@ -29,7 +29,6 @@
         <!------------------------------------------------------------------------------>
         <!-- CSS styles and scripts of for this page                                  -->
         <!------------------------------------------------------------------------------>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    <!-- jquery -->   
         <script type='text/javascript' src='config.js'></script>                                    <!-- API Key-->
         <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
         <script src="js/user.js"></script>                                                          <!-- firebase User -->
@@ -39,19 +38,71 @@
 
         </script>
     </head>
-
     <body>
         <!--Nav and sidebar-->
         <div id="navbar-placeholder"></div>
         <div id="sidebar-placeholder"></div>
         <script>
-            $(function(){
-            $("#navbar-placeholder").load("nav.html");
-            $("#sidebar-placeholder").load("sidebar.html");
-            });
+            // $(function(){
+            // $("#navbar-placeholder").load("nav.html");
+            // $("#sidebar-placeholder").load("sidebar.html");
+            // });
         </script>
         <!--end of Nav and sidebar-->
+        <!-- Make a request button popup -->
+        <!-- Button trigger modal -->
+        <!-- To Trigger Popup, add:    data-toggle="modal" data-target="#exampleModal"   to the button element-->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Send Your Request To Animesh</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
 
+                        <div class="card-container">
+
+                            <div>
+                                <Form id="msg">
+                                  <fieldset >
+                                    <legend>Enter Message</legend>
+                                    <textarea type="text" name="message" id="msgEntry" required></textarea>
+                                </fieldset>
+                                </Form>
+                              </div>
+
+
+
+                            <div class="card">
+                                <div class="card-body">
+                                  <h5 class="card-title">Your Current List</h5>
+                                  <h6 class="card-subtitle">
+                                  </h6>
+                                  <ul class="list-group current-list-group" id="currentList">
+                                  </ul>
+                                </div>
+                              </div>
+                          </div>
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send Request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of make a request button popup -->
+        
+            
             <section class="posts">
                 <div class="card">
                     <div class="card-body">
@@ -60,7 +111,7 @@
                         <p class="card-text">
                             I am going to liqour depot.
                         </p>
-                        <button type="button" class="btn btn-outline-info">Make a request</button>
+                        <button type="button" class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal">Make a request</button>
                     </div>
                 </div>
 
