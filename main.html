@@ -27,29 +27,17 @@
 
 
         <!------------------------------------------------------------------------------>
-        <!-- CSS styles and scripts of for main page                                  -->
+        <!-- CSS styles and scripts of for this page                                  -->
         <!------------------------------------------------------------------------------>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script type='text/javascript' src='config.js'></script>                                    <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
         <script src="js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css">                                 <!-- CSS -->
 
-        <script>
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8",
-                authDomain: "covolunteer-7d403.firebaseapp.com",
-                databaseURL: "https://covolunteer-7d403.firebaseio.com",
-                projectId: "covolunteer-7d403",
-                storageBucket: "covolunteer-7d403.appspot.com",
-                messagingSenderId: "527782242122",
-                appId: "1:527782242122:web:f76d0e8d7c0976f37c03b3",
-                measurementId: "G-263Q15GFFF"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            var db = firebase.firestore();
         </script>
     </head>
-
     <body>
         <!--Nav and sidebar-->
         <div id="navbar-placeholder"></div>
@@ -61,7 +49,51 @@
             });
         </script>
         <!--end of Nav and sidebar-->
-
+        <!-- Make a request button popup -->
+        <!-- Button trigger modal -->
+        <!-- To Trigger Popup, add:    data-toggle="modal" data-target="#exampleModal"   to the button element-->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Send Your Request To Animesh</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-container">
+                            <div>
+                                <Form id="msg">
+                                  <fieldset >
+                                    <legend>Enter Message</legend>
+                                    <textarea type="text" name="message" id="msgEntry" required></textarea>
+                                </fieldset>
+                                </Form>
+                              </div>
+                            <div class="card">
+                                <div class="card-body">
+                                  <h5 class="card-title">Your Current List</h5>
+                                  <h6 class="card-subtitle">
+                                  </h6>
+                                  <ul class="list-group current-list-group" id="currentList">
+                                  </ul>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send Request</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of make a request button popup -->
+        
+            
             <section class="posts" id="item_cards">
                 <div class="card">
                     <div class="card-body">
@@ -70,7 +102,7 @@
                         <p class="card-text">
                             I am going to liqour depot.
                         </p>
-                        <button type="button" class="btn btn-outline-info">Make a request</button>
+                        <button type="button" class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal">Make a request</button>
                     </div>
                 </div>
             </section>

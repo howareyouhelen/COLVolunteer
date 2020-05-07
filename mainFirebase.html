@@ -27,12 +27,14 @@
 
 
         <!------------------------------------------------------------------------------>
-        <!-- CSS styles and scripts of for main page                                  -->
-        <!------------------------------------------------------------------------------>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
-        <script src="js/firebase_config.js"></script>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------> 
+        <script type='text/javascript' src='config.js'></script>                                    <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
         <script src="js/main.js"></script>
-        <script src="js/user.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css">                                 <!-- CSS -->
 
     </head>
 
@@ -43,7 +45,16 @@
 
         <h2>Hello  <span id="hello">user</span></h2>
 
+        <span id="testuser">address</span>
+
         <button id="logout">Logout</button>
+
+        <span id="result">storage test</span>
+
+
+        <a href="map.html">map</a>
+
+        <a href="shoppingList.html">shoppingList</a>
         <script>
             db.collection('quotes').doc('789').onSnapshot(function (snap) {
                 console.log("current data is ...", snap.data());
@@ -72,6 +83,8 @@
                 population: 3900000,
                 regions: ["west_coast", "socal"]
             });
+            // citiesRef.doc().collection("test").doc().set({test: "test"});
+            db.collection("test").add({thetest: "test"});
         </script>
 
 
@@ -79,6 +92,8 @@
             createUser();
             showName();
             logout();
+            storeAddress();
+            showTest();
         </script>
     </body>
 
