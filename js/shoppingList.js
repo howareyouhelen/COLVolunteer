@@ -1,5 +1,6 @@
 $(document).ready(() =>{
 
+    //#addToList-> id for add button,   form->(id="listForm")  Input->(name="ListTextArea" id="listEntry")
     //Adds items to the list
     $("#addToList").on("click", () =>{
         let item = $("#listForm").serializeArray();
@@ -22,7 +23,7 @@ $(document).ready(() =>{
                 Object.keys(list).forEach((item) => {
                     if (list[item].innerText !== undefined) {
                         db.collection('user').doc(user.uid).collection('shoppingList').doc('currentList').update({
-                            [item] :list[item].innerText
+                            [item] : list[item].innerText
                         });
                     }
                 })
