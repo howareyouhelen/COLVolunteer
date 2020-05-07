@@ -16,6 +16,10 @@ footer {
 #about-content {
     text-align: center;
 }
+#team-content {
+    text-align: center;
+    margin: 0vw 20vw 0vw 20vw;
+}
 .card {
     margin: 40px;
     width: 230px;

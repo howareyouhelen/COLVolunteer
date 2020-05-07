@@ -1,10 +1,11 @@
 .card-container {
     display: grid;  
     grid-template-columns: repeat(auto-fit, 300px);
-    grid-template-rows: repeat(2, 400px);
+    grid-template-rows: repeat(2);
     grid-gap: 25px;
-    padding: 50px;
-    margin: 20px;
+    padding: 30px;
+    margin: 15px;
+    background-color: #00BCE7; 
     }
 footer {
     font-size: 10px;
@@ -16,8 +17,4 @@ footer {
 }
 .card-body {
     background-color: lightgrey;
-}
-.btn {
-    padding: 10px;
-    margin: 20px;
 }
