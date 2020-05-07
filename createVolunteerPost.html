@@ -1,14 +1,50 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Volunteer</title>
-        <link rel="stylesheet" type="text/css" href="css/volunteer.css">
-        <script src="js/volunteer.js"></script>
-        <script src="nav.html"></script>
-        <script src="https://code.jquery.com/jquery.min.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Volunteer</title>
+    <link rel="stylesheet" type="text/css" href="css/volunteer.css">
+    <script src="js/volunteer.js"></script>
+    <script src="nav.html"></script>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!------------------------------------------------------------------------------>
+    <!-- Bootstrap for Mobile-first                                               -->
+    <!------------------------------------------------------------------------------>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <!------------------------------------------------------------------------------>
+    <!-- Add Firebase products that you want to use                               -->
+    <!------------------------------------------------------------------------------>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8",
+            authDomain: "covolunteer-7d403.firebaseapp.com",
+            databaseURL: "https://covolunteer-7d403.firebaseio.com",
+            projectId: "covolunteer-7d403",
+            storageBucket: "covolunteer-7d403.appspot.com",
+            messagingSenderId: "527782242122",
+            appId: "1:527782242122:web:f76d0e8d7c0976f37c03b3",
+            measurementId: "G-263Q15GFFF"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    </script>
+</head>
     <body>
         <!--Nav and sidebar-->
         <div id="navbar-placeholder"></div>
@@ -24,11 +60,11 @@
         <form id="create-post-form" class="validate" action="main.html">
             <div class="form-group">
                 <label for="exampleFormControlInput1">First name</label>
-                <input type="text" class="form-control" placeholder="First name" required>
+                <input type="text" id="fName" class="form-control" placeholder="First name" required>
                 <div class="invalid-feedback">Please at least provide your first name</div>
 
                 <label for="exampleFormControlInput1">Last name</label>
-                <input type="text" class="form-control" placeholder="Last name">
+                <input type="text" id="lName" class="form-control" placeholder="Last name">
 
                 <label for="exampleFormControlInput1">Email address</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email@email.com" required>
@@ -88,10 +124,29 @@
                 </div>
             </div>
             
-            <button id="vol-submit-btn" type="submit" class="btn btn-primary">Submit</button>
+            <button onclick="submitpost()" id="vol-submit-btn" type="button" class="btn btn-primary">Submit</button>
         </form>
+
+        <script>
+            function submitpost() {
+                console.log("asd");
+                var userId = firebase.auth().currentUser.uid;
+                var fName = $('#fName').val();
+                var lName = $('#lName').val();
+                var email = $('#exampleFormControlInput1').val();
+                var store = $('#exampleFormControlInput2').val();
+                var date = $('#exampleFormControlInput3').val();
+                console.log(userid);
+                db.collection("volunteerPosts").add({
+                    firstName: fName,
+                    lastName: lName,
+                    email: email,
+                    store: store,
+                    date:date
+            });
+                
+            }
+        </script>
     </body>
-    <footer>
-        
-    </footer>
+    
 </html>

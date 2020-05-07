@@ -62,7 +62,7 @@
         </script>
         <!--end of Nav and sidebar-->
 
-            <section class="posts">
+            <section class="posts" id="item_cards">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Animesh Kaushal</h4>
@@ -73,66 +73,56 @@
                         <button type="button" class="btn btn-outline-info">Make a request</button>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Animesh Kaushal</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
-                        <p class="card-text">
-                            I am going to liqour depot.
-                        </p>
-                        <button type="button" class="btn btn-outline-info">Make a request</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Animesh Kaushal</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
-                        <p class="card-text">
-                            I am going to liqour depot.
-                        </p>
-                        <button type="button" class="btn btn-outline-info">Make a request</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Animesh Kaushal</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
-                        <p class="card-text">
-                            I am going to liqour depot.
-                        </p>
-                        <button type="button" class="btn btn-outline-info">Make a request</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Animesh Kaushal</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
-                        <p class="card-text">
-                            I am going to liqour depot.
-                        </p>
-                        <button type="button" class="btn btn-outline-info">Make a request</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Animesh Kaushal</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
-                        <p class="card-text">
-                            I am going to liqour depot.
-                        </p>
-                        <button type="button" class="btn btn-outline-info">Make a request</button>
-                    </div>
-                </div>
-
-
-
             </section>
-        
+            <script>
+                var x = 1;
+                db.collection("volunteerPosts").get().then((querySnapshot) => {
+                    
+                    
+                    querySnapshot.forEach(function (doc) {
+                        $(document).ready(function () {
+                            console.log(doc.data());
+                            /* get data from db */
+                            var store = doc.data().store;
+                            var fname = doc.data().firstName;
+                            //var lname = doc.data().lastName;
+                            var email = doc.data().email;
+                            //var data = doc.data().date;
+
+
+                            var y = "card" + x;
+
+                            var z = '<div class="card" id="' + y + '"></div>';
+                            var z_id = '#' + y;
+
+                            $("#item_cards").append(z);
+
+                            var b = '<div class="card-body" id="' + y + 'body">';
+                            var b_id = '#' + y + 'body';
+
+                            $(z_id).append(b);
+
+                            var c = '<h4 class="card-title" id="' + y + 'name">' + fname + '</h4>';
+                            var c_id = '#' + y + 'name';
+
+                            $(b_id).append(c);
+
+                            var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'store">' + store + '</h6>';
+                            var d_id = '#' + y + 'store';
+
+                            $(b_id).append(d);
+
+                            var e = '<button type="button" class="btn btn-outline-info" id="' + y + 'button">' + 'Make a request</button>'
+                            $(b_id).append(e);
+
+                            x++;
+                        });
+                        
+                    });
+
+                });
+
+            </script>
 
     </body>
 
