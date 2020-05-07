@@ -27,12 +27,15 @@
 
 
         <!------------------------------------------------------------------------------>
-        <!-- CSS styles and scripts of for main page                                  -->
+        <!-- CSS styles and scripts of for this page                                  -->
         <!------------------------------------------------------------------------------>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
-        <script src="js/firebase_config.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    <!-- jquery -->   
+        <script type='text/javascript' src='config.js'></script>                                    <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
         <script src="js/main.js"></script>
-        <script src="js/user.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css">                                 <!-- CSS -->
 
     </head>
 
@@ -51,6 +54,8 @@
 
 
         <a href="map.html">map</a>
+
+        <a href="shoppingList.html">shoppingList</a>
         <script>
             db.collection('quotes').doc('789').onSnapshot(function (snap) {
                 console.log("current data is ...", snap.data());
