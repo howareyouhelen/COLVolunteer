@@ -8,6 +8,7 @@ firebase-debug.log*
 
 #API Key file
 config.js
+js/config.js
 
 # Firebase cache
 .firebase/
