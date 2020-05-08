@@ -2,6 +2,7 @@ $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function(user) {
         var user = user.uid;
         currentUser = user;
+
         const list_div = document.querySelector("#list_div");
         var reqRef = db.collection("requestpost").orderBy("timestamp", "desc");
 
@@ -22,13 +23,14 @@ $(document).ready(function () {
 
                 $(".btn").click(function(){
                     $(this).val("Help on its way!").prop('disabled', true);
+                    var reqRef = db.collection("requestpost");
                     var matchID = $(this).siblings('.docref')[0].innerHTML;
                     var docRef = reqRef.doc(matchID);
                     docRef.set({
                         volunteer_uid: currentUser,
                         status: "accepted"
                     }, {merge: true});
-            })
+                })
             });
         });
 
