@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const list_div = document.querySelector("#list_div");
-    var reqRef = db.collection("requestpost");
+    var reqRef = db.collection("requestpost").orderBy("timestamp", "desc");
 
     firebase.auth().onAuthStateChanged(function(user) {
         var user = user.uid;
@@ -27,7 +27,8 @@ $(document).ready(function () {
                 var matchID = $(this).siblings('.docref')[0].innerHTML;
                 var docRef = reqRef.doc(matchID);
                 docRef.set({
-                    volunteer_uid: currentUser
+                    volunteer_uid: currentUser,
+                    status: "accepted"
                 }, {merge: true});
            })
         });
