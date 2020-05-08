@@ -1,3 +1,4 @@
+﻿<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +6,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>CoVolunteer login/sign-up</title>
-        
-
-
-        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
 
@@ -21,30 +17,51 @@
         <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
         <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        
+    
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    <!-- jquery -->   
+        <script type='text/javascript' src='js/config.js'></script>                                    <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <!-- This Page's JavaScript and CSS-->
+        <script src="js/pre_login_nav_bar.js"></script>
+        <script src="js/login.js"></script>
+        <script src="js/pre_login_nav_bar.js"></script>
+        <!-- CSS LINKS-->
+        <link rel="stylesheet" type="text/css" href="css/index_nav_white.css">
+        <link rel="stylesheet" type="text/css" href="css/index_nav_popup.css">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <!-- favicon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
         <!-- Font -->
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-        <!-- CSS Styles -->
-        <link type="text/css" rel="stylesheet" href="css/login.css" />
-        <!-- Scripts -->
-        <script src="js/firebase_config.js"></script>
-        <script src="js/login.js"></script>
     </head>
     <body>
         <header>
-            <a class="navLeft" href="index.html"><img id="logo" src="img/logo.png"></a>
-            <h1><a class="navLeft" href="index.html">CoVolunteer</a></h1>
-            <div class="title"></div>
+            <div class="header_inner">
+                <a class="navLeft" href="index.html"><img id="logo" src="img/logo.png"></a>
+                <h1><a class="navLeft" href="index.html">CoVolunteer</a></h1>
+                <div class="space"></div>
+                <h4><a class="nav" href="features.html">Features</a></h4>
+                <h4><a class="nav" href="about.html">About</a></h4>
+                <h4 class="navLogin"><a class="nav" id="login" href="login.html">Login/Signup</a></h4>   
+                <img id="bars" src="img/bars.png"> 
+            </div>      
+        </header>
+        <nav id="navPopUp">
+            <div id="popupSpace"></div>
+            <h1><a class="nav" id="navPopupBack">CoVolunteer</a></h1>
             <h4><a class="nav" href="features.html">Features</a></h4>
             <h4><a class="nav" href="about.html">About</a></h4>
-            <h4 class="navLogin"><a class="nav" id="login" href="login.html">Login/Signup</a></h4>
-        </header>
+            <h4 class="nav"><a class="navLeft" id="login" href="login.html">Login/Signup</a></h4>
+        </nav>
         <main>
             <div id="space"></div>
+            <div id="loader"></div>
             <div id="firebaseui-auth-container"></div>
-            <div id="loader">Loading...</div>
-            <div id="img"><img src="./img/shoppingCart.png"></div>
+            <div id="imgDiv"></div>
         </main>
         
         <script>
@@ -84,9 +101,9 @@
 
             // The start method will wait until the DOM is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
+            // Drop the Cart img
+            createCart();
         </script>
-
-
     </body>
     <footer>
 

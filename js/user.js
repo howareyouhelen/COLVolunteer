@@ -1,11 +1,11 @@
+createUser();
 
 // Fucntion that creates a new document in the users collection
-
-
 function createUser() {
     // if the current user logged in user
     // is authenticated, then grab "uid" "displayName" and "email"
     // use "set()" with merge (if document did not exist it will be created)
+    // get the user id with user.uid
     auth.onAuthStateChanged(function(user){
         if (user) {
             db.collection("user").doc(user.uid).set(
@@ -24,15 +24,42 @@ function createUser() {
  */
 function showName() {
     auth.onAuthStateChanged(function (user) {
-    //   console.log(user);
-    if(user) {
-        document.getElementById("hello").innerHTML = user.displayName;
-    }
-      
+        if(user) {
+            document.getElementById("hello").innerHTML = user.displayName;
+        }
     });
 }
 
+var address = "";
+function storeAddress() {
+    auth.onAuthStateChanged(function (user) {
+        //   console.log(user);
+        if(user) {
+            db.collection("user").doc(user.uid).get().then(function(doc) {
+                if (doc.exists) {
+                    // Store user address into session storage
+                    sessionStorage.setItem("userAddress", doc.data().address);
+                    address = sessionStorage.getItem("userAddress");
+                    console.log(address)
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch(function(error) {
+                console.log("Error getting user address document:", error);
+            });
+            
+        }
+})
 
+
+                    
+}
+
+function showTest() {
+// Retrieve
+document.getElementById("result").innerHTML = sessionStorage.getItem("userAddress");
+}
 /**
  * logs the user out when the button with ID logout is clicked
  */

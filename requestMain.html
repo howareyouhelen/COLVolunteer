@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Completed Requests</title>
-        <link rel="stylesheet" type="text/css" href="css/complete.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery.min.js"></script>
-        <script src="js/complete.js"></script>
-    <body> 
-      <!--Nav and sidebar-->
-      <div id="navbar-placeholder"></div>
-      <div id="sidebar-placeholder"></div>
-      <script>
-          $(function(){
-          $("#navbar-placeholder").load("nav.html");
-          $("#sidebar-placeholder").load("sidebar.html");
-          });
-      </script>
-      <!--end of Nav and sidebar-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All Request Post</title>
 
-      <h1>Requests I have completed</h1><hr>
+        <link rel="stylesheet" type="text/css" href="css/requestMain.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/requestMain.js"></script>
+        <script src="nav.html"></script>
+    </head>
 
-      <div id="list_div">
-          <h3>completed requests</h3>
-          <div class ="list-item">
-            <p>my completed list: </p>
-              <!--posts will be dynamically generated here-->
-          </div>
-      </div>
-      
+    <body>
+        <!--Nav and sidebar-->
+        <div id="navbar-placeholder"></div>
+        <div id="sidebar-placeholder"></div>
+        <script>
+            $(function(){
+            $("#navbar-placeholder").load("nav.html");
+            $("#sidebar-placeholder").load("sidebar.html");
+            });
+        </script>
+        <!--end of Nav and sidebar-->
+        
+        <h1>All Request Posts for Errands/Groceries</h1><hr>
+
+        <div id="list_div">
+            <h3>Click one to help</h3>
+            <div class ="list-item">
+                <p>Request Post Lists: </p>
+                <!--posts will be dynamically generated here-->
+            </div>
+
+
+        </div>
+
+
+
         <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->

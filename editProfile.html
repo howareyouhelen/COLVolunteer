@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>My Profile</title>
         
+        
         <!------------------------------------------------------------------------------>
         <!-- Bootstrap for Mobile-first                                               -->
         <!------------------------------------------------------------------------------>
@@ -27,40 +28,39 @@
         <!------------------------------------------------------------------------------>
         <!-- CSS styles and scripts of for main page                                  -->
         <!------------------------------------------------------------------------------>
-        <link rel="stylesheet" type="text/css" href="css/profile.css">
+        
+        <link rel="stylesheet" type="text/css" href="css/editProfile.css">
         <script src="js/firebase_config.js"></script>
         <script src="js/user.js"></script>
-        <script src="js/profile.js"></script>
-
+        <script src="js/editProfile.js"></script>
+        
     </head>
     <body>
 
-        <!--Nav and sidebar-->
-        <div id="navbar-placeholder"></div>
-        <div id="sidebar-placeholder"></div>
-        <script>
-            $(function(){
-            $("#navbar-placeholder").load("nav.html");
-            $("#sidebar-placeholder").load("sidebar.html");
-            });
-        </script>
-        <!--end of Nav and sidebar-->
+      <!--Nav and sidebar-->
+      <div id="navbar-placeholder"></div>
+      <div id="sidebar-placeholder"></div>
+      <script>
+          $(function(){
+          $("#navbar-placeholder").load("nav.html");
+          $("#sidebar-placeholder").load("sidebar.html");
+          });
+      </script>
+      <!--end of Nav and sidebar-->
 
-        <section class="profileContent">
-            <img class="displayPicture" src="img/bcitLogo.png" alt="profile picture">
-                <div class="personalInfo">
-                    <p>Name: <span id="userName"></span></p>
-                    <p>Email: <span id="userEmail"></span></p>
-                    <p>Address: <span id="userAddress"></span></p>
+        <div class="editContent">
+                <div >
+                    <p class="label">Edit Name:</p>
+                        <input type="text" class="form" id="editName" placeholder="Name">
+                    <p class="label">Edit Email:</p>
+                        <input type="text" class="form" id="editEmail" placeholder="Email">
+                    <p class="label">Edit Address:</p>
+                        <input type="text" class="form" id="editAddress" placeholder="Address">
                 </div>
-                <div>
-                    <a href="editProfile.html" class="btn btn-primary">edit profile</a>
-                    <!--include change dp later-->
-                </section>
-
-                <script>
-                    getProfile()
-                </script>
+                <div class="editButton">
+                    <button class="btn btn-primary" onclick="saveChanges()">save</button>
+                    <a href="profile.html" class="btn btn-primary">cancel</a>
+                </div>
     </body>
     <footer>
 

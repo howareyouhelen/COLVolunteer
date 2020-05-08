@@ -16,7 +16,7 @@ html {
 body {
     margin: 0 auto;
     line-height: 1.6;
-    width: 80%;
+    max-width: 1170px;
     display: flex;
     flex-flow: column;
     height: 100%;
@@ -24,7 +24,7 @@ body {
 
 /* header/nav */
 header {
-    background-image: linear-gradient(to right, rgba(0, 146, 231, 0.918), #00BCE7, rgb(92, 213, 240));
+    background-image: linear-gradient(to right, rgba(12, 158, 243, 0.918), #00BCE7, rgb(108, 228, 255));
     color: white;
     height: 100px;
     display: flex;
@@ -70,34 +70,37 @@ a.nav:hover {
     text-align: center;
     box-shadow: 0 2px 4px 0 rgba(2, 79, 192, .34);
 }
-
 #login:hover {
     color: white;
     background-color: #2E3192;
     border-bottom: 2px solid transparent;
 }
+#bars {
+    display:none;
+}
+
 
 /* main */
 main {
     background-image: url(../img/fruitAndVegetables.jpg);
-    background-size: 100% auto;
+    background-size: cover;
     padding: 120px 200px 200px 0;
     clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
 }
 /* article is inside main, inside article there are two areas (section on left, aside on right)*/
 article {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
 }
 article:hover > #shopping {
-    padding-left: 50px;
+    margin-left: 60px;
 }
 #shopping {
     transition: all 2s ease;
 }
 /*section in main > article (the shopping cart) */
 section {
-    padding-left: 200px;
+    margin-left: 200px;
 }
 section>img {
     width: 300px;
@@ -105,16 +108,13 @@ section>img {
 }
 /*aside in main > article (the slogans)*/
 aside {
-    display: flex;
-    flex-flow: column;
     margin-left: 100px;
 }
 
 aside>div.main {
     margin-top: 30px;
 }
-
-aside>div[class^="slogan"] {
+aside>div.slogan {
     background-position: 2.5em 0.5em;
     background-repeat: no-repeat;
     background-size: 50px 50px;
@@ -122,6 +122,7 @@ aside>div[class^="slogan"] {
     padding-bottom: 50px;
     margin-bottom: -50px;
     background-image: url("../img/stroke.png");
+    font-size: 18pt;
     text-shadow:
         1px 1px 0 #FFF,
         -1px -1px 0 #FFF,
@@ -132,7 +133,8 @@ aside>div[class^="slogan"] {
 
 aside>div.main {
     margin-top: 70px;
-    font-size: 20pt;
+    font-size: 26pt;
+    /* font-size: 10rem; */
     color: white;
     text-shadow:
         3px 3px 0 #000,
@@ -141,7 +143,6 @@ aside>div.main {
         -1px 1px 0 #000,
         1px 1px 0 #000;
 }
-
 aside>div.slogan1 {
     margin-left: 120px;
     background-position: 3.3em 0.5em;
@@ -153,44 +154,58 @@ aside>div.slogan2 {
 }
 
 aside>div.slogan3 {
-    margin-left: 220px;
+    margin-left: 230px;
 }
 
-/* Apply these styles when the width is between
-400 and 1024px (Tablet View)     */
-@media (min-width: 400px) and (max-width: 1024px) {
+/* Apply these styles when the width is < 1039 px */
+@media (max-width: 1039px){
+    section {
+        margin-left: 120px;
+    }
+    aside {
+        margin-left: 50px;
+    }
+}
+/* Apply these styles when the width is < 915 px */
+@media (max-width: 915px){
+    aside>div.slogan {
+        font-size: 12pt;
+    }
+    #main {
+        font-size: 20pt;
+    }
+    section>img{
+        width: 220px;
+    }
+}
+/* Apply these styles when the width is < 765 px */
+@media (max-width: 765px){
     main {
-        grid-template-columns: 1fr;
+        padding: 100px 100px 200px 0;
     }
-
-    aside>section {
-        grid-template-columns: repeat(4, auto);
+    header>h4{
+        display:none;
     }
-}
-
-/* Apply these styles when the width is < 400 px */
-@media (max-width: 399px) {
-    nav {
-        display: inherit;
-    }
-
-    nav>a {
+    #bars {
         display: block;
     }
-
-    main {
-        grid-template-columns: 1fr;
+    aside>div.slogan {
+        margin-left: 20px;
+        background-position: 2em 0em;
     }
-
-    article>section.secMain {
-        grid-column: auto;
+    section>img{
+        width: 170px;
     }
-
-    article {
-        grid-template-columns: 1fr;
+    section {
+        margin-left: 80px;
     }
-
-    aside>section {
-        grid-template-columns: 1fr 1fr;
+    aside {
+        margin-left: 50px;
+    }
+}
+/* Apply these styles when the width is < 500 px */
+@media (max-width: 500px) {
+    header>h1{
+        display:none;
     }
 }
