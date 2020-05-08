@@ -43,10 +43,10 @@
         <div id="navbar-placeholder"></div>
         <div id="sidebar-placeholder"></div>
         <script>
-            $(function(){
-            $("#navbar-placeholder").load("nav.html");
-            $("#sidebar-placeholder").load("sidebar.html");
-            });
+            // $(function(){
+            // $("#navbar-placeholder").load("nav.html");
+            // $("#sidebar-placeholder").load("sidebar.html");
+            // });
         </script>
         <!--end of Nav and sidebar-->
         <!-- Make a request button popup -->
@@ -58,7 +58,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Send Your Request To Animesh</h5>
+                        <h5 class="modal-title" id="volunteerName">Send Your Request To Animesh</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -86,7 +86,7 @@
                         </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send Request</button>
+                        <button type="submit" class="btn btn-primary" id="send-request" data-dismiss="modal">Send Request</button>
                     </div>
                 </div>
             </div>
@@ -102,17 +102,17 @@
                         <p class="card-text">
                             I am going to liqour depot.
                         </p>
-                        <button type="button" class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal">Make a request</button>
+                        <button type="button" id="first" class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal">Make a request</button>
                     </div>
                 </div>
             </section>
             <script>
+                //Start of: Displaying the Volunteer Posts
                 var x = 1;
+                
+                $(document).ready(function () {
                 db.collection("volunteerPosts").get().then((querySnapshot) => {
-                    
-                    
                     querySnapshot.forEach(function (doc) {
-                        $(document).ready(function () {
                             console.log(doc.data());
                             /* get data from db */
                             var store = doc.data().store;
@@ -120,7 +120,6 @@
                             //var lname = doc.data().lastName;
                             var email = doc.data().email;
                             //var data = doc.data().date;
-
 
                             var y = "card" + x;
 
@@ -144,16 +143,14 @@
 
                             $(b_id).append(d);
 
-                            var e = '<button type="button" class="btn btn-outline-info" id="' + y + 'button">' + 'Make a request</button>'
+                            let info = 'class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal"';
+                            var e = '<button type="button"' + info +'id="userid:' + y + 'button">' + 'Make a request</button>'
                             $(b_id).append(e);
 
                             x++;
-                        });
-                        
-                    });
-
+                        }); 
+                    }).then(attachMakeRequestButtonEvent);
                 });
-
             </script>
 
     </body>

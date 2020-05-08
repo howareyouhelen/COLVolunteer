@@ -47,33 +47,48 @@
       </script> -->
       <!--end of Nav and sidebar-->
       <!-- Create Shopping List TEXT BOX -->
-      <div>
+      <!-- <div>
+        
+        </div>
+
+
         <Form id="listForm">
           <fieldset class="shopping-list">
-            <legend class="shopping-list__title">Enter Items</legend>
-            <textarea type="text" name="ListTextArea" id="listEntry" required></textarea>
+            <legend class="shopping-list__title">Enter Items</legend> -->
+            <!-- <textarea type="text" name="ListTextArea" id="listEntry" required></textarea> -->
             
             <!-- <input type="text" name="ListTextArea" id="listEntry" required></input> -->
-            <button id="addToList" type="button"> Add Item </button>
+            <!-- <button id="addToList" type="button"> Add Item </button>
         </fieldset>
         </Form>
-      </div>
+      </div> -->
       
       <!--Current Shopping List-->
         <div class="card-container">
           <div class="card">
+            <div class="card-body" style="padding-bottom: 0;">
+              <Form id="listForm">
+                <fieldset class="shopping-list">
+                  <h5 class="card-title">Current List</h5>
+                  <Form id="listForm"></Form>
+                  <input type="text" class="form-control" placeholder="enter items" name="ListInput" id="listEntry"
+                    autocomplete="off">
+                </fieldset>
+              </Form>
+            </div>
+            <div class="card-body" style="padding-top: 0; padding-bottom:0; text-align: center;">
+              <div class="btn-group">
+                <button id="editList"   type="button" class="btn btn-outline-danger btn-sm" data-toggle="button" style="margin-left:0" disabled>Delete</button>
+                <button id="addToList"  type="button" class="btn btn-secondary btn-sm" style="margin:auto">Add Item</button>
+                <button id="submitList" type="button" class="btn btn-primary btn-sm" style="margin:auto">Save List</button>
+              </div>
+            </div>
             <div class="card-body">
-              <h5 class="card-title">Current List</h5>
-              <h6 class="card-subtitle">
-              </h6>
               <ul class="list-group current-list-group" id="currentList">
               </ul>
-            <button id="submitList" type="button" class="btn btn-secondary"> Save List </button>
             </div>
           </div>
         </div>
-          
-
     </body>
     <footer>
         bby-34

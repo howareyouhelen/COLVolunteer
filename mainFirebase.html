@@ -33,7 +33,6 @@
         <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
         <script src="js/user.js"></script>                                                          <!-- firebase User -->
         <!-- This Page's JavaScript and CSS-->
-        <script src="js/main.js"></script>
         <link rel="stylesheet" type="text/css" href="css/main.css">                                 <!-- CSS -->
 
     </head>
@@ -56,35 +55,46 @@
 
         <a href="shoppingList.html">shoppingList</a>
         <script>
+
+
+
+            auth.onAuthStateChanged((user) => {
+                if(!user) {
+                    console.log("not logged in")
+                }
             db.collection('quotes').doc('789').onSnapshot(function (snap) {
                 console.log("current data is ...", snap.data());
                 document.getElementById("stuff").innerHTML = snap.data().message;
                 //another way is snap.data()["message"]
             });
 
-            // db.collection('quotes').doc('789').set({
-            //     message: "this is test"
+            db.collection('quotes').doc('7890').set({
+                message: "this is test"
+            });
+            
+            
+            // citiesRef.doc().collection("test").doc().set({test: "test"});
+            // db.collection("test").add({thetest: "test"});
+
+            // var citiesRef = db.collection("citieserf");
+            // citiesRef.doc("SF").set({
+            //     name: "San Francisco",
+            //     state: "CA",
+            //     country: "USA",
+            //     capital: false,
+            //     population: 860000,
+            //     regions: ["west_coast", "norcal"]
+            // });
+            // citiesRef.doc("LA").set({
+            //     name: "Los Angeles",
+            //     state: "CA",
+            //     country: "USA",
+            //     capital: false,
+            //     population: 3900000,
+            //     regions: ["west_coast", "socal"]
             // });
 
-            var citiesRef = db.collection("citieserf");
-            citiesRef.doc("SF").set({
-                name: "San Francisco",
-                state: "CA",
-                country: "USA",
-                capital: false,
-                population: 860000,
-                regions: ["west_coast", "norcal"]
-            });
-            citiesRef.doc("LA").set({
-                name: "Los Angeles",
-                state: "CA",
-                country: "USA",
-                capital: false,
-                population: 3900000,
-                regions: ["west_coast", "socal"]
-            });
-            // citiesRef.doc().collection("test").doc().set({test: "test"});
-            db.collection("test").add({thetest: "test"});
+            }) 
         </script>
 
 
@@ -94,6 +104,9 @@
             logout();
             storeAddress();
             showTest();
+
+            console.log(sessionStorage.getItem("userAddress"));
+            console.log(address);
         </script>
     </body>
 

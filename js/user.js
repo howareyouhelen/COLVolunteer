@@ -1,7 +1,6 @@
+createUser();
 
 // Fucntion that creates a new document in the users collection
-
-
 function createUser() {
     // if the current user logged in user
     // is authenticated, then grab "uid" "displayName" and "email"
@@ -31,7 +30,7 @@ function showName() {
     });
 }
 
-
+var address = "";
 function storeAddress() {
     auth.onAuthStateChanged(function (user) {
         //   console.log(user);
@@ -40,6 +39,8 @@ function storeAddress() {
                 if (doc.exists) {
                     // Store user address into session storage
                     sessionStorage.setItem("userAddress", doc.data().address);
+                    address = sessionStorage.getItem("userAddress");
+                    console.log(address)
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
