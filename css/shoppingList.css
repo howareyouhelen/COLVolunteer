@@ -1,0 +1,21 @@
+.card-container {
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-rows: repeat(2);
+    grid-gap: 25px;
+    padding: 30px;
+    margin: 15px;
+    background-color: #00BCE7;  
+    }
+footer {
+    font-size: 10px;
+    text-align: center;
+    }
+.card {
+    padding: 5px;
+    margin: 5px;
+}
+.btn {
+    margin: 20px;
+    margin-left: 72px;
+}
