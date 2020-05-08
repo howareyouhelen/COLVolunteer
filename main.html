@@ -116,10 +116,10 @@
                             console.log(doc.data());
                             /* get data from db */
                             var store = doc.data().store;
-                            var fname = doc.data().firstName;
+                            var volname = doc.data().volname;
                             //var lname = doc.data().lastName;
                             var email = doc.data().email;
-                            //var data = doc.data().date;
+                            var date = doc.data().date;
 
 
                             var y = "card" + x;
@@ -134,17 +134,22 @@
 
                             $(z_id).append(b);
 
-                            var c = '<h4 class="card-title" id="' + y + 'name">' + fname + '</h4>';
+                            var c = '<h4 class="card-title" id="' + y + 'name">' + volname + '</h4>';
                             var c_id = '#' + y + 'name';
 
                             $(b_id).append(c);
 
-                            var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'store">' + store + '</h6>';
+                            var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'store">Sotre: ' + store + '</h6>';
                             var d_id = '#' + y + 'store';
 
                             $(b_id).append(d);
 
-                            var e = '<button type="button" class="btn btn-outline-info" id="' + y + 'button">' + 'Make a request</button>'
+                            var f = '<p class="card-text" id="' + y + 'date"> Planning to go on: ' + date + '</p>';
+                            var f_id = '#' + y + 'date';
+
+                            $(b_id).append(f);
+
+                            var e = '<button type="button" class="btn btn-outline-info" id="' + y + 'button">' + 'Make a request</button>';
                             $(b_id).append(e);
 
                             x++;
