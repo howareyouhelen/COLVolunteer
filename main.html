@@ -115,11 +115,12 @@
                     querySnapshot.forEach(function (doc) {
                             console.log(doc.data());
                             /* get data from db */
+                            var volUId = doc.data().volUId;
+                            var name = doc.data().volname;
                             var store = doc.data().store;
-                            var fname = doc.data().firstName;
-                            //var lname = doc.data().lastName;
-                            var email = doc.data().email;
-                            //var data = doc.data().date;
+                            // var address = doc.data().voladdress;
+                            // var email = doc.data().volemail;
+                            // var date = doc.data().date;
 
                             var y = "card" + x;
 
@@ -133,7 +134,7 @@
 
                             $(z_id).append(b);
 
-                            var c = '<h4 class="card-title" id="' + y + 'name">' + fname + '</h4>';
+                            var c = '<h4 class="card-title" id="' + y + 'name">' + name + '</h4>';
                             var c_id = '#' + y + 'name';
 
                             $(b_id).append(c);
@@ -144,7 +145,7 @@
                             $(b_id).append(d);
 
                             let info = 'class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal"';
-                            var e = '<button type="button"' + info +'id="userid:' + y + 'button">' + 'Make a request</button>'
+                            var e = '<button type="button"' + info +'id="' + volUId + '">' + 'Make a request</button>'
                             $(b_id).append(e);
 
                             x++;
