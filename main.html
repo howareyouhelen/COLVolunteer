@@ -121,7 +121,9 @@
                             var email = doc.data().email;
                             var date = doc.data().date;
 
-
+                            var docId = doc.id;
+                            console.log(docId);
+                            
                             var y = "card" + x;
 
                             var z = '<div class="card" id="' + y + '"></div>';
@@ -149,7 +151,7 @@
 
                             $(b_id).append(f);
 
-                            var e = '<button type="button" class="btn btn-outline-info" id="' + y + 'button">' + 'Make a request</button>';
+                            var e = '<button type="button" class="btn btn-outline-info" id="' + y + 'button" value = ' + docId + '>' + 'Make a request</button>';
                             $(b_id).append(e);
 
                             x++;
