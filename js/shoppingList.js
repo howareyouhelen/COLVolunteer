@@ -19,8 +19,6 @@ $(document).ready(() =>{
         if (e.keyCode === 13) {
             e.preventDefault();
             addToList();
-            if($("#currentList").children().length == 1)
-                $("#editList").prop("disabled", false);
         }
     }
 
@@ -30,6 +28,14 @@ $(document).ready(() =>{
         if(item[0].value)
             $(".current-list-group").append('<li class="list-group-item">' + item[0].value + '</li>');
         $("#listEntry").val("");
+        activateDeleteButton();
+    }
+
+    //Activates the inactive delete button
+    function activateDeleteButton() {
+        if($("#currentList").children().length == 1)
+            $("#editList").prop("disabled", false);
+
     }
 
     //Saves the list to the database as user/uid/shoppingList/currentList/ array list[]
