@@ -7,7 +7,8 @@
     <link rel="stylesheet" type="text/css" href="css/volunteer.css">
     <script src="js/volunteer.js"></script>
     <script src="nav.html"></script>
-    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <!--
+    <script src="https://code.jquery.com/jquery.min.js"></script>-->
 
     <!------------------------------------------------------------------------------>
     <!-- Bootstrap for Mobile-first                                               -->
@@ -78,7 +79,7 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlInput2">When are you heading to the store?</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="MM-DD" required>
+                    <input type="date" class="form-control" id="exampleFormControlInput3" placeholder="MM-DD" required>
                 </div>
                 
                 <label for="exampleFormControlInput1">Which city are you in?</label><br>
@@ -128,21 +129,46 @@
         </form>
 
         <script>
+            var userId;
+            var email;
+            var address;
+            var name;
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    console.log(user);
+                    userId = user.uid;
+                    name = user.name;
+                    email = user.email;
+                    address = user.address;
+                } else {
+                        // No user is signed in.
+                }
+            });
+            
             function submitpost() {
-                console.log("asd");
-                var userId = firebase.auth().currentUser.uid;
-                var fName = $('#fName').val();
-                var lName = $('#lName').val();
-                var email = $('#exampleFormControlInput1').val();
+
+                
+
+                console.log(userId);
+                console.log(name);
+                console.log(email);
+                console.log(address);
+                
+                
+                //var fName = $('#fName').val();
+                //var lName = $('#lName').val();
+                //var email = $('#exampleFormControlInput1').val();
                 var store = $('#exampleFormControlInput2').val();
                 var date = $('#exampleFormControlInput3').val();
-                console.log(userid);
+                
+                
                 db.collection("volunteerPosts").add({
                     firstName: fName,
                     lastName: lName,
                     email: email,
                     store: store,
-                    date:date
+                    date:date,
+                    voladdress: address
             });
                 
             }
