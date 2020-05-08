@@ -3,48 +3,68 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Accepted Requests</title>
+        <title>Complete</title>
         <link rel="stylesheet" type="text/css" href="css/complete.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery.min.js"></script>
         <script src="js/complete.js"></script>
-    <body> 
-      <!--Nav and sidebar-->
-      <div id="navbar-placeholder"></div>
-      <div id="sidebar-placeholder"></div>
-      <script>
-          $(function(){
-          $("#navbar-placeholder").load("nav.html");
-          $("#sidebar-placeholder").load("sidebar.html");
-          });
-      </script>
-      <!--end of Nav and sidebar-->
-
-      <h1>Requests I have completed</h1><hr>
-
-      <div id="list_div">
-          <h3>completed requests</h3>
-          <div class ="list-item">
-            <p>my completed list:</p>
-              <!--posts will be dynamically generated here-->
+    </head>
+    <body>
+        <!--Nav and sidebar-->
+        <div id="navbar-placeholder"></div>
+        <div id="sidebar-placeholder"></div>
+        <script>
+            $(function(){
+            $("#navbar-placeholder").load("nav.html");
+            $("#sidebar-placeholder").load("sidebar.html");
+            });
+        </script>
+        <!--end of Nav and sidebar-->
+        <!--request content-->
+        <div class="card-container">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">RE: Superstore run</h5>
+              <h6 class="card-subtitle">
+                  Location: 12345 Happy St Vancouver BC 1V2 5G3
+              </h6>
+              <p class="card-text">Hello, I would like a box of spaghetti, a jar of tomato sauce, and a carton of eggs please.</p>
+              <ul class="list-group">
+                <li class="list-group-item">16oz box spagetti</li>
+                <li class="list-group-item">700ml jar of tomato sauce</li>
+                <li class="list-group-item">1 dozen eggs</li>
+              </ul>
+            </div>
           </div>
-      </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">RE: Walmart</h5>
+              <h6 class="card-subtitle">
+                  Location: 54321 Smile Ave Surrey BC 0S6 8G1
+              </h6>
+              <p class="card-text">Hi, I need some hand sanitizer and some potatoes. Thanks a lot!</p>
+              <ul class="list-group">
+                <li class="list-group-item">2 hand sanitizer (any brand)</li>
+                <li class="list-group-item">1lb potatoes</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">RE: Costco Restocked TP</h5>
+              <h6 class="card-subtitle">
+                  Location: 24680 Joy Way Burnaby BC 9W7 4C2
+              </h6>
+              <p class="card-text">Hello can I please get a pack delivered.</p>
+              <ul class="list-group">
+                <li class="list-group-item">1 pack toilet paper</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-      </div>
-        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-
-        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
-
-        <!-- Add Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-        <script src="js/config.js"></script>
-        <script defer src="js/firebase_config.js"></script>
     </body>
-
+    <footer>
+        bby-34
+    </footer>
 </html>
