@@ -25,9 +25,11 @@ function getProfile() {
 }
 function displayProfile(user) {
     document.getElementById("userName").innerHTML = user.name;
+    console.log(user.name)
     document.getElementById("userEmail").innerHTML = user.email;
+    console.log(user.email)
     console.log(user.address);
-    if (user.address == undefined ) {
+    if (user.address == "") {
         document.getElementById("userAddress").innerHTML = "Please enter your address to gain access to full features of this app.";
     } else {
         document.getElementById("userAddress").innerHTML = user.address;
