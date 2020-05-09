@@ -25,10 +25,24 @@ function createUser() {
 function showName() {
     auth.onAuthStateChanged(function (user) {
         if(user) {
-            document.getElementById("hello").innerHTML = user.displayName;
+            document.getElementById("userName").innerHTML = user.displayName;
         }
     });
 }
+
+/**
+ * logs the user out when the button with ID logout is clicked
+ */
+function logout() {
+    const logout = document.getElementById('logout');
+    logout.addEventListener('click', (e) =>{
+        auth.signOut().then(( )=> {
+            console.log('user signed out');
+        });
+    })
+}
+
+
 
 var address = "";
 function storeAddress() {
@@ -60,19 +74,7 @@ function showTest() {
 // Retrieve
 document.getElementById("result").innerHTML = sessionStorage.getItem("userAddress");
 }
-/**
- * logs the user out when the button with ID logout is clicked
- */
-function logout() {
-    const logout = document.getElementById('logout');
-    logout.addEventListener('click', (e) =>{
-        e.preventDefault();
-        auth.signOut().then(( )=> {
-            console.log('user signed out');
-        });
-        location.reload();
-    })
-}
+
 
 
   

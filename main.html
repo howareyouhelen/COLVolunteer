@@ -36,6 +36,7 @@
         <script src="js/addressNotification.js"></script>
         <script src="js/main.js"></script>
         <link rel="stylesheet" type="text/css" href="css/main.css">                                 <!-- CSS -->
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 
         </script>
     </head>
@@ -103,7 +104,7 @@
                         <p class="card-text">
                             I am going to liqour depot.
                         </p>
-                        <button type="button" id="first" class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal">Make a request</button>
+                        <button type="button" id="first" class="btn btn-outline-info make-request" data-toggle="modal" value="asd" data-target="#exampleModal">Make a request</button>
                     </div>
                 </div>
             </section>
@@ -114,7 +115,7 @@
                 $(document).ready(function () {
                 db.collection("volunteerPosts").get().then((querySnapshot) => {
                     querySnapshot.forEach(function (doc) {
-                            console.log(doc.data());
+                            // console.log(doc.data());
                             /* get data from db */
                             var store = doc.data().store;
                             var volname = doc.data().volname;
@@ -123,7 +124,7 @@
                             var date = doc.data().date;
 
                             var docId = doc.id;
-                            console.log(docId);
+                            // console.log(docId);
                             
                             var y = "card" + x;
 
@@ -142,19 +143,18 @@
 
                             $(b_id).append(c);
 
-                            var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'store">Sotre: ' + store + '</h6>';
+                            var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'store">Store: ' + store + '</h6>';
                             var d_id = '#' + y + 'store';
 
                             $(b_id).append(d);
 
-                            let info = 'class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal"';
-                            var e = '<button type="button"' + info +'id="userid:' + y + 'button">' + 'Make a request</button>'
                             var f = '<p class="card-text" id="' + y + 'date"> Planning to go on: ' + date + '</p>';
                             var f_id = '#' + y + 'date';
 
                             $(b_id).append(f);
-
-                            var e = '<button type="button" class="btn btn-outline-info" id="' + y + 'button" value = ' + docId + '>' + 'Make a request</button>';
+                            
+                            let info = 'class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal"';
+                            var e = '<button type="button"' + info + 'id="' + y + 'button" value = ' + docId + '>' + 'Send Request</button>';
                             $(b_id).append(e);
 
                             x++;
@@ -167,12 +167,11 @@
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
-
         <!-- Modal content -->
-        <div class="modal-content">
-            <!--<span class="close">&times;</span>-->
-            <p>Please update <a href="editProfile.html">address</a></p>
-        </div>
+            <div class="modal-content">
+                                            <!--<span class="close">&times;</span>-->
+                <p>Please update <a href="editProfile.html">address</a></p>
+            </div>
         </div>
     </body>
 
