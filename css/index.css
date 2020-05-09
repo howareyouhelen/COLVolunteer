@@ -207,5 +207,20 @@ aside>div.slogan3 {
 @media (max-width: 500px) {
     header>h1{
         display:none;
+        width:auto
     }
+    section>img{
+        width: 23vw;
+    }
+    aside {
+        margin:auto
+    }
+    aside>div.slogan {
+        font-size: 4vw;
+        background-image: url("../img/stroke.png");
+    }
+    #main {
+        font-size: 5vw;
+    }
+
 }
