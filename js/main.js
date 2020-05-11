@@ -9,23 +9,25 @@ function sendRequest(callback) {
         let requestMsg = $('#msgEntry').val();
         auth.onAuthStateChanged((user) => {
             if (user) {
-                let userCurList = db.collection('user').doc(user.uid).collection('shoppingList').doc('currentList');
-                let volPost = db.collection('user').doc(user.uid).collection('volunteerPost').doc('current');
-                volPost.get().then((doc)=>{
-                    volPostId  = doc.data().volpostDocId;
+                let my = db.collection('user').doc(user.uid);
+                let userCurList = my.collection('shoppingList').doc('currentList');
+                my.get().then((doc)=>{
+                    volPostId  = doc.data().currentVolpostDocId;
                     db.collection('volunteerPosts').doc(volPostId).get().then((snap1) => {
                         let volUId = snap1.data().volUId;
                         userCurList.onSnapshot(function (snap2) {
-                            let volunteerMsg = db.collection('user').doc(volUId).collection('requestToBuy').doc();
+                            let volunteerMsg = db.collection('user').doc(volUId).collection('requestForMe').doc();
                             volunteerMsg.set({
                                 list    : snap2.data().list,
                                 message : requestMsg,
-                                userId  : user.uid
+                                fromUserId  : user.uid,
+                                volPostDocId : volPostId,
+                                myUID : volUId
                             });
                         })
                     })
                     callback(volPostId);
-                    db.collection('user').doc(user.uid).collection('volunteerPost').doc('past').collection('requests').add({ volPostDocId : volPostId})
+                    my.collection('pastRequests').add({ volPostDocId : volPostId})
                 })
             } else {console.log("no user");}
         })  
@@ -50,9 +52,9 @@ function attachMakeRequestButtonEvent() {
         $('#volunteerName').html("Send your request to " + name);
         auth.onAuthStateChanged((user) => {
             if(user) {
-                let current = db.collection('user').doc(user.uid).collection('volunteerPost').doc('current');
+                let myCollection = db.collection('user').doc(user.uid);
                 let postId = $(event)[0].currentTarget.value;
-                current.set({ volpostDocId: postId });
+                myCollection.set({ currentVolpostDocId: postId }, {merge: true});
             }
         })
         showCurrentList();
@@ -63,7 +65,8 @@ function attachMakeRequestButtonEvent() {
 function showCurrentList() {
     auth.onAuthStateChanged((user) => {
         if (user) {
-            db.collection('user').doc(user.uid).collection('shoppingList').doc('currentList').onSnapshot(function (snap) {
+            let my = db.collection('user').doc(user.uid);
+            my.collection('shoppingList').doc('currentList').onSnapshot(function (snap) {
                 $("#currentList").html('');
                 let data = snap.data();
                 for (let i = 0; i < data.list.length; i++)
@@ -77,7 +80,7 @@ function showCurrentList() {
 function deactivatePastRequests() {
     auth.onAuthStateChanged((user) => {
         if(user){
-            db.collection('user').doc(user.uid).collection('volunteerPost').doc('past').collection('requests').get().then((snap)=>{
+            db.collection('user').doc(user.uid).collection('pastRequests').get().then((snap)=>{
                 snap.forEach((doc)=> {
                     vPoId = doc.data().volPostDocId;
                     makeARequestButtonDone(vPoId);
