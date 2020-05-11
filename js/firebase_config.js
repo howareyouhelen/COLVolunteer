@@ -1,6 +1,6 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8",
+    apiKey: "",
     authDomain: "covolunteer-7d403.firebaseapp.com",
     databaseURL: "https://covolunteer-7d403.firebaseio.com",
     projectId: "covolunteer-7d403",
