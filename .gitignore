@@ -6,6 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 
+#API Key file
+config.js
+js/config.js
 # Firebase cache
 .firebase/
 
