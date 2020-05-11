@@ -16,7 +16,8 @@ function sendRequest(callback) {
                     db.collection('volunteerPosts').doc(volPostId).get().then((snap1) => {
                         let volUId = snap1.data().volUId;
                         userCurList.onSnapshot(function (snap2) {
-                            let volunteerMsg = db.collection('user').doc(volUId).collection('requestForMe').doc();
+                            let volunteer = db.collection('user').doc(volUId);
+                            let volunteerMsg = volunteer.collection('requestForMe').doc();
                             volunteerMsg.set({
                                 list    : snap2.data().list,
                                 message : requestMsg,
@@ -24,10 +25,11 @@ function sendRequest(callback) {
                                 volPostDocId : volPostId,
                                 myUID : volUId
                             });
+                        volunteer.set({ newMsg: true }, {merge: true});
                         })
                     })
                     callback(volPostId);
-                    my.collection('pastRequests').add({ volPostDocId : volPostId})
+                    my.collection('pastRequestsToOthers').add({ volPostDocId : volPostId});
                 })
             } else {console.log("no user");}
         })  
@@ -80,7 +82,7 @@ function showCurrentList() {
 function deactivatePastRequests() {
     auth.onAuthStateChanged((user) => {
         if(user){
-            db.collection('user').doc(user.uid).collection('pastRequests').get().then((snap)=>{
+            db.collection('user').doc(user.uid).collection('pastRequestsToOthers').get().then((snap)=>{
                 snap.forEach((doc)=> {
                     vPoId = doc.data().volPostDocId;
                     makeARequestButtonDone(vPoId);
