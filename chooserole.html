@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All Request Post</title>
+
+        <link rel="stylesheet" type="text/css" href="css/chooserole.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="nav.html"></script>
+    </head>
+    <body>
+        <!--Nav-->
+        <div id="navbar-placeholder"></div>
+        <script>
+            $(function(){
+            $("#navbar-placeholder").load("nav.html");
+            });
+        </script>
+        <!--end of Nav-->
+        <div id="page-container">
+        <h1>Select Your Role in COVID-19</h1>
+        <div id="role-container">
+            <div id="volunteer-role" class="option-div hvrbox">
+                <a href="requestMain.html">
+                    <img src="img/giving.jpg">
+                    <div class="hvrbox-layer_top">
+                        <div class="hvrbox-text">
+                            <h4>Volunteer</h4>
+                            I want to help others in need by picking up groceries or running errands for them during this world epidemic.
+                        </div>
+                    </div>
+                </a>
+                <p>I am a Giver</p>
+            </div>
+            <div id="requestee-role" class="option-div hvrbox">
+                <a href="main.html">
+                    <img src="img/receiving.png">
+                    <div class="hvrbox-layer_top">
+                        <div class="hvrbox-text">
+                            <h4>Help-seeker</h4>
+                            I am looking for someone who can help me in picking up groceries or running errands for me during this epidemic.
+                        </div>
+                    </div>
+                </a>
+                <p>I am a Taker</p>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
