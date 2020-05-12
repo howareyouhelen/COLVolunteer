@@ -68,11 +68,12 @@
             var volname;
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
+                    console.log("inside auth");
                     console.log(user);
                     userId = user.uid;
                     console.log(userId);
                     db.collection("user").doc(userId).onSnapshot(function(snap){
-                        console.log("in user");
+                        console.log("getting  user info");
                     
                         volname = snap.data().name;
                         volemail = snap.data().email;
