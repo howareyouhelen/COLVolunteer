@@ -7,7 +7,7 @@ $(document).ready(function () {
             var reqRef = db.collection("requestpost");
 
             //display all request posts dynamically
-            reqRef.where("status", "==", "completed").where("volunteer_uid", "==", currentUser).get().then(querySnapshot => {
+            reqRef.where("status", "==", "completed").where("volunteer_uid", "==", currentUser).limit(5).get().then(querySnapshot => {
                 querySnapshot.forEach(function(doc){
                     list_div.innerHTML += "<div class= 'list-item'><p>items: </p>" 
                         + doc.data().items 
