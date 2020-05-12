@@ -34,6 +34,9 @@
         <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
+        <script src="js/config.js"></script>
+        <script defer src="js/firebase_config.js"></script>
+
 </head>
     <body>
         <!--Nav and sidebar-->
@@ -61,9 +64,12 @@
                     <input type="date" class="form-control" id="exampleFormControlInput3" placeholder="MM-DD" required>
                 </div>
             
-            <button onclick="submitpost()" id="vol-submit-btn" type="button" class="btn btn-primary">Submit</button>
+            <button  id="vol-submit-btn" type="submit" class="btn btn-primary">Submit</button>
         </form>
         <script>
+            $(document).ready(function () {
+                var reqform = document.getElementById("create-post-form")
+                reqform.addEventListener('submit', submitpost);
             var userId;
             var volemail;
             var voladdress;
@@ -90,24 +96,28 @@
                         // No user is signed in.
                 }
             });
-            
-            
-            function submitpost() {
-                console.log(userId);
 
-                var store = $('#exampleFormControlInput2').val();
-                var date = $('#exampleFormControlInput3').val();
+            function submitpost(event) {
                 
-                
-                db.collection("volunteerPosts").add({
-                    volname: volname,
-                    volemail: volemail,
-                    store: store,
-                    date:date,
-                    voladdress: voladdress,
-                    volUId:userId
-                });
-            }
+    console.log(userId);
+
+    var store = $('#exampleFormControlInput2').val();
+    var date = $('#exampleFormControlInput3').val();
+
+
+    db.collection("volunteerPosts").add({
+        volname: volname,
+        volemail: volemail,
+        store: store,
+        date: date,
+        voladdress: voladdress,
+        volUId: userId
+    });
+}
+            
+            
+            
+        });
         </script>
         
     </body>
