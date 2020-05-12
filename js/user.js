@@ -44,6 +44,15 @@ function logout() {
 
 
 
+function calculateGeolocation() {
+    auth.onAuthStateChanged(function (user) {
+        if(user) {
+            document.getElementById("userName").innerHTML = user.displayName;
+        }
+    });
+}
+
+
 var address = "";
 function storeAddress() {
     auth.onAuthStateChanged(function (user) {
