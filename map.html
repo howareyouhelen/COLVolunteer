@@ -4,7 +4,37 @@
 <title>map</title>
 <link rel="stylesheet" type="text/css" href="css/accept.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
+        
+        <script src="js/map.js"></script>
+
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 
 
     <style>
@@ -23,11 +53,13 @@
 <p id="address">address</p>
 
     <script>
+
+//var firebaseKEY = config.FIREBASE_KEY;
         // $(document).ready(function() {
         //     $("#address").html(sessionStorage.getItem("userAddress"));
         // })
 
-// const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8'
+// const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=<KEY>'
 //         console.log(response.results[0].address_components[1].short_name);
 //         console.log(response.results[0].geometry.location.lat);
 //         console.log(response.results[0].geometry.location.lng);
@@ -37,7 +69,7 @@
 function geocodeAddress(address, storageName) {
     let place;
     let string = address.split(" ").join("+");
-    const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8';
+    const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=' + firebaseKEY;
     $.ajax({
         url: Url,
         type: "GET",
@@ -170,5 +202,11 @@ let directionsService = new google.maps.DirectionsService();
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8&callback=initMap">
     </script>
 
+
+
+<script type="text/javascript"> 
+  var JSLink = "/Folder/sub_folder/version.js?version=" + Math.random();
+  JSElement.src = JSLink;
+</script>
   </body>
 </html>
