@@ -32,7 +32,8 @@
 <!------------------------------------------------------------------------------>
 <script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
 <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
-<script src="js/user.js"></script>                                                          <!-- firebase User -->
+<script src="js/user.js"></script>
+<link rel="stylesheet" type="text/css" href="css/nav.css">                                                         <!-- firebase User -->
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
@@ -50,21 +51,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
   });
 </script>
 
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     
     <a class="navbar-brand" href="main.html">COVolunteer</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div id="navbarSupportedContent">
+        <div id="startnav">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="chooserole.html">
+                    <div class="icon">
+                        <i class="fa fa-home"></i> Change your Role
+                    </div>
+                </a>
+            </li>
             <li class="nav-item active">
             <a class="nav-link" href="main.html">
                 <div class="icon">
-                    <i class="fa fa-home"></i> Apply for Help
+                    <i class="fa fa-edit"></i> Apply for Help
                 </div>
             </a>
             </li>
@@ -96,19 +103,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     </div>
                 </a>
             </li>
-        </ul>
-        <ul class="nav justify-content-end">
-            <span class="navbar-text">
-                <i class="fa fa-user"></i> Welcome Back <b id="userName" style="padding-left: 1vw;">user</b>
-            </span>
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html" id="logout">
+        </div>
+            <ul class="nav justify-content-end end-nav navbar-nav mr-auto">
+                <li class="navbar-text nav-item">
                     <div class="icon">
-                        <span id="logout">Logout</span>
+                        <i class="fa fa-user"></i> Welcome Back <b id="userName" style="padding-left: 1vw;">user</b>
                     </div>
-                </a>
-            </li>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html" id="logout">
+                        <div class="icon">
+                            <i class="fa fa-sign-out-alt"></i>Logout
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </ul>
+        
     </div>
 </nav>
 
