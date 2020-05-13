@@ -22,23 +22,22 @@ body{
 }
 
 header {
-
     margin: 10px;
-   
     height: 100px;
     background-color: darkmagenta;
 }
 
 
 .posts {
-    margin-left:10px;
+    margin-left:1vw;
+    margin-right:1vw;
     float:left;
-    width:82%;
+    width:58vw;
 
 }
 
 .card {
-    background-color: lightgreen;
+    background-color: rgb(243, 230, 205);
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -88,5 +87,3 @@ header {
     text-decoration: none;
     cursor: pointer;
   }
-
-    
