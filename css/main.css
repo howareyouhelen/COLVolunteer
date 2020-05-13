@@ -54,7 +54,7 @@ header {
 /* modal sample css from w3schools */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    /* position: fixed; Stay in place */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -62,7 +62,7 @@ header {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.4); Black w/ opacity
   }
   
   /* Modal Content */
@@ -89,7 +89,7 @@ header {
     cursor: pointer;
   }
   .main {
-    margin-left: 160px; /* Same as the width of the sidebar */
+    margin-left: 180px; /* Same as the width of the sidebar */
     padding: 0px 10px;
   }
     
