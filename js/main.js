@@ -44,7 +44,10 @@ function sendRequest(callback) {
                             let volunteerMsg = volunteer.collection('requestForMe').doc();
                             console.log(volunteerMsg.id);
                             var docid = volunteerMsg.id;
+                            
+                            console.log(user.uid);
                             volunteerMsg.set({
+                                
                                 list    : snap2.data().list,
                                 message : requestMsg,
                                 fromUserId  : user.uid,
