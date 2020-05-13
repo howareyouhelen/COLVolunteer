@@ -2,6 +2,7 @@
        * element that contains the map. */
        #map {
         height: 100%;
+        /* height: 400px */
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -14,6 +15,12 @@
         font-size: 15px;
         font-weight: 300;
       }
+      main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+      }
+      
 
       #infowindow-content .title {
         font-weight: bold;
@@ -78,4 +85,16 @@
       }
       #target {
         width: 345px;
+      }
+
+
+      .iw_table_row {
+        height: 18px;
+      }
+      .iw_attribute_name {
+        font-weight: bold;
+        text-align: right;
+      }
+      .iw_table_icon {
+        text-align: right;
       }
