@@ -16,11 +16,12 @@
         <div id="sidebar-placeholder"></div>
         <script>
             $(function(){
-            $("#navbar-placeholder").load("nav.html");
+            $("#navbar-placeholder").load("navReq.html");
             $("#sidebar-placeholder").load("sidebar.html");
             });
         </script>
         <!--end of Nav and sidebar-->
+        <div class="main">
         <h1>Create Request Post for Errands/Groceries</h1><hr>
         <form id="create-reqpost-form" class="validate">
                 <div class="form-group">
@@ -36,7 +37,7 @@
                     <textarea type="text" class="form-control" name="message" id="message" placeholder="type your message here"></textarea>
             <button id="req-submit-btn" type="submit" class="btn btn-primary">Submit</button>
         </form>
-        
+        </div>
         <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->

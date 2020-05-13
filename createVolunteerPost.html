@@ -38,11 +38,12 @@
         <div id="sidebar-placeholder"></div>
         <script>
             $(function(){
-            $("#navbar-placeholder").load("nav.html");
+            $("#navbar-placeholder").load("navVol.html");
             $("#sidebar-placeholder").load("sidebar.html");
             });
         </script>
         <!--end of Nav and sidebar-->
+        <div class="main">
         <h1>Create Volunteer Post for Errands/Groceries</h1><hr>
         <form id="create-post-form" class="validate" action="main.html">
             <div class="form-group">
@@ -60,7 +61,7 @@
             
             <button onclick="submitpost()" id="vol-submit-btn" type="button" class="btn btn-primary">Submit</button>
         </form>
-
+        </div>
         <script>
             var userId;
             var volemail;
