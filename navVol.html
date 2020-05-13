@@ -1,0 +1,83 @@
+<!-- see nav.html on how to place this on page -->
+
+<!------------------------------------------------------------------------------>
+<!-- Add Firebase products that you want to use                               -->
+<!------------------------------------------------------------------------------>
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+<!------------------------------------------------------------------------------>
+<!-- CSS styles and scripts of for this page                                  -->
+<!------------------------------------------------------------------------------>
+<script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
+<script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+<script src="js/user.js"></script>                                                          <!-- firebase User -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://use.fontawesome.com/45d1426d9b.js"></script>
+<!-- favicon -->
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+<!--getbootstrap.com navbar layout doc-->
+
+<!-- User Related methods -->
+<script>
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+    showName();
+    logout()
+  });
+</script>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+    <a class="navbar-brand" href="main.html">COVolunteer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="requestMain.html">
+                    <div class="icon">
+                        <i class="fa fa-align-left"></i> View all Help Requests
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="createVolunteerPost.html">
+                    <div class="icon">
+                        <i class="fa fa-cart-plus"></i>  Create Helper Post
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="map.html">
+                    <div class="icon">
+                        <i class="fa fa-map-pin"></i> Find item on Map
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav justify-content-end">
+            <span class="navbar-text">
+                <i class="fa fa-user"></i> Welcome Back <b id="userName" style="padding-left: 1vw;">user</b>
+            </span>
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html" id="logout">
+                    <div class="icon">
+                        <span id="logout">Logout</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
