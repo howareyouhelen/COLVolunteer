@@ -2,7 +2,31 @@ $(document).ready(()=>{
     showCurrentList();
     sendRequest(makeARequestButtonDone);
     deactivatePastRequests();
+    workingWithNotifications();
 })
+
+// working with notifications
+function workingWithNotifications() {
+    console.log("in new function");
+
+    auth.onAuthStateChanged((user) => {
+        if(user){
+            db.collection('user').doc(user.uid).onSnapshot(function (snap) {
+                var newrequest = snap.data().newMsg;
+                console.log("current data is ...", snap.data().newMsg);
+                if(newrequest == true){
+                    alert("you have a new request");
+                    
+                }
+                
+            });
+            
+                    
+            }
+
+        })
+    
+}
 //Sends the request to the volunteer --> shoppingList + msg
 function sendRequest(callback) {
     $("#send-request").on('click', ()=>{
@@ -18,14 +42,21 @@ function sendRequest(callback) {
                         userCurList.onSnapshot(function (snap2) {
                             let volunteer = db.collection('user').doc(volUId);
                             let volunteerMsg = volunteer.collection('requestForMe').doc();
+                            console.log(volunteerMsg.id);
+                            var docid = volunteerMsg.id;
+                            
+                            console.log(user.uid);
                             volunteerMsg.set({
+                                
                                 list    : snap2.data().list,
                                 message : requestMsg,
                                 fromUserId  : user.uid,
                                 volPostDocId : volPostId,
-                                myUID : volUId
-                            });
+                                myUID : volUId,
+                                docRefid: docid
+                            })
                         volunteer.set({ newMsg: true }, {merge: true});
+                        volunteer.set({ newReq: true }, {merge: true});
                         })
                     })
                     callback(volPostId);

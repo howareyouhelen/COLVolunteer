@@ -35,11 +35,26 @@
         <!-- This Page's JavaScript and CSS-->
         <script src="js/addressNotification.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/map.js"></script>
+        <script defer src="js/createVolunteerPostSearchBar.js"></script>
+
         <link rel="stylesheet" type="text/css" href="css/main.css">                                 <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/searchBar.css">
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 
         </script>
     </head>
+
+    <style>
+        #map {
+            height: 100vh;
+            margin: auto;
+        }
+        main {
+            display: grid;
+            grid-template-columns: 60vw 38vw;
+      }
+    </style>
     <body>
         <!--Nav and sidebar-->
         <div id="navbar-placeholder"></div>
@@ -99,19 +114,32 @@
             <section class="posts" id="item_cards">
 
                 <!-- This is Sample Request Post -->
-                <!-- <div class="card">
+
+                <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Animesh Kaushal</h4>
+                        <div style="float:right">distance</div>
+                        <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
                         <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
                         <p class="card-text">
                             I am going to liqour depot.
                         </p>
                         <button type="button" id="first" class="btn btn-outline-info make-request" data-toggle="modal" value="asd" data-target="#exampleModal">Make a request</button>
                     </div>
-                </div> -->
+                </div>
 
             </section>
         </div>
+
+            <aside>
+
+                <aside id="map-container">
+                    <div id="map"></div>
+                </aside>
+            </aside>
+
+
+        </main>
             <script>
                 //Start of: Displaying the Volunteer Posts
                 var x = 1;
@@ -122,16 +150,20 @@
                             // console.log(doc.data());
                             /* get data from db */
                             var store = doc.data().store;
+                            var storeAddress = doc.data().storeAddress;
                             var volname = doc.data().volname;
                             //var lname = doc.data().lastName;
                             var email = doc.data().email;
                             var date = doc.data().date;
+                            var storeGeopoint = doc.data().geopoint;
+                            // console.log(geopoint_lat)
 
                             var docId = doc.id;
                             // console.log(docId);
                             
+                                    
                             var y = "card" + x;
-
+                            
                             var z = '<div class="card" id="' + y + '"></div>';
                             var z_id = '#' + y;
 
@@ -147,10 +179,15 @@
 
                             $(b_id).append(c);
 
-                            var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'store">Store: ' + store + '</h6>';
+                            var d = '<h6 class="card-subtitle mb-2" style="color:MediumSlateBlue" id="' + y + 'store">' + store + '</h6>';
                             var d_id = '#' + y + 'store';
 
                             $(b_id).append(d);
+
+                            var address = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'address">' + storeAddress + '</h6>';
+                            var address_id = '#' + y + 'address';
+
+                            $(b_id).append(address);
 
                             var f = '<p class="card-text" id="' + y + 'date"> Planning to go on: ' + date + '</p>';
                             var f_id = '#' + y + 'date';
@@ -162,6 +199,22 @@
                             $(b_id).append(e);
 
                             x++;
+
+                            
+                            firebase.auth().onAuthStateChanged(function(user) {
+                                if (user) {
+                                    let myMap = db.collection('user').doc(user.uid).collection('metaData').doc('map');
+                                    myMap.get().then(snap => {
+                                        let myGeopoint = snap.data().geolocation;
+                                        let distance = geopoint_distance(myGeopoint, storeGeopoint);
+                                        
+                            var dis = '<div style="float:right" class="card-title" id="' + y + 'distance">' + distance + '</div>';
+
+                            $(b_id).append(dis);
+                            
+                                    })
+                                }
+                            })
                         }); 
                     }).then(attachMakeRequestButtonEvent);
                 });
@@ -177,6 +230,8 @@
                 <p>Please update <a href="editProfile.html">address</a></p>
             </div>
         </div>
+
+        
     </body>
 
 </html>

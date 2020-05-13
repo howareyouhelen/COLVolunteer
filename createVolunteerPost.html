@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Volunteer</title>
-    <link rel="stylesheet" type="text/css" href="css/volunteer.css">
-    <script src="js/volunteer.js"></script>
-    <script src="nav.html"></script>
-    <!--
-    <script src="https://code.jquery.com/jquery.min.js"></script>-->
+    <title>Create Volunteer Post</title>
+    
 
     <!------------------------------------------------------------------------------>
     <!-- Bootstrap for Mobile-first                                               -->
@@ -28,8 +24,23 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <script src="js/config.js"></script>
-    <script defer src="js/firebase_config.js"></script>
+
+
+    <!------------------------------------------------------------------------------>
+    <!-- CSS styles and scripts of for this page                                  -->
+    <!------------------------------------------------------------------------------>
+    <script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
+    <script type='text/javascript' src="js/firebase_config.js"></script>                        <!-- Firebase Config -->
+    <script type='text/javascript' src="js/user.js"></script>                                   <!-- firebase User -->
+    
+    <script src="js/volunteer.js"></script>
+    <script defer src="js/createVolunteerPostSearchBar.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/searchBar.css">
+    <link rel="stylesheet" type="text/css" href="css/volunteer.css">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+        
 
 </head>
     <body>
@@ -45,70 +56,131 @@
         <!--end of Nav and sidebar-->
         <div class="main">
         <h1>Create Volunteer Post for Errands/Groceries</h1><hr>
+        <main>
+            <div id='info-storage' style="display:none"></div>
+        <section>
+            
         <form id="create-post-form" class="validate" action="main.html">
             <div class="form-group">
-                
+
                 <div class="form-group">
                     <label for="exampleFormControlInput2">Which store(s) will you head to?</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="store(s) name" required>
+                    <div class="form-inline">
+                    <input id="pac-input" class="controls form-control" type="text" placeholder="store(s) name" required>
+                    <button id="custom-button" type="button" class="btn btn-secondary">Custom Address</button>
+                </div>
                     <div class="invalid-feedback">Please tell us which store you will visit</div>
                 </div>
-
+                <div class="form-horizontal">
+                    <label for="exampleFormControlInput2">Store Address</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="street" placeholder="Street, City, Province" required>
+                    </div>
+                    <!-- <div class="form-group">
+                        <div class="form-inline">
+                            <input type="text" class="form-control" id="city" placeholder="city" required>
+                            <input type="text" class="form-control" id="province" placeholder="province" required>
+                        </div>
+                    </div> -->
+                </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput2">When are you heading to the store?</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput3" placeholder="MM-DD" required>
+                    <input type="date" class="form-control" id="date" placeholder="MM-DD" required>
                 </div>
             
-            <button onclick="submitpost()" id="vol-submit-btn" type="button" class="btn btn-primary">Submit</button>
+            <!-- <button onclick="submitpost()" id="vol-submit-btn" type="button" class="btn btn-primary">Submit</button>
+        </form> -->
+                <button id="vol-submit-btn" type="submit" class="btn btn-primary">Submit</button>
         </form>
-        </div>
+    </div>
+    </section>
+        <aside id="map-container">
+            <div id="map"></div>
+        </aside>
+    </main>
+    <!-- START : This is the popup window of the markers on the map when clicked  -->
+    <aside>
+        <div style="display: none">
+            <div id="info-content">
+              <table>
+                <tr id="iw-url-row" class="iw_table_row">
+                  <td id="iw-icon" class="iw_table_icon"></td>
+                  <td id="iw-url"></td>
+                </tr>
+                <tr id="iw-phone-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Name:</td>
+                  <td id="iw-name"></td>
+                </tr>
+                <tr id="iw-address-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Address:</td>
+                  <td id="iw-address"></td>
+                </tr>
+                <tr id="iw-address-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Business Status:</td>
+                  <td id="iw-status"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+    </aside>
+    <!-- END : This is the popup window of the markers on the map when clicked  -->
         <script>
-            var userId;
-            var volemail;
-            var voladdress;
-            var volname;
-            firebase.auth().onAuthStateChanged(function(user) {
-                if (user) {
-                    console.log(user);
-                    userId = user.uid;
-                    console.log(userId);
-                    db.collection("user").doc(userId).onSnapshot(function(snap){
-                        console.log("in user");
-                    
-                        volname = snap.data().name;
-                        volemail = snap.data().email;
-                        voladdress = snap.data().address;
+            $(document).ready(function () {
+                var reqform = document.getElementById("create-post-form")
+                reqform.addEventListener('submit', submitpost);
+                var userId;
+                var volemail;
+                var voladdress;
+                var volname;
+                firebase.auth().onAuthStateChanged(function(user) {
+                    if (user) {
+                        // console.log("inside auth");
+                        // console.log(user);
+                        userId = user.uid;
+                        // console.log(userId);
+                        db.collection("user").doc(userId).onSnapshot(function(snap){
+                            // console.log("getting  user info");
+                        
+                            volname = snap.data().name;
+                            volemail = snap.data().email;
+                            voladdress = snap.data().address;
 
-                        console.log(userId);
-                        console.log(volname);
-                        console.log(volemail);
-                        console.log(voladdress);
-                    })
-                } else {
-                        // No user is signed in.
-                }
-            });
-            
-            
-            function submitpost() {
-                console.log(userId);
-
-                var store = $('#exampleFormControlInput2').val();
-                var date = $('#exampleFormControlInput3').val();
-                
-                
-                db.collection("volunteerPosts").add({
-                    volname: volname,
-                    volemail: volemail,
-                    store: store,
-                    date:date,
-                    voladdress: voladdress,
-                    volUId:userId
+                            // console.log(userId);
+                            // console.log(volname);
+                            // console.log(volemail);
+                            // console.log(voladdress);
+                        })
+                    } else {
+                            // No user is signed in.
+                    }
                 });
-            }
-                
-            
+
+                $('#vol-submit-btn').on('click', function(){
+                    let lat     = $('#info-storage').attr('lat');
+                let lng     = $('#info-storage').attr('lng');
+                console.log(lat)
+                console.log(lng)
+                console.log($('#info-storage').attr('name'))
+                })
+                function submitpost(event) {
+                // console.log(userId);
+                var store   = $('#info-storage').attr('name');
+                var address = $('#info-storage').attr('address');
+                var date    = $('#date').val();
+                let lat     = parseFloat($('#info-storage').attr('lat'));
+                let lng     = parseFloat($('#info-storage').attr('lng'));
+                db.collection("volunteerPosts").add({
+                    volname     : volname,
+                    volemail    : volemail,
+                    store       : store,
+                    storeAddress: address,
+                    date        : date,
+                    voladdress  : voladdress,
+                    volUId      : userId,
+                    geopoint    : new firebase.firestore.GeoPoint(lat, lng)
+                });
+}
+        });
         </script>
     </body>
-    
 </html>

@@ -4,9 +4,37 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Request</title>
+
         <link rel="stylesheet" type="text/css" href="css/request.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
         <script src="https://code.jquery.com/jquery.min.js"></script>
+        
+
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
+        <script src="js/firebase_config.js"></script>
+
+        
         <script src="js/request.js"></script>
     </head>
     <body>
@@ -24,6 +52,14 @@
         <!--request content-->
         <div class="card-container main">
         <div class="card">
+        
+        <section class="posts" id="item_cards">
+
+          
+        </section>
+        </div>
+      </div>
+        <!-- <div class="card">
             <div class="card-body">
               <h5 class="card-title">RE: Superstore run</h5>
               <h6 class="card-subtitle">
@@ -40,8 +76,8 @@
               <a href="accept.html" class="btn btn-primary">Accept</a>
               <a href="#" class="btn btn-danger">Decline</a>
             </div>
-          </div>
-          <div class="card">
+          </div> -->
+          <!-- <div class="card">
             <div class="card-body">
               <h5 class="card-title">RE: Walmart</h5>
               <h6 class="card-subtitle">
@@ -69,8 +105,8 @@
               <a href="accept.html" class="btn btn-primary">Accept</a>
               <a href="#" class="btn btn-danger">Decline</a>
             </div>
-          </div>
-        </div>
+          </div> -->
+        
 
     </body>
     <footer>

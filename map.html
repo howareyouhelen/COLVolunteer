@@ -4,7 +4,37 @@
 <title>map</title>
 <link rel="stylesheet" type="text/css" href="css/accept.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
+        
+        <script src="js/map.js"></script>
+
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 
 
     <style>
@@ -24,11 +54,13 @@
 <p id="address">address</p>
 
     <script>
+
+//var firebaseKEY = config.FIREBASE_KEY;
         // $(document).ready(function() {
         //     $("#address").html(sessionStorage.getItem("userAddress"));
         // })
 
-// const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8'
+// const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=<KEY>'
 //         console.log(response.results[0].address_components[1].short_name);
 //         console.log(response.results[0].geometry.location.lat);
 //         console.log(response.results[0].geometry.location.lng);
@@ -38,7 +70,7 @@
 function geocodeAddress(address, storageName) {
     let place;
     let string = address.split(" ").join("+");
-    const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8';
+    const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=' + firebaseKEY;
     $.ajax({
         url: Url,
         type: "GET",
@@ -104,14 +136,12 @@ map.panToBounds(bounds);     // auto-center
 
 
 // var mk1 = new google.maps.Marker({position: bcit, map: map});
-  var mk2 = new google.maps.Marker({position: metrotown, map: map});
-
-  
+var mk2 = new google.maps.Marker({position: metrotown, map: map});
 var line = new google.maps.Polyline({path: [bcit, metrotown], map: map});
 
 // Calculate and display the distance between markers
 var distance = haversine_distance(mk1, mk2);
-  document.getElementById('msg').innerHTML = "Distance between markers: " + distance.toFixed(2) + " mi.";
+  document.getElementById('msg').innerHTML = "Distance between markers: " + distance.toFixed(2) + " km.";
 
 
 //   // Draw a line showing the straight distance between the markers
@@ -123,53 +153,49 @@ function haversine_distance(mk1, mk2) {
       var difflon = (mk2.position.lng()-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
 
       var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-      return d;
+      return d * 1.60934; //convert from miles to km
 }
 
 
 
 
 let directionsService = new google.maps.DirectionsService();
-  let directionsRenderer = new google.maps.DirectionsRenderer();
-  directionsRenderer.setMap(map); // Existing map object displays directions
-  // Create route from existing points used for markers
-  const route = {
-      origin: metrotown,
-      destination: bcit,
-      travelMode: 'DRIVING'
-  }
+let directionsRenderer = new google.maps.DirectionsRenderer();
+directionsRenderer.setMap(map); // Existing map object displays directions
+// Create route from existing points used for markers
+const route = {
+    origin: metrotown,
+    destination: bcit,
+    travelMode: 'DRIVING'
+}
 
-  directionsService.route(route,
-    function(response, status) { // anonymous function to capture directions
-      if (status !== 'OK') {
-        window.alert('Directions request failed due to ' + status);
+directionsService.route(route,
+  function(response, status) { // anonymous function to capture directions
+    if (status !== 'OK') {
+      window.alert('Directions request failed due to ' + status);
+      return;
+    } else {
+      directionsRenderer.setDirections(response); // Add route to the map
+      var directionsData = response.routes[0].legs[0]; // Get data about the mapped route
+      if (!directionsData) {
+        window.alert('Directions request failed');
         return;
-      } else {
-        directionsRenderer.setDirections(response); // Add route to the map
-        var directionsData = response.routes[0].legs[0]; // Get data about the mapped route
-        if (!directionsData) {
-          window.alert('Directions request failed');
-          return;
-        }
-        else {
-          document.getElementById('msg').innerHTML += " Driving distance is " + directionsData.distance.text + " (" + directionsData.duration.text + ").";
-        }
       }
-    });
-
-
+      else {
+        document.getElementById('msg').innerHTML += " Driving distance is " + directionsData.distance.text + " (" + directionsData.duration.text + ").";
+      }
+    }
+  });
 }
 
 
-
-
-
-
-    </script>
-    <!--Load the API from the specified URL -- remember to replace YOUR_API_KEY-->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8&callback=initMap">
     </script>
 
+
+
+<script type="text/javascript"> 
+  var JSLink = "/Folder/sub_folder/version.js?version=" + Math.random();
+  JSElement.src = JSLink;
+</script>
   </body>
 </html>
