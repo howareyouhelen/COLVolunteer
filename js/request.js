@@ -1,7 +1,10 @@
 $(document).ready(()=>{
     console.log("in js file");
     loadrequests();
+    
 })
+
+
 
 function loadrequests(){
 
@@ -9,6 +12,12 @@ function loadrequests(){
         console.log(user);
 
         if(user){
+
+            db.collection("user").doc(user.uid).set(
+                {newMsg: false},{merge:true}
+            );
+
+
             db.collection("user").doc(user.uid).collection("requestForMe").get().then((querySnapshot) => {
                 var x = 1;
                 querySnapshot.forEach(function (doc) {
