@@ -1,0 +1,13 @@
+#navbarSupportedContent, .navbar {
+    font-size: 18px;
+    margin-left: 22px;
+    display: flex;
+    width: 100%;
+}
+.end-nav {
+    margin-left: auto;
+}
+.navbar-text {
+    margin-top:5%;
+}
+
