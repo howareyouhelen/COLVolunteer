@@ -16,6 +16,7 @@ function workingWithNotifications() {
                 console.log("current data is ...", snap.data().newMsg);
                 if(newrequest == true){
                     alert("you have a new request");
+                    
                 }
                 
             });
@@ -41,14 +42,18 @@ function sendRequest(callback) {
                         userCurList.onSnapshot(function (snap2) {
                             let volunteer = db.collection('user').doc(volUId);
                             let volunteerMsg = volunteer.collection('requestForMe').doc();
+                            console.log(volunteerMsg.id);
+                            var docid = volunteerMsg.id;
                             volunteerMsg.set({
                                 list    : snap2.data().list,
                                 message : requestMsg,
                                 fromUserId  : user.uid,
                                 volPostDocId : volPostId,
-                                myUID : volUId
-                            });
+                                myUID : volUId,
+                                docRefid: docid
+                            })
                         volunteer.set({ newMsg: true }, {merge: true});
+                        volunteer.set({ newReq: true }, {merge: true});
                         })
                     })
                     callback(volPostId);
