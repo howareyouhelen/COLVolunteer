@@ -126,7 +126,6 @@ $(document).ready(() =>{
         zombiebunnyimgX = Math.floor(Math.random() * $("#zombie_bunny_div").width());
         zombiebunnyimgSpd = Math.floor(Math.random() * (300) * 20);
         zombiebunnyimg.css({"left":zombiebunnyimgX+"px"});
-        zombiebunnyimg.html('*');
         zombiebunnyimg.animate({
             top: "300px",
             opacity : "0",
