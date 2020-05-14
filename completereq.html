@@ -1,3 +1,4 @@
+<!-- this is a page for requester to view their completed requests (completed by their volunteer(s)) -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,10 +27,10 @@
         </script>
         <!--Nav and sidebar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        
+            
             <a class="navbar-brand" href="main.html">COVolunteer</a>
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+              <span class="navbar-toggler-icon"></span>
             </button> -->
         
             <div id="navbarSupportedContent">
@@ -43,19 +44,19 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="requestMain.html">
+                        <a class="nav-link" href="main.html">
                             <div class="icon">
-                                <i class="fa fa-align-left"></i> View all Help Requests
+                                <i class="fa fa-edit"></i> Apply for Help
                             </div>
                         </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="createVolunteerPost.html">
-                            <div class="icon">
-                                <i class="fa fa-cart-plus"></i>  Create Helper Post
-                            </div>
-                        </a>
-                    </li>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="createRequestPost.html">
+                                <div class="icon">
+                                    <i class="fa fa-cart-plus"></i>  Create Request Help Post
+                                </div>
+                            </a>
+                        </li>
                 </div>
                     <ul class="nav justify-content-end end-nav navbar-nav mr-auto">
                         <li class="navbar-text nav-item">
@@ -88,7 +89,7 @@
                         </li>
                         <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
                         <li class="nav-item profile-request">
-                            <a class="nav-link active" href="request.html">
+                            <a class="nav-link active" href="requestreq.html">
                                 <div id="pendingRequests"class="icon">
                                     <i class="fa fa-heart"></i> My Pending Requests
                                 </div>
@@ -96,7 +97,7 @@
                         </li>
                         <!-- users to view all their completed requests-->
                         <li class="nav-item profile-request">
-                            <a class="nav-link active" href="complete.html">
+                            <a class="nav-link active" href="completereq.html">
                                 <div class="icon">
                                     <i class="fa fa-check-square"></i> Completed Requests
                                 </div>
@@ -104,9 +105,17 @@
                         </li>
                         <!-- users to view the requests they've accepted but not yet completed -->
                         <li class="nav-item profile-request">
-                            <a class="nav-link active" href="accept.html">
+                            <a class="nav-link active" href="acceptreq.html">
                                 <div class="icon">
                                     <i class="fa fa-plus-square"></i> Accepted Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view the requests Shopping List -->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="shoppingList.html">
+                                <div class="icon">
+                                    <i class="fa fa-plus-square"></i> My Awesome Shopping List
                                 </div>
                             </a>
                         </li>
