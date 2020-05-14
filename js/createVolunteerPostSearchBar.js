@@ -1,5 +1,5 @@
 //Converts address into geolocation and sets in the user's database
-function geocodeAddress(callback) {
+function userGeopoint(callback) {
     auth.onAuthStateChanged(function (user) {
         db.collection('user').doc(user.uid).get().then(snap => {
             let address = snap.data().address;
@@ -29,8 +29,7 @@ function geocodeAddress(callback) {
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 // console.log(user)
 function initMap() {
-    geocodeAddress(obtainGeolocation);
-
+    userGeopoint(obtainGeolocation);
     function obtainGeolocation() {
         auth.onAuthStateChanged(function (user) {
             let userMap = db.collection('user').doc(user.uid).collection('metaData').doc('map');
@@ -46,8 +45,7 @@ function initMap() {
 
 // The main Map function. called inside initMap()
 function initAutocomplete(geolocation) {
-    console.log(geolocation)
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: geolocation._lat,
             lng: geolocation._long
@@ -55,7 +53,6 @@ function initAutocomplete(geolocation) {
         zoom: 13,
         mapTypeId: 'roadmap'
     });
-
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
@@ -66,10 +63,11 @@ function initAutocomplete(geolocation) {
     });
 
     // To add the marker to the map, call setMap();
-    var markers = [];
+    markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', function () {
+        
         var places = searchBox.getPlaces();
 
         if (places.length == 0) {
@@ -112,7 +110,7 @@ function initAutocomplete(geolocation) {
             let geo = place.geometry.location;
             $('#info-storage').attr('name', place.name).attr('address', place.formatted_address)
                               .attr('lat', geo.lat()).attr('lng', geo.lng());
-            $('#street').val(place.formatted_address)
+            $('#store-address').val(place.formatted_address);
             
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -141,8 +139,17 @@ function initAutocomplete(geolocation) {
             $('#iw-status').html(marker.status);
 
         }
-
     });
+
+    myHomeLatLng = {lat: geolocation._lat, lng: geolocation._long};
+    var myHomeMarker = new google.maps.Marker({
+        position: myHomeLatLng,
+        map: map,
+        icon: { url: "http://maps.google.com/mapfiles/ms/micons/red-dot.png" },
+        animation: google.maps.Animation.DROP,
+        title: 'My Home'
+    });
+    myHomeMarker.setMap(map);
 }
 
 

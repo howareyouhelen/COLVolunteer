@@ -33,8 +33,9 @@
     <script type='text/javascript' src="js/firebase_config.js"></script>                        <!-- Firebase Config -->
     <script type='text/javascript' src="js/user.js"></script>                                   <!-- firebase User -->
     
+    <!-- <script type='text/javascript' src="js/map.js"></script>    -->
     <script src="js/volunteer.js"></script>
-    <script defer src="js/createVolunteerPostSearchBar.js"></script>
+    <script defer src="js/createVolunteerPostSearchBar.js"></script>   
     
     <link rel="stylesheet" type="text/css" href="css/searchBar.css">
     <link rel="stylesheet" type="text/css" href="css/volunteer.css">
@@ -64,17 +65,18 @@
             <div class="form-group">
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput2">Which store(s) will you head to?</label>
+                    <label for="exampleFormControlInput2">Which store will you head to?</label>
                     <div class="form-inline">
-                    <input id="pac-input" class="controls form-control" type="text" placeholder="store(s) name" required>
-                    <button id="custom-button" type="button" class="btn btn-secondary">Custom Address</button>
+                    <input id="pac-input" class="controls form-control" type="text" placeholder="store name" required>
+                    <!-- CustomerAddress Not Implemented yet -->
+                    <!-- <button id="custom-button" type="button" class="btn btn-secondary">Custom Address</button> --> 
                 </div>
                     <div class="invalid-feedback">Please tell us which store you will visit</div>
                 </div>
                 <div class="form-horizontal">
-                    <label for="exampleFormControlInput2">Store Address</label>
+                    <label for="store-address">Store Address</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="street" placeholder="Street, City, Province" required>
+                        <input type="text" class="form-control" id="store-address" placeholder="Street, City, Province" required>
                     </div>
                     <!-- <div class="form-group">
                         <div class="form-inline">
@@ -84,7 +86,7 @@
                     </div> -->
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput2">When are you heading to the store?</label>
+                    <label for="date">When are you heading to the store?</label>
                     <input type="date" class="form-control" id="date" placeholder="MM-DD" required>
                 </div>
 
@@ -161,9 +163,12 @@
                 console.log($('#info-storage').attr('name'))
                 })
                 function submitpost(event) {
-                // console.log(userId);
-                var store   = $('#info-storage').attr('name');
-                var address = $('#info-storage').attr('address');
+                    if($('#info-storage').attr('name') !== undefined) {
+                        $('#pac-input').val($('#info-storage').attr('name'));
+                        $('#store-address').val($('#info-storage').attr('address'));
+                    }
+                var store   = $('#pac-input').val();
+                var address = $('#store-address').val();
                 var date    = $('#date').val();
                 let lat     = parseFloat($('#info-storage').attr('lat'));
                 let lng     = parseFloat($('#info-storage').attr('lng'));
@@ -177,7 +182,7 @@
                     volUId      : userId,
                     geopoint    : new firebase.firestore.GeoPoint(lat, lng)
                 });
-}
+            }
         });
         </script>
     </body>

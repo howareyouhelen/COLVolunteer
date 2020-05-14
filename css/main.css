@@ -30,7 +30,7 @@ header {
 
 .posts {
     margin-left:1vw;
-    margin-right:1vw;
+    padding-right:1vw;
     float:left;
     width:58vw;
 
@@ -87,3 +87,30 @@ header {
     text-decoration: none;
     cursor: pointer;
   }
+
+
+
+
+  /* The map CSS */
+    #map {
+    height: 100vh;
+    margin: auto;
+    }
+    main {
+        display: grid;
+        grid-template-columns: 59vw 40vw;
+    }
+
+    i.fas {
+        color:red;
+        font-size: 20px;
+        float: right;
+    }
+    i.fas:hover {
+        cursor:pointer;
+    }
+
+    #item_cards {
+        overflow:scroll;
+        height: 100vh;
+    }
