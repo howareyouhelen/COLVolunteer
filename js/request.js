@@ -105,7 +105,7 @@ function requestDeclined(clicked_id){
     db.collection("user").doc(user.uid).collection("requestForMe").doc(clicked_id).delete().then(function() {
         console.log("Document successfully deleted!");
         alert("request deleted");
-        
+        loadrequests();
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });

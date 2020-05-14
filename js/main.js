@@ -49,7 +49,7 @@ function sendRequest(callback) {
                             let volunteerMsg = volunteer.collection('requestForMe').doc();
                             console.log(volunteerMsg.id);
                             var docid = volunteerMsg.id;
-                        
+                            
                             console.log(user.uid);
                             volunteerMsg.set({
                                 
@@ -58,8 +58,7 @@ function sendRequest(callback) {
                                 fromUserId  : user.uid,
                                 volPostDocId : volPostId,
                                 myUID : volUId,
-                                docRefid: docid,
-                                reqAccepted: false
+                                docRefid: docid
                             })
                         volunteer.set({ newMsg: true }, {merge: true});
                         volunteer.set({ newReq: true }, {merge: true});
