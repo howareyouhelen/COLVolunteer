@@ -16,6 +16,9 @@ function workingWithNotifications() {
                 // console.log("current data is ...", snap.data().newMsg);
                 if(newrequest == true){
                     alert("you have a new request");
+                    var notify = {"background-color":"red"};
+                    $("#pendingRequests").css(notify);
+                    
                     
                 }
                 
