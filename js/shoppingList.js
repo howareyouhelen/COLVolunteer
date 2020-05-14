@@ -80,5 +80,77 @@ $(document).ready(() =>{
             $("#editList").on('click', addRemoveItemEvent);
         }
     }
+
+    // ---------------------------------------------------------- EASTER EGG BEGIN ----------------------------------------------------------
+    // ↑ ↑ ↓ ↓ ← → ← → B A represented in js char code...
+    var sequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+    sequence_index = 0;
+
+    document.onkeyup = function (e) {
+        if (e.keyCode === sequence[sequence_index]) {
+            sequence_index++;
+            
+            if (sequence_index === sequence.length) {
+                console.log("secret easter egg activated...");
+                sequence_index = 0;
+                //calling function that sets bunny max count to 15
+                zombiebunny();
+            }
+        } else {
+            sequence_index = 0;
+        }
+    };
+
+    //
+    zombiebunnyCount = 0;
+    function zombiebunny(){
+        console.log(zombiebunnyCount);
+        if (zombiebunnyCount == 15){
+            saveApocalypseList();
+        }
+        else if(zombiebunnyCount > 15){   
+            return false
+        }else{
+        var randomTime = Math.floor(Math.random() * (300) * 2);
+        setTimeout(function(){
+            zombiebunnyCount = zombiebunnyCount +1;
+            //call this until zombiebunnyCount reaches > 15
+            jqueryzombie_bunny();
+            zombiebunny();
+        },randomTime);
+        }
+    }
+    function jqueryzombie_bunny() {
+       var zombiebunnyimg = $("<div class='zombie_bunny'></div>");
+        $("#zombie_bunny_div").prepend(zombiebunnyimg);
+        zombiebunnyimgX = Math.floor(Math.random() * $("#zombie_bunny_div").width());
+        zombiebunnyimgSpd = Math.floor(Math.random() * (300) * 20);
+        zombiebunnyimg.css({"left":zombiebunnyimgX+"px"});
+        zombiebunnyimg.html('*');
+        zombiebunnyimg.animate({
+            top: "300px",
+            opacity : "0",
+        }, 3000, function(){
+            $(this).remove();
+        });
+    }
+
+    function saveApocalypseList(){
+        auth.onAuthStateChanged((user) =>{
+            if (user) {
+                var itemArr = ["First-aid kit","hotpot supplies","water/water purifier","vitamins","food","capsule tent","internet","devices"];
+                db.collection("user").doc(user.uid).collection("shoppingList").doc("currentList").set({
+                    list : itemArr
+                })
+                .then(function() {
+                    console.log("success! apocalypse list added.")
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+            }
+        });
+    }
     
+    // ---------------------------------------------------------- EASTER EGG ENDS ----------------------------------------------------------
 })
