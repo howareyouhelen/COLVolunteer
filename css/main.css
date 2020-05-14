@@ -100,6 +100,8 @@ header {
         grid-template-columns: 59vw 40vw;
         /* margin-left: 180px; Same as the width of the sidebar
         padding: 0px 10px; */
+        margin-left: 180px; /* Same as the width of the sidebar */
+        padding: 0px 10px;
     }
 
     i.fas {
