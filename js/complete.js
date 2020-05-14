@@ -18,7 +18,7 @@ $(document).ready(function () {
                         + "<p class='docref' style='visibility: hidden'>"
                         + doc.data().docRefid
                         + "</p>"
-                        + "<input id='complete-btn' class='btn btn-primary' type='submit' value='Mark as completed'/>"
+                        + "<input id='complete-btn' class='btn btn-primary' type='submit' value='Completed'/>"
                         + "</div>";
 
                 });
