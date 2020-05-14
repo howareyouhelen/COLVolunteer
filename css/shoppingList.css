@@ -23,3 +23,20 @@ footer {
     margin-left: 180px; /* Same as the width of the sidebar */
     padding: 0px 10px;
   }
+
+  
+.zombie_bunny {
+    background:url("../img/zombie_bunny.png");
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:999;
+    width: 360px;
+    height: 375px;
+}
+
+body {
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}
