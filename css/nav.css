@@ -1,13 +1,21 @@
 #navbarSupportedContent, .navbar {
     font-size: 18px;
-    margin-left: 22px;
+    margin-left: 0px;
     display: flex;
-    width: 100%;
+    width: 100vw;
+    height: 10vh;
+    grid-area: navbar;
+    /* overflow-y: auto; */
 }
 .end-nav {
     margin-left: auto;
+    margin-right: 0;
 }
 .navbar-text {
     margin-top:5%;
+}
+
+.fa-sign-out {
+    margin-left: 3vw;
 }
 

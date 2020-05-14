@@ -22,7 +22,3 @@ label {
 #vol-submit-btn .btn .btn-primary {
     color: #2E3192;
 }
-.main {
-    margin-left: 180px; /* Same as the width of the sidebar */
-    padding: 0px 10px;
-  }

@@ -4,12 +4,7 @@
     grid-template-rows: repeat(2);
     grid-gap: 25px;
     padding: 30px;
-    margin: 15px;
     background-color: #00BCE7;  
-    }
-footer {
-    font-size: 10px;
-    text-align: center;
     }
 .card {
     padding: 5px;
@@ -20,6 +15,6 @@ footer {
     margin: 20px;
 }
 .main {
-    margin-left: 180px; /* Same as the width of the sidebar */
     padding: 0px 10px;
+    margin: 0 0 0 10px;
   }
