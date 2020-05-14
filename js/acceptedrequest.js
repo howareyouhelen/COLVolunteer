@@ -4,8 +4,6 @@ $(document).ready(()=>{
     
 })
 
-
-
 function loadrequests(){
 
     auth.onAuthStateChanged((user) => {
@@ -22,8 +20,9 @@ function loadrequests(){
                 var x = 1;
                 querySnapshot.forEach(function (doc) {
 
-                    var istrue = doc.data().reqAccepted;
-                    if(istrue == false){
+                    var isaccepted = doc.data().reqAccepted;
+                    var iscompleted = doc.data().reqCompleted;
+                    if(isaccepted == true && iscompleted == false){
                     var requesterId = doc.data().fromUserId;
                     db.collection("user").doc(requesterId).get().then((snap1 =>{
                         var requesterName = snap1.data().name;
@@ -79,11 +78,10 @@ function loadrequests(){
                     
                     
 
-                    var h = '<button type="button" class="btn btn-success" id=' + docRef + ' value = ' + docRef + ' onclick = "requestAccepted(this.id)" >' + 'Accept</button>';
+                    var h = '<button type="button" class="btn btn-success" id=' + docRef + ' value = ' + docRef + ' onclick = "requestCompleted(this.id)" >' + 'Mark Complete</button>';
                     $(b_id).append(h);
 
-                    var i = '<button  type="button" class="btn btn-danger" id=' + docRef + ' value = ' + docRef + ' onclick = "requestDeclined(this.id)">' + 'Decline</button>';
-                    $(b_id).append(i);
+                    
                     
                     x++;
                     
@@ -94,31 +92,13 @@ function loadrequests(){
     });               
 }
 
-function requestAccepted(clicked_id){
+function requestCompleted(clicked_id){
     console.log("request accepted");
     console.log(clicked_id);
     auth.onAuthStateChanged((user) => {
         db.collection("user").doc(user.uid).collection("requestForMe").doc(clicked_id).set(
-            {reqAccepted:true,reqCompleted:false},{merge:true}
+            {reqCompleted:true},{merge:true}
         )
     })
-}
 
-function requestDeclined(clicked_id){
-    auth.onAuthStateChanged((user) => {
-    console.log("request declined");
-    console.log(clicked_id);
-
-    db.collection("user").doc(user.uid).collection("requestForMe").doc(clicked_id).delete().then(function() {
-        console.log("Document successfully deleted!");
-        alert("request deleted");
-        
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
-
-    
-})
-    
-    
 }

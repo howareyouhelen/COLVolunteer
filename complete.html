@@ -6,7 +6,7 @@
         <title>Completed Requests</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery.min.js"></script>
-        <script src="js/complete.js"></script>
+        <script src="js/completedrequests.js"></script>
         <script src="js/user.js"></script>                                                          <!-- firebase User -->
         <link rel="stylesheet" type="text/css" href="css/nav.css">   
         <link rel="stylesheet" type="text/css" href="css/sidebar.css">
@@ -113,14 +113,7 @@
       <div class="main main-content">
       <h1>Requests I have completed</h1><hr>
 
-      <div id="list_div">
-          <h3>completed requests</h3>
-          <div class ="list-item">
-            <p>my completed list: </p>
-              <!--posts will be dynamically generated here-->
-          </div>
-      </div>
-      </div>
+
 
     </div>
         <!-- User Related methods -->
@@ -130,6 +123,10 @@
                 logout()
             });
         </script>
+      <section class="posts" id="item_cards">
+
+          
+    </section>
       
         <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
