@@ -25,11 +25,13 @@ function saveChanges() {
     let newName = document.getElementById("editName").value;
     let newEmail = document.getElementById("editEmail").value;
     let newAddress = document.getElementById("editAddress").value;
+    let newPhone = document.getElementById("editPhone").value;
 
     const newProfile = {
         name: newName,
         email: newEmail,
-        address: newAddress
+        address: newAddress,
+        phone: newPhone
     }
 
     firebase.auth().onAuthStateChanged(function (user) {

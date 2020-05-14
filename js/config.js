@@ -1,3 +1,3 @@
 var config = {
-    FIREBASE_KEY : 'AIzaSyDWZlirfSaOCuugkdvcQplrl0t6J2IFou8'
+    FIREBASE_KEY : 'AIzaSyCVHO573DM8JqHUVcKiPdZT25ed23Coo7w'
   }
