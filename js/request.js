@@ -26,10 +26,11 @@ function loadrequests(){
                     db.collection("user").doc(requesterId).get().then((snap1 =>{
                         var requesterName = snap1.data().name;
                         var requesterAddress = snap1.data().address;
+                        var requesterEmail = snap1.data().email;
                         
 
-                    
-                    console.log(requesterName);
+                    console.log("test..." + requesterEmail);
+                    console.log("test..." + requesterName);
                     var message = doc.data().message;
                     var list = doc.data().list;
                     var docRef = doc.data().docRefid;
@@ -57,13 +58,16 @@ function loadrequests(){
 
                     $(b_id).append(c);
 
-                    var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'store">Requester\'s address: ' + requesterAddress + '</h6>';
-                    var d_id = '#' + y + 'store';
+                    var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'address">Requester\'s address: ' + requesterAddress + '</h6>';
+                    var d_id = '#' + y + 'address';
 
-                    $(b_id).append(d);
+                    var da = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'email">Requester\'s email: ' + requesterEmail + '</h6>';
+                    var d_id = '#' + y + 'email';
 
-                    var f = '<p class="card-text" id="' + y + 'date"> Message: ' + message + '</p>';
-                    var f_id = '#' + y + 'date';
+                    $(b_id).append(da);
+
+                    var f = '<p class="card-text" id="' + y + 'message"> Message: ' + message + '</p>';
+                    var f_id = '#' + y + 'message';
 
                     var g = '<p class="card-text" id="' + y + 'list"> Items requested: ' + list + '</p>';
                     var g_id = '#' + y + 'list';
@@ -73,19 +77,41 @@ function loadrequests(){
                     
                     
 
-                    var h = '<button type="button" class="btn btn-success" id="' + y + 'acceptbutton" value = ' + docRef + '>' + 'Accept</button>';
+                    var h = '<button type="button" class="btn btn-success" id=' + docRef + ' value = ' + docRef + ' onclick = "requestAccepted(this.id)" >' + 'Accept</button>';
                     $(b_id).append(h);
 
-                    var i = '<button type="button" class="btn btn-danger" id="' + y + 'declinebutton" value = ' + docRef + '>' + 'Decline</button>';
+                    var i = '<button  type="button" class="btn btn-danger" id=' + docRef + ' value = ' + docRef + ' onclick = "requestDeclined(this.id)">' + 'Decline</button>';
                     $(b_id).append(i);
                     
-                    
-                    
-
                     x++;
                 }))
                 })
             })         
         }          
     });               
+}
+
+function requestAccepted(clicked_id){
+    console.log("request accepted");
+    console.log(clicked_id);
+    
+}
+
+function requestDeclined(clicked_id){
+    auth.onAuthStateChanged((user) => {
+    console.log("request declined");
+    console.log(clicked_id);
+
+    db.collection("user").doc(user.uid).collection("requestForMe").doc(clicked_id).delete().then(function() {
+        console.log("Document successfully deleted!");
+        alert("request deleted");
+        loadrequests();
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+
+    
+})
+    
+    
 }
