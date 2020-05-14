@@ -92,12 +92,12 @@ header {
 
   /* The map CSS */
     #map {
-    height: 100vh;
+    height: 90vh;
     margin: auto;
     }
     main {
         display: grid;
-        grid-template-columns: 59vw 40vw;
+        grid-template-columns: 1fr 1fr;
         /* margin-left: 180px; Same as the width of the sidebar
         padding: 0px 10px; */
         margin-left: 180px; /* Same as the width of the sidebar */
@@ -113,7 +113,9 @@ header {
         cursor:pointer;
     }
 
+    /* This is the div that contains all posts */
     #item_cards {
         overflow:scroll;
-        height: 100vh;
+        height: 90vh;
+        overflow-x: hidden; /* Disable horizontal scroll */
     }

@@ -4,26 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Completed Requests</title>
-        <link rel="stylesheet" type="text/css" href="css/complete.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery.min.js"></script>
         <script src="js/complete.js"></script>
         <script src="js/user.js"></script>                                                          <!-- firebase User -->
         <link rel="stylesheet" type="text/css" href="css/nav.css">   
         <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="css/requestMain.css">
+        <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
         <!-- favicon -->
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     </head>
     <body> 
-        <!-- User Related methods -->
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) { 
-                showName();
-                logout()
-            });
-        </script>
+
+        <div class="grid-container-whole-page">
         <!--Nav and sidebar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         
@@ -114,7 +110,7 @@
             </div>
         </nav>
       <!--end of Nav and sidebar-->
-      <div class="main">
+      <div class="main main-content">
       <h1>Requests I have completed</h1><hr>
 
       <div id="list_div">
@@ -125,6 +121,15 @@
           </div>
       </div>
       </div>
+
+    </div>
+        <!-- User Related methods -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) { 
+                showName();
+                logout()
+            });
+        </script>
       
         <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 

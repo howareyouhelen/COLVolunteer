@@ -34,21 +34,15 @@
       <link rel="stylesheet" type="text/css" href="css/shoppingList.css">                               <!-- CSS -->                                                        <!-- firebase User -->
       <link rel="stylesheet" type="text/css" href="css/nav.css">   
       <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+      <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
       <!-- favicon -->
       <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     </head>
     <body>
-      <!-- zombie bunny div where the easter egg will happen-->
-      <div id="zombie_bunny_div"></div>
-      <script>
-        document.addEventListener("DOMContentLoaded", function(event) { 
-            showName();
-            logout()
-        });
-      </script>
-      <!--Nav and sidebar-->
+        <div class="grid-container-whole-page">
+      <!--/////////////////////////////Nav and sidebar//////////////////////////////////////////-->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="main.html">COVolunteer</a>
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,16 +73,16 @@
                         </a>
                     </li>
             </div>
-                <ul class="nav justify-content-end end-nav navbar-nav mr-auto">
+                <ul class="nav justify-content-end end-nav navbar-nav">
                     <li class="navbar-text nav-item">
                         <div class="icon">
                             <i class="fa fa-user"></i> Welcome Back <b id="userName" style="padding-left: 1vw;">user</b>
                         </div>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item active ">
                         <a class="nav-link" href="index.html" id="logout">
                             <div class="icon">
-                                <i class="fa fa-sign-out-alt"></i>Logout
+                                <i class="fa fa-sign-out"></i>Logout
                             </div>
                         </a>
                     </li>
@@ -97,7 +91,7 @@
             
         </div>
     </nav>
-    <nav id="sidebar" class="col-md-2 d-none d-md-block">
+    <nav id="sidebar" class="col-md-2 d-none d-md-block sidebar-space">
       <div class="sidebar-sticky" >
           <ul class="nav flex-column">
               <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile picture"/>
@@ -147,8 +141,12 @@
       <!--end of Nav and sidebar-->
       
       <!--Current Shopping List-->
+      <main class="main-content">
+          
+      <!-- zombie bunny div where the easter egg will happen-->
+      <div id="zombie_bunny_div"></div>
       <div id="success_bar">Congratulations! A COVID19 apocalypse shopping list is now written into your account.</div>
-        <div class="card-container main">
+        <div class="card-container">
           <div class="card">
             <div class="card-body" style="padding-bottom: 0;">
               <Form id="listForm">
@@ -173,5 +171,14 @@
             </div>
           </div>
         </div>
+    </main>
+</div>
+        
+      <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            showName();
+            logout()
+        });
+      </script>
     </body>
 </html>
