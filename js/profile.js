@@ -29,6 +29,9 @@ function displayProfile(user) {
     document.getElementById("userEmail").innerHTML = user.email;
     console.log(user.email)
     console.log(user.address);
-    console.log(user.phone);
+    if (user.address == "") {
+        document.getElementById("userAddress").innerHTML = "Please enter your address to gain access to full features of this app.";
+    } else {
+        document.getElementById("userAddress").innerHTML = user.address;
+    }
 }
-getProfile()
