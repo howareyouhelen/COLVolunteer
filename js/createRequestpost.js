@@ -49,6 +49,10 @@ $(document).ready(function () {
             }, {merge: true});
             console.log("Document written with ID: ", docRef.id);
             $("form").trigger("reset");
+            $("#success_bar").show();
+                setTimeout(function(){
+                    $("#success_bar").hide();
+                }, 4000);
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);
