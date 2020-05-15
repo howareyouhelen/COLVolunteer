@@ -22,8 +22,9 @@ footer {
     margin-left: 5vw; /* Same as the width of the sidebar */
     padding: 0px 10px;
   }
-
-  
+#save-list-reminder {
+    padding-left: 2vw;
+}  
 .zombie_bunny {
     background:url("../img/zombie_bunny.png");
     top:0px;

@@ -5,13 +5,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Completed Requests</title>
-        <link rel="stylesheet" type="text/css" href="css/complete.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery.min.js"></script>
         <script src="js/complete.js"></script>
         <script src="js/user.js"></script>                                                          <!-- firebase User -->
         <link rel="stylesheet" type="text/css" href="css/nav.css">   
         <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="css/complete.css">
+        <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
         <!-- favicon -->
@@ -20,14 +21,18 @@
     <body> 
         <!-- User Related methods -->
         <script>
+            
             document.addEventListener("DOMContentLoaded", function(event) { 
                 showName();
                 logout()
             });
         </script>
-        <!--Nav and sidebar-->
+        <!-- HTML Starts -->
+        <div class="grid-container-whole-page">
+            <!------------------------------------------------------------------------------>
+            <!--                              nav starts here                             -->
+            <!------------------------------------------------------------------------------>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            
             <a class="navbar-brand" href="main.html">COVolunteer</a>
             <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -58,7 +63,7 @@
                             </a>
                         </li>
                 </div>
-                    <ul class="nav justify-content-end end-nav navbar-nav mr-auto">
+                    <ul class="nav justify-content-end end-nav navbar-nav">
                         <li class="navbar-text nav-item">
                             <div class="icon">
                                 <i class="fa fa-user"></i> Welcome Back <b id="userName" style="padding-left: 1vw;">user</b>
@@ -67,7 +72,7 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="index.html" id="logout">
                                 <div class="icon">
-                                    <i class="fa fa-sign-out-alt"></i>Logout
+                                    <i class="fa fa-sign-out"></i>Logout
                                 </div>
                             </a>
                         </li>
@@ -122,8 +127,14 @@
                 </ul>
             </div>
         </nav>
-      <!--end of Nav and sidebar-->
-      <div class="main">
+        <!------------------------------------------------------------------------------>
+        <!--                              nav sidebar ends                            -->
+        <!------------------------------------------------------------------------------>
+
+        <!------------------------------------------------------------------------------>
+        <!--                              main content starts                         -->
+        <!------------------------------------------------------------------------------>
+      <div class="main main-content">
       <h1>Requests I have completed</h1><hr>
 
       <div id="list_div">
