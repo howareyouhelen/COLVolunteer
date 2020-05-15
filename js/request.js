@@ -102,6 +102,7 @@ function requestAccepted(clicked_id){
             {reqAccepted:true,reqCompleted:false},{merge:true}
         )
     })
+    location.reload();
 }
 
 function requestDeclined(clicked_id){
@@ -117,8 +118,9 @@ function requestDeclined(clicked_id){
         console.error("Error removing document: ", error);
     });
 
+
     
 })
     
-    
+    location.reload();
 }

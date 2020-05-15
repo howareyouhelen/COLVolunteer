@@ -100,5 +100,5 @@ function requestCompleted(clicked_id){
             {reqCompleted:true},{merge:true}
         )
     })
-
+    location.reload();
 }
