@@ -75,10 +75,6 @@ a.nav:hover {
     background-color: #2E3192;
     border-bottom: 2px solid transparent;
 }
-#bars {
-    display:none;
-}
-
 
 /* main */
 main {

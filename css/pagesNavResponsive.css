@@ -7,6 +7,8 @@
     margin: auto;
     width: min-content;
     text-align: center;
+    white-space: nowrap;
+    margin-top: 3vh;
 }
 #popupSpace{
     height: 100px;
@@ -31,15 +33,31 @@
 #bars {
     display:none;
 }
-
+#logo{
+    display: none;
+}
 
 @media (max-width: 765px) {
-    
+    header {
+        margin: 0;
+    }
     #bars {
         display: block;
     }
     a.navbar-brand, div.icon {
 		display:none
-	}
+    }
+    #logo{
+        display: block;
+        width: 7vh;
+    }
+    .grid-container-whole-page {
+        grid-template-areas:
+        'navbar navbar navbar  '
+        'main main main  ';
+    }
+    #sidebar{
+        display: none
+    }
 
 }

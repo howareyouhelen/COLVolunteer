@@ -52,3 +52,12 @@ body {
 #mobile {
     color: #00BCE7;
 }
+
+
+
+@media (max-width: 765px) {
+    
+    #success_bar {
+        font-size: 4vh;
+    }
+}

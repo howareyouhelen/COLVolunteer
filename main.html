@@ -44,6 +44,9 @@
         <link rel="stylesheet" type="text/css" href="css/sidebar.css">
         <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/pagesNavResponsive.css"> 
+
+        <script src="js/pagesNavPopUp.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
@@ -52,13 +55,23 @@
         <!-- User Related methods -->
     </head>
     <body>
+        <header id="navPopUp">
+            <div id="popupSpace"></div>
+            <h1><a class="nav" id="navPopupBack">CoVolunteer</a></h1>
+            <h4><a class="nav" href="chooserole.html">Change Role</a></h4>
+            <h4><a class="nav" href="createRequestPost.html">Request Help</a></h4>
+            <h4><a class="nav" href="requestreq.html">My Requests</a></h4>
+            <h4><a class="nav" href="shoppingList.html">My Shopping List</a></h4>
+        </header>
         <div class="grid-container-whole-page">
             <!------------------------------------------------------------------------------>
             <!--                              nav starts here                             -->
             <!------------------------------------------------------------------------------>
-            <div class="sidebar-space"></div>
+           
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="main.html">COVolunteer</a>
+                <a id ="nav-logo" class="navLeft" href="index.html"><img id="logo" src="img/logo.png"></a>
+                <img id="bars" src="img/bars.png">
                 <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button> -->
@@ -94,6 +107,7 @@
                                     style="padding-left: 1vw;">user</b>
                             </div>
                         </li>
+                        
                         <li class="nav-item active">
                             <a class="nav-link" href="index.html" id="logout">
                                 <div class="icon">
@@ -104,6 +118,7 @@
                     </ul>
                     </ul>
                 </div>
+                
             </nav>
             <!------------------------------------------------------------------------------>
             <!--                       SideBar Starts here                                -->

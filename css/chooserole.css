@@ -94,3 +94,16 @@ html, body{
 .hvrbox.active .hvrbox-text_mobile {
 	display: block;
 }
+
+
+/* Media Query */
+
+
+
+
+@media (max-width: 500px) {
+    a.navbar-brand, div.icon {
+		display:none
+	}
+
+}
