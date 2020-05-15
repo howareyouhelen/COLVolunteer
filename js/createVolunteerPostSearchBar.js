@@ -45,7 +45,6 @@ function initMap() {
 
 // The main Map function. called inside initMap()
 function initAutocomplete(geolocation) {
-    console.log("hi")
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: geolocation._lat,
@@ -153,9 +152,11 @@ function initAutocomplete(geolocation) {
     myHomeMarker.setMap(map);
 }
 
+$(document).ready(function() {
+    //API for GoogleMaps
+    var JSLink = "https://maps.googleapis.com/maps/api/js?key=" + firebaseKEY + "&libraries=places&callback=initMap";
+    var JSElement = document.createElement('script');
+    JSElement.src = JSLink;
+    document.getElementsByTagName('body')[0].appendChild(JSElement);
 
-//API for GoogleMaps
-var JSLink = "https://maps.googleapis.com/maps/api/js?key=" + firebaseKEY + "&libraries=places&callback=initMap";
-var JSElement = document.createElement('script');
-JSElement.src = JSLink;
-document.getElementsByTagName('body')[0].appendChild(JSElement);
+})
