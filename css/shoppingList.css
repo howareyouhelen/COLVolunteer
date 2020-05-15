@@ -49,3 +49,7 @@ body {
     position:relative;
     overflow:hidden;
 }
+
+#mobile {
+    color: #00BCE7;
+}
