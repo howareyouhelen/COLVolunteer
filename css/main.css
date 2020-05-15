@@ -123,6 +123,16 @@ header {
         margin: 0 1vw 0 1vw;
     }
 
-
-
- 
+    @media (max-width: 765px) {
+        #map {
+            height: 33vh;
+            margin: auto;
+            margin-top: 2vh;
+            width: 95vw;
+            }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            overflow:hidden;
+        }
+    }
