@@ -42,7 +42,7 @@ $(document).ready(() =>{
     //Add input to llist <li>
     function addToList() {
         let item = $("#listForm").serializeArray();
-        if(item[0].value)
+        if(item[0].value) 
             $(".current-list-group").append('<li class="list-group-item">' + item[0].value + '</li>');
         $("#listEntry").val("");
         activateDeleteButton();
@@ -72,9 +72,11 @@ $(document).ready(() =>{
         });
     }
     
-    //addRemoveItemEvent handles the events of the editList button
+    //addRemoveItemEvent handles the events of the editList button (delete list)
     function addRemoveItemEvent() {
+        console.log("click")
         $("#listEntry").prop('disabled', true);
+        $("#addToList").prop('disabled', true);
         let img = '<img style="float:right" src="img/delete.png">';
         $(".list-group-item").append(img)
         $(".list-group-item").on("click", function() {
@@ -90,6 +92,7 @@ $(document).ready(() =>{
         $('#editListOff').on('click', removeEvent);
 
         function removeEvent() {
+            $("#addToList").prop('disabled', false);
             $("#listEntry").prop('disabled', false);
             $(".list-group-item").children().remove();
             $(".list-group-item").off();
