@@ -106,4 +106,12 @@ html, body{
 		display:none
 	}
 
+	.hvrbox-text {
+		font-size: 20vh;
+	}
+
+	.caption{
+		font-size: 5vw;
+	}
+
 }
