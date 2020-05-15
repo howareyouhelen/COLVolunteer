@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    workingWithNotifications();
     const list_div = document.querySelector("#list_div");
     var reqRef = db.collection("requestpost").orderBy("timestamp", "desc");
 
@@ -36,3 +37,23 @@ $(document).ready(function () {
 
     
 });
+
+function workingWithNotifications() {
+    // console.log("in new function");
+
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            db.collection('user').doc(user.uid).onSnapshot(function (snap) {
+                var newrequest = snap.data().newMsg;
+                // console.log("current data is ...", snap.data().newMsg);
+                if (newrequest == true) {
+                    alert("you have a new request");
+                    var notify = {
+                        "background-color": "red"
+                    };
+                    $("#pendingRequests").css(notify);
+                }
+            });
+        }
+    })
+}
