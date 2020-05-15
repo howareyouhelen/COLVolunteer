@@ -3,8 +3,6 @@
     grid-template-columns: repeat(auto-fit, 300px);
     grid-template-rows: repeat(2);
     grid-gap: 25px;
-    padding: 30px;
-    margin: 15px;
     }
 footer {
     font-size: 10px;
