@@ -51,164 +51,164 @@
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
         <!-- User Related methods -->
     </head>
-
     <body>
         <div class="grid-container-whole-page">
-        <!------------------------------------------------------------------------------>
-        <!--                              nav starts here                             -->
-        <!------------------------------------------------------------------------------>
-        <div class="sidebar-space"></div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="main.html">COVolunteer</a>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!------------------------------------------------------------------------------>
+            <!--                              nav starts here                             -->
+            <!------------------------------------------------------------------------------>
+            <div class="sidebar-space"></div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="main.html">COVolunteer</a>
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button> -->
-            <div id="navbarSupportedContent">
-                <div id="startnav">
-                    <ul class="navbar-nav mr-auto">
+                <div id="navbarSupportedContent">
+                    <div id="startnav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="chooserole.html">
+                                    <div class="icon">
+                                        <i class="fa fa-home"></i> Change your Role
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="main.html">
+                                    <div class="icon">
+                                        <i class="fa fa-edit"></i> Apply for Help
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="createRequestPost.html">
+                                    <div class="icon">
+                                        <i class="fa fa-cart-plus"></i> Create Request Help Post
+                                    </div>
+                                </a>
+                            </li>
+                    </div>
+                    <ul class="nav justify-content-end end-nav navbar-nav">
+                        <li class="navbar-text nav-item">
+                            <div class="icon">
+                                <i class="fa fa-user"></i> Welcome Back <b id="userName"
+                                    style="padding-left: 1vw;">user</b>
+                            </div>
+                        </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="chooserole.html">
+                            <a class="nav-link" href="index.html" id="logout">
                                 <div class="icon">
-                                    <i class="fa fa-home"></i> Change your Role
+                                    <i class="fa fa-sign-out"></i>Logout
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="main.html">
-                                <div class="icon">
-                                    <i class="fa fa-edit"></i> Apply for Help
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="createRequestPost.html">
-                                <div class="icon">
-                                    <i class="fa fa-cart-plus"></i> Create Request Help Post
-                                </div>
-                            </a>
-                        </li>
+                    </ul>
+                    </ul>
                 </div>
-                <ul class="nav justify-content-end end-nav navbar-nav">
-                    <li class="navbar-text nav-item">
-                        <div class="icon">
-                            <i class="fa fa-user"></i> Welcome Back <b id="userName" style="padding-left: 1vw;">user</b>
+            </nav>
+            <!------------------------------------------------------------------------------>
+            <!--                       SideBar Starts here                                -->
+            <!------------------------------------------------------------------------------>
+            <nav id="sidebar" class="col-md-2 d-none d-md-block">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile picture" />
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="profile.html">
+                                <div class="icon">
+                                    <i class="fa fa-address-card"></i> My Profile
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="requestreq.html">
+                                <div id="pendingRequests" class="icon">
+                                    <i class="fa fa-heart"></i> My Pending Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view all their completed requests-->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="completereq.html">
+                                <div class="icon">
+                                    <i class="fa fa-check-square"></i> Completed Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view the requests they've accepted but not yet completed -->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="acceptreq.html">
+                                <div class="icon">
+                                    <i class="fa fa-plus-square"></i> Accepted Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view the requests Shopping List -->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="shoppingList.html">
+                                <div class="icon">
+                                    <i class="fa fa-plus-square"></i> My Awesome Shopping List
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!------------------------------------------------------------------------------>
+            <!--                        end of Nav and sidebar                            -->
+            <!------------------------------------------------------------------------------>
+
+
+            <!------------------------------------------------------------------------------>
+            <!-- Make a request button popup -- Button trigger modal                      -->
+            <!------------------------------------------------------------------------------>
+            <!-- To Trigger Popup, add:data-toggle="modal" data-target="#exampleModal" to the button element-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="volunteerName">Send Your Request To Animesh</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html" id="logout">
-                            <div class="icon">
-                                <i class="fa fa-sign-out"></i>Logout
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                </ul>
-            </div>
-        </nav>
-        <!------------------------------------------------------------------------------>
-        <!--                       SideBar Starts here                                -->
-        <!------------------------------------------------------------------------------>
-        <nav id="sidebar" class="col-md-2 d-none d-md-block">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile picture" />
-                    <li class="nav-item profile-request">
-                        <a class="nav-link active" href="profile.html">
-                            <div class="icon">
-                                <i class="fa fa-address-card"></i> My Profile
-                            </div>
-                        </a>
-                    </li>
-                    <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
-                    <li class="nav-item profile-request">
-                        <a class="nav-link active" href="requestreq.html">
-                            <div id="pendingRequests" class="icon">
-                                <i class="fa fa-heart"></i> My Pending Requests
-                            </div>
-                        </a>
-                    </li>
-                    <!-- users to view all their completed requests-->
-                    <li class="nav-item profile-request">
-                        <a class="nav-link active" href="completereq.html">
-                            <div class="icon">
-                                <i class="fa fa-check-square"></i> Completed Requests
-                            </div>
-                        </a>
-                    </li>
-                    <!-- users to view the requests they've accepted but not yet completed -->
-                    <li class="nav-item profile-request">
-                        <a class="nav-link active" href="acceptreq.html">
-                            <div class="icon">
-                                <i class="fa fa-plus-square"></i> Accepted Requests
-                            </div>
-                        </a>
-                    </li>
-                    <!-- users to view the requests Shopping List -->
-                    <li class="nav-item profile-request">
-                        <a class="nav-link active" href="shoppingList.html">
-                            <div class="icon">
-                                <i class="fa fa-plus-square"></i> My Awesome Shopping List
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!------------------------------------------------------------------------------>
-        <!--                        end of Nav and sidebar                            -->
-        <!------------------------------------------------------------------------------>
-
-
-        <!------------------------------------------------------------------------------>
-        <!-- Make a request button popup -- Button trigger modal                      -->
-        <!------------------------------------------------------------------------------>
-        <!-- To Trigger Popup, add:data-toggle="modal" data-target="#exampleModal" to the button element-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="volunteerName">Send Your Request To Animesh</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-container">
-                            <div>
-                                <Form id="msg">
-                                    <fieldset>
-                                        <legend>Enter Message</legend>
-                                        <textarea type="text" name="message" id="msgEntry" required></textarea>
-                                    </fieldset>
-                                </Form>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Your Current List</h5>
-                                    <h6 class="card-subtitle">
-                                    </h6>
-                                    <ul class="list-group current-list-group" id="currentList">
-                                    </ul>
+                        <div class="modal-body">
+                            <div class="card-container">
+                                <div>
+                                    <Form id="msg">
+                                        <fieldset>
+                                            <legend>Enter Message</legend>
+                                            <textarea type="text" name="message" id="msgEntry" required></textarea>
+                                        </fieldset>
+                                    </Form>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Your Current List</h5>
+                                        <h6 class="card-subtitle">
+                                        </h6>
+                                        <ul class="list-group current-list-group" id="currentList">
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" id="send-request" data-dismiss="modal">Send
-                            Request</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="send-request" data-dismiss="modal">Send
+                                Request</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End of make a request button popup -->
+            <!-- End of make a request button popup -->
 
-        <main class="main-content">
-            <section class="posts" id="item_cards">
-                <!-- //////////////////////  This is Sample Request Post ///////////////////////////////-->
+            <main class="main-content">
+                <section class="posts" id="item_cards">
+                    <!-- //////////////////////  This is Sample Request Post ///////////////////////////////-->
 
-                <!-- <div class="card">
+                    <!-- <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Animesh Kaushal</h4>
                             <div style="float:right">distance</div>
@@ -222,33 +222,36 @@
                         </div>
                     </div> -->
 
-                <!-- //////////////////////  /////////////////////////////// ///////////////////////////////-->
-            </section>
-            <aside>
-                <aside id="map-container">
-                    <div id="map"></div>
+                    <!-- //////////////////////  /////////////////////////////// ///////////////////////////////-->
+                </section>
+                <aside>
+                    <aside id="map-container">
+                        <div id="map"></div>
+                    </aside>
                 </aside>
-            </aside>
-        </main>
-        <!--Testing Modal Notification window-->
+            </main>
+            <!--Testing Modal Notification window-->
 
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <!--<span class="close">&times;</span>-->
-                <p>Please update <a href="editProfile.html">address</a></p>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <!--<span class="close">&times;</span>-->
+                    <p>Please update <a href="editProfile.html">address</a></p>
+                </div>
             </div>
         </div>
-        </div>
-
-
 
         <script>
-            document.addEventListener("DOMContentLoaded", function (event) {
+            $(document).ready(() => {
+                showCurrentList();
+                sendRequest(makeARequestButtonDone);
+                workingWithNotifications();
+                sortPostsInDB();
+
                 showName();
                 logout()
-            });
+            })
         </script>
     </body>
 

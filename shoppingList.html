@@ -1,195 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
-      <meta charset="utf-8">
-      <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-      <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi"/>
-      <script
-        src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-      <title>Shopping List</title>
+        <meta charset="utf-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <meta name="viewport"
+            content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi" />
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <title>Shopping List</title>
 
-      <!------------------------------------------------------------------------------>
-      <!-- Bootstrap for Mobile-first                                               -->
-      <!------------------------------------------------------------------------------>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>              <!-- Jquery-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>           
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- Jquery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-      <!------------------------------------------------------------------------------>
-      <!-- Add Firebase products that you want to use                               -->
-      <!------------------------------------------------------------------------------>
-      <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
-      <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-      <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-      <!------------------------------------------------------------------------------>
-      <!-- CSS styles and scripts of for this page                                  -->
-      <!------------------------------------------------------------------------------>
-      <script src='js/config.js' type='text/javascript'></script>                                    <!-- API Key-->
-      <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
-      <script src="js/user.js"></script>                                                          <!-- firebase User -->
-      <!-- This Page's JavaScript and CSS-->
-      <script src="js/shoppingList.js"></script>
-      <link rel="stylesheet" type="text/css" href="css/shoppingList.css">                               <!-- CSS -->                                                        <!-- firebase User -->
-      <link rel="stylesheet" type="text/css" href="css/nav.css">   
-      <link rel="stylesheet" type="text/css" href="css/sidebar.css">
-      <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
-      <!-- favicon -->
-      <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script src='js/config.js' type='text/javascript'></script> <!-- API Key-->
+        <script src="js/firebase_config.js"></script> <!-- Firebase Config -->
+        <script src="js/user.js"></script> <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
+        <script src="js/shoppingList.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/shoppingList.css"> <!-- CSS -->
+        <!-- firebase User -->
+        <link rel="stylesheet" type="text/css" href="css/nav.css">
+        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
+        <!-- favicon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     </head>
+
     <body>
         <div class="grid-container-whole-page">
-        <!------------------------------------------------------------------------------>
-        <!--                              nav starts here                             -->
-        <!------------------------------------------------------------------------------>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="main.html">COVolunteer</a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> -->
-        <div id="navbarSupportedContent">
-            <div id="startnav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="chooserole.html">
-                        <div class="icon">
-                            <i class="fa fa-home"></i> Change your Role
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="main.html">
-                        <div class="icon">
-                            <i class="fa fa-edit"></i> Apply for Help
-                        </div>
-                    </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="createRequestPost.html">
+            <!------------------------------------------------------------------------------>
+            <!--                              nav starts here                             -->
+            <!------------------------------------------------------------------------------>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="main.html">COVolunteer</a>
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button> -->
+                <div id="navbarSupportedContent">
+                    <div id="startnav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="chooserole.html">
+                                    <div class="icon">
+                                        <i class="fa fa-home"></i> Change your Role
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="main.html">
+                                    <div class="icon">
+                                        <i class="fa fa-edit"></i> Apply for Help
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="createRequestPost.html">
+                                    <div class="icon">
+                                        <i class="fa fa-cart-plus"></i> Create Request Help Post
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="nav justify-content-end end-nav navbar-nav">
+                        <li class="navbar-text nav-item">
                             <div class="icon">
-                                <i class="fa fa-cart-plus"></i>  Create Request Help Post
+                                <i class="fa fa-user"></i> Welcome Back <b id="userName"
+                                    style="padding-left: 1vw;">user</b>
                             </div>
-                        </a>
-                    </li>
-                  </ul>
-            </div>
-                <ul class="nav justify-content-end end-nav navbar-nav">
-                    <li class="navbar-text nav-item">
-                        <div class="icon">
-                            <i class="fa fa-user"></i> Welcome Back <b id="userName" style="padding-left: 1vw;">user</b>
+                        </li>
+                        <li class="nav-item active ">
+                            <a class="nav-link" href="index.html" id="logout">
+                                <div class="icon">
+                                    <i class="fa fa-sign-out"></i>Logout
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <nav id="sidebar" class="col-md-2 d-none d-md-block sidebar-space">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile picture" />
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="profile.html">
+                                <div class="icon">
+                                    <i class="fa fa-address-card"></i> My Profile
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="requestreq.html">
+                                <div id="pendingRequests" class="icon">
+                                    <i class="fa fa-heart"></i> My Pending Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view all their completed requests-->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="completereq.html">
+                                <div class="icon">
+                                    <i class="fa fa-check-square"></i> Completed Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view the requests they've accepted but not yet completed -->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="acceptreq.html">
+                                <div class="icon">
+                                    <i class="fa fa-plus-square"></i> Accepted Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view the requests Shopping List -->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="shoppingList.html">
+                                <div class="icon">
+                                    <i class="fa fa-plus-square"></i> My Awesome Shopping List
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!------------------------------------------------------------------------------>
+            <!--                        end of Nav and sidebar                            -->
+            <!------------------------------------------------------------------------------>
+
+            <!------------------------------------------------------------------------------>
+            <!--                        Main Content Starts                               -->
+            <!------------------------------------------------------------------------------>
+            <!--Current Shopping List-->
+            <main class="main-content">
+                <!-- zombie bunny div where the easter egg will happen-->
+                <div id="zombie_bunny_div"></div>
+                <div id="success_bar">Congratulations! A COVID19 apocalypse shopping list is now written into your
+                    account.</div>
+                <div id="main-content-title">
+                    <h1>Build your shopping list</h1>
+                    <h4 id="save-list-reminder">Must Save List to keep changes</h4>
+                    <hr>
+                </div>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-body" style="padding-bottom: 0;">
+                            <Form id="listForm">
+                                <fieldset class="shopping-list">
+                                    <h5 class="card-title">Current List</h5>
+                                    <Form id="listForm"></Form>
+                                    <input type="text" class="form-control" placeholder="enter items" name="ListInput"
+                                        id="listEntry" autocomplete="off">
+                                </fieldset>
+                            </Form>
                         </div>
-                    </li>
-                    <li class="nav-item active ">
-                        <a class="nav-link" href="index.html" id="logout">
-                            <div class="icon">
-                                <i class="fa fa-sign-out"></i>Logout
+                        <div class="card-body" style="padding-top: 0; padding-bottom:0; text-align: center;">
+                            <div class="btn-group">
+                                <button id="editList" type="button" class="btn btn-outline-danger btn-sm"
+                                    data-toggle="button" style="margin-left:0" disabled>Delete</button>
+                                <button id="addToList" type="button" class="btn btn-secondary btn-sm"
+                                    style="margin:auto">Add Item</button>
+                                <button id="submitList" type="button" class="btn btn-primary btn-sm"
+                                    style="margin:auto">Save List</button>
                             </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-    </nav>
-    <nav id="sidebar" class="col-md-2 d-none d-md-block sidebar-space">
-      <div class="sidebar-sticky" >
-          <ul class="nav flex-column">
-              <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile picture"/>
-              <li class="nav-item profile-request">
-                  <a class="nav-link active" href="profile.html">
-                      <div class="icon">
-                          <i class="fa fa-address-card"></i> My Profile
-                      </div>
-                  </a>
-                  </li>
-                  <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
-                  <li class="nav-item profile-request">
-                      <a class="nav-link active" href="requestreq.html">
-                          <div id="pendingRequests"class="icon">
-                              <i class="fa fa-heart"></i> My Pending Requests
-                          </div>
-                      </a>
-                  </li>
-                  <!-- users to view all their completed requests-->
-                  <li class="nav-item profile-request">
-                      <a class="nav-link active" href="completereq.html">
-                          <div class="icon">
-                              <i class="fa fa-check-square"></i> Completed Requests
-                          </div>
-                      </a>
-                  </li>
-                  <!-- users to view the requests they've accepted but not yet completed -->
-                  <li class="nav-item profile-request">
-                      <a class="nav-link active" href="acceptreq.html">
-                          <div class="icon">
-                              <i class="fa fa-plus-square"></i> Accepted Requests
-                          </div>
-                      </a>
-                  </li>
-                  <!-- users to view the requests Shopping List -->
-                  <li class="nav-item profile-request">
-                      <a class="nav-link active" href="shoppingList.html">
-                          <div class="icon">
-                              <i class="fa fa-plus-square"></i> My Awesome Shopping List
-                          </div>
-                      </a>
-                  </li>
-          </ul>
-      </div>
-  </nav>
-  
-        <!------------------------------------------------------------------------------>
-        <!--                        end of Nav and sidebar                            -->
-        <!------------------------------------------------------------------------------>
-      <!--end of Nav and sidebar-->
-      
-      <!--Current Shopping List-->
-      <main class="main-content">
-          
-      <!-- zombie bunny div where the easter egg will happen-->
-      <div id="zombie_bunny_div"></div>
-      <div id="success_bar">Congratulations! A COVID19 apocalypse shopping list is now written into your account.</div>
-        <div class="card-container">
-          <div class="card">
-            <div class="card-body" style="padding-bottom: 0;">
-              <Form id="listForm">
-                <fieldset class="shopping-list">
-                  <h5 class="card-title">Current List</h5>
-                  <Form id="listForm"></Form>
-                  <input type="text" class="form-control" placeholder="enter items" name="ListInput" id="listEntry"
-                    autocomplete="off">
-                </fieldset>
-              </Form>
-            </div>
-            <div class="card-body" style="padding-top: 0; padding-bottom:0; text-align: center;">
-              <div class="btn-group">
-                <button id="editList"   type="button" class="btn btn-outline-danger btn-sm" data-toggle="button" style="margin-left:0" disabled>Delete</button>
-                <button id="addToList"  type="button" class="btn btn-secondary btn-sm" style="margin:auto">Add Item</button>
-                <button id="submitList" type="button" class="btn btn-primary btn-sm" style="margin:auto">Save List</button>
-              </div>
-            </div>
-            <div class="card-body">
-              <ul class="list-group current-list-group" id="currentList">
-              </ul>
-            </div>
-          </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group current-list-group" id="currentList">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="mobile">COVolunteer by BBY-24. This is an easter egg click me if you can ever see this</div>
+            </main>
         </div>
-        <div id="mobile">COVolunteer by BBY-24. This is an easter egg click me if you can ever see this</div>
-    </main>
-</div>
-        
-      <script>
-        document.addEventListener("DOMContentLoaded", function(event) { 
-            showName();
-            logout()
-        });
-      </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (event) {
+                showName();
+                logout()
+            });
+        </script>
     </body>
 
 </html>

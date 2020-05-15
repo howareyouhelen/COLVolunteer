@@ -8,12 +8,29 @@ $(document).ready(() =>{
     //Save List Button
     $("#submitList").on("click", saveListToCurrentList);
 
-
-
+    showCurrentList();
     ////////////////////////
     //Below are functions
     ///////////////////////
-    
+
+    //Put shopping list on Make-A-Request popup window --- by reading from database: user/shoppingList/currentList/list arr[]
+    function showCurrentList() {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                let my = db.collection('user').doc(user.uid);
+                my.collection('shoppingList').doc('currentList').onSnapshot(function (snap) {
+                    $("#currentList").html('');
+                    let data = snap.data();
+                    if(data) {
+                        for (let i = 0; i < data.list.length; i++)
+                            $("#currentList").append('<li class="list-group-item">' + data.list[i] + '</li>');
+                            activateDeleteButton();
+                    }
+                })
+            }
+        })
+    }
+        
     //input values are submitted by pressing enter key
     function inputEnterKey(e) {
         if (e.keyCode === 13) {
@@ -33,7 +50,7 @@ $(document).ready(() =>{
 
     //Activates the inactive delete button
     function activateDeleteButton() {
-        if($("#currentList").children().length == 1)
+        if($("#currentList").children().length != 0)
             $("#editList").prop("disabled", false);
 
     }
@@ -145,8 +162,12 @@ $(document).ready(() =>{
                     console.log("success! apocalypse list added.");
                     // show success msg
                     $("#success_bar").show();
+                    $("#main-content-title").hide();
+                    showCurrentList();
+                    activateDeleteButton();
                     setTimeout(function(){
                         $("#success_bar").hide();
+                        $("#main-content-title").show();
                     }, 4000);
                 })
                 .catch(function(error) {

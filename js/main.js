@@ -1,9 +1,3 @@
-$(document).ready(()=>{
-    showCurrentList();
-    sendRequest(makeARequestButtonDone);
-    workingWithNotifications();
-    sortPostsInDB();
-})
 
 // working with notifications
 function workingWithNotifications() {
@@ -18,17 +12,10 @@ function workingWithNotifications() {
                     alert("you have a new request");
                     var notify = {"background-color":"red"};
                     $("#pendingRequests").css(notify);
-                    
-                    
                 }
-                
             });
-            
-                    
             }
-
         })
-    
 }
 
 

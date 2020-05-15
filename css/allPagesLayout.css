@@ -12,6 +12,7 @@
     height: 90vh;
     overflow: scroll;
     overflow-x: hidden;
+    padding:10px
 }
 
 #sidebar .sidebar-space{
