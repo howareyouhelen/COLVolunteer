@@ -35,7 +35,7 @@ footer {
 }
 
 #success_bar {
-    /* display:none; */
+    display:none;
     z-index: 10;
     background-color: #B8E986;
     font-family: sans-serif;
