@@ -30,7 +30,6 @@ header {
 
 
 .posts {
-    margin-left:1vw;
     padding-right:1vw;
     float:left;
     width:58vw;
@@ -95,7 +94,7 @@ header {
     #map {
     height: 90vh;
     margin: auto;
-    width: 33vw;
+    width: 34vw;
     }
     .main-content {
         display: grid;
@@ -103,10 +102,6 @@ header {
         overflow:hidden;
     }
 
-    #map-container{
-        padding:10px
-        
-    }
     i.fas {
         color:red;
         font-size: 20px;
