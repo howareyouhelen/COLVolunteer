@@ -155,6 +155,23 @@ $(document).ready(() =>{
             }
         });
     }
-    
+
+    $("#mobile").click(function () {
+        console.log("secret easter egg activated...");
+        sequence_index = 0;
+        //calling function that sets bunny max count to 15
+        zombiebunny();
+    });
+
+
+    // for mobile default taphold threshold = 750
+    // $(document).on('pagebeforeshow', '#body', function(){ 
+    //     $('#navbarSupportedContent').bind('taphold', function(e) {
+    //         console.log("taphold is detected");
+    //         zombiebunny();
+    //         e.preventDefault();
+    //         return false;
+    //     } );
+    // });
     // ---------------------------------------------------------- EASTER EGG ENDS ----------------------------------------------------------
 })
