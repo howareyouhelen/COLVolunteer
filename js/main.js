@@ -230,7 +230,8 @@ function displayPosts() {
                             let distance = geopoint_distance(myGeopoint, storeGeopoint);
                             
                             var pin = `<i class='fas fa-map-marker-alt' lat="${lat}" lng="${lng}" onclick="dropPin()"></i>`;
-                            var dis = '<div style="float:right" class="card-title" id="' + y + 'distance">' + distance + '</div>' + pin;
+                            var btn = `<button type="button" class="btn btn-outline-primary btn-sm show-on-map" lat="${lat}" lng="${lng}" onclick="dropPin()">show on map</button>`
+                            var dis = '<div style="float:right" class="card-title" id="' + y + 'distance">' + distance + '</div>'  + btn+ pin;
 
                             $(b_id).append(dis);
                         })

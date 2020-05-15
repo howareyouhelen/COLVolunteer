@@ -102,6 +102,14 @@ header {
         overflow:hidden;
     }
 
+    /* This is the div that contains all posts */
+    #item_cards {
+        height: 90vh;
+        overflow-x: hidden; /* Disable horizontal scroll */
+        width:auto;
+    }
+
+    /* Below is the buttons for pins to drop on map */
     i.fas {
         color:red;
         font-size: 20px;
@@ -110,10 +118,7 @@ header {
     i.fas:hover {
         cursor:pointer;
     }
-
-    /* This is the div that contains all posts */
-    #item_cards {
-        height: 90vh;
-        overflow-x: hidden; /* Disable horizontal scroll */
-        width:auto;
+    .show-on-map {
+        float: right;
+        margin: 0 1vw 0 1vw;
     }
