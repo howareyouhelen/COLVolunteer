@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2%;
+	margin-top: 2%;
 }
 h1 {
     text-align: center;
@@ -23,18 +23,19 @@ p {
 }
 
 html, body{
-    background-color: #2e3192;
+    background-color: #00bce7;
     margin: 0;
     padding: 0;
 }
 
 #test{
     height:20px;
-    background-color: #2e3192;
+    background-color: #00bce7;
 }
 	
 .hvrbox, .hvrbox * {
 	box-sizing: border-box;
+	width: 35vw;
 }
 .hvrbox {
 	position: relative;
