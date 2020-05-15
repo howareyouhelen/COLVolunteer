@@ -1,4 +1,25 @@
-
+//Converts address into geolocation and sets in the user's database
+function userGeopoint(callback) {
+    auth.onAuthStateChanged(function (user) {
+        db.collection('user').doc(user.uid).get().then(snap => {
+            let address = snap.data().address;
+            let string = address.split(" ").join("+");
+            const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=' + firebaseKEY;
+            $.ajax({
+                url: Url,
+                type: "GET",
+                success: function (response) {
+                    let userGeopoint = db.collection('user').doc(user.uid).collection('metaData').doc('map');
+                    let location = response.results[0].geometry.location;
+                    userGeopoint.set({
+                        geolocation: new firebase.firestore.GeoPoint(location.lat, location.lng)
+                    });
+                }
+            })
+        })
+    })
+    callback();
+}
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
@@ -8,17 +29,23 @@
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 // console.log(user)
 function initMap() {
-    auth.onAuthStateChanged(function (user) {
-        let userMap = db.collection('user').doc(user.uid).collection('metaData').doc('map');
-        userMap.get().then(snap => {
-            let userGeolocation = snap.data().geolocation;
-            initAutocomplete(userGeolocation);
+    userGeopoint(obtainGeolocation);
+    function obtainGeolocation() {
+        auth.onAuthStateChanged(function (user) {
+            let userMap = db.collection('user').doc(user.uid).collection('metaData').doc('map');
+            userMap.get().then(snap => {
+                let userGeolocation = snap.data().geolocation;
+                initAutocomplete(userGeolocation);
+            })
         })
-    })
+
+    }
+
 }
 
 // The main Map function. called inside initMap()
 function initAutocomplete(geolocation) {
+    console.log("hi")
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: geolocation._lat,
