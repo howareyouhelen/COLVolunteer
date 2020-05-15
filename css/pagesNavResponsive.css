@@ -53,11 +53,19 @@
     }
     .grid-container-whole-page {
         grid-template-areas:
-        'navbar navbar navbar  '
-        'main main main  ';
+        'navbar navbar navbar'
+        'main main main';
     }
     #sidebar{
         display: none
+    }
+
+
+    /* Below is for the scrollbar on phone */
+    .main-content {
+        grid-area: main;
+        height: 90vh;
+        overflow-x: scroll;
     }
 
 }

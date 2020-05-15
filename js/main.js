@@ -180,7 +180,6 @@ function sortPostsInDB() {
                         let distance = geopoint_distance(myGeopoint, storeGeopoint);
                         if((distance/10) <= 1) {
                             distance = "0" + distance;
-                            console.log(distance)
                         }
                         postOrder.doc("" + distance).set({
                             docId: docId
@@ -269,6 +268,11 @@ function displayPosts() {
                             $(b_id).append(dis);
                         })
                     })
+                    order.doc(item.id).delete().then(function() {
+                        console.log("Document successfully deleted! " + item.id);
+                    }).catch(function(error) {
+                        console.error("Error removing document: ", error);
+                    });
                 })
             }).then(deactivatePastRequests)
         }

@@ -18,7 +18,7 @@ body{
     width: 70px;
 }
 
-.btn btn-outline-info {
+.btn .btn-outline-info {
     float: right;
 }
 
@@ -33,7 +33,6 @@ header {
     padding-right:1vw;
     float:left;
     width:58vw;
-
 }
 
 .card {
@@ -133,6 +132,17 @@ header {
         .main-content {
             display: flex;
             flex-direction: column;
-            overflow:hidden;
+            overflow: auto;
+            overflow-x:hidden;
+            /* overflow-y:scroll; */
         }
+
+
+        /* This is the div that contains all posts */
+        #item_cards {
+        height: 50vh;
+        overflow-x: hidden; /* Disable horizontal scroll */
+        width:auto;
+        margin-bottom: 1vh;
+    }
     }
