@@ -178,6 +178,10 @@ function sortPostsInDB() {
                         var docId = doc.id;
                         var storeGeopoint = doc.data().geopoint; //geopoint._lat
                         let distance = geopoint_distance(myGeopoint, storeGeopoint);
+                        if((distance/10) <= 1) {
+                            distance = "0" + distance;
+                            console.log(distance)
+                        }
                         postOrder.doc("" + distance).set({
                             docId: docId
                         })
