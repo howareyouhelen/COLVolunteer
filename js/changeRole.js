@@ -19,3 +19,31 @@ function userGeopoint() {
         })
     })
 }
+
+
+// This find the current positino of user and saves it to Database
+function getUserLocation() {
+    let x = document.getElementById("user-location");
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(saveAndShowPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+    function saveAndShowPosition(position) {
+        let currentPos = position.coords;
+        let lat = currentPos.latitude;
+        let lng = currentPos.longitude
+        x.innerHTML =    "Latitude: " + lat + 
+              "<br>" +  "Longitude: " + lng;
+        auth.onAuthStateChanged(function (user) {
+            let userDB = db.collection('user').doc(user.uid).collection('metaData').doc('map');
+            userDB.set({
+                geolocation: new firebase.firestore.GeoPoint(lat, lng)
+            });
+
+        })
+    }
+}
+
