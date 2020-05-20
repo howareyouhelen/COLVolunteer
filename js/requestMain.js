@@ -1,7 +1,7 @@
 $(document).ready(function () {
     workingWithNotifications();
     const list_div = document.querySelector("#list_div");
-    var reqRef = db.collection("requestpost").orderBy("timestamp", "desc");
+    var reqRef = db.collection("requestpost");
 
     firebase.auth().onAuthStateChanged(function(user) {
         var user = user.uid;
@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 
     //display all request posts dynamically
-    reqRef.onSnapshot(function(querySnapshot){
+    reqRef.where("status", "==", "pending").orderBy("timestamp", "desc").onSnapshot(function(querySnapshot){
         querySnapshot.forEach(function(doc){
             list_div.innerHTML += "<div class= 'list-item'><p>items: </p>" 
                 + doc.data().items 

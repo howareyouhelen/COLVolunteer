@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    //adding calendar to create request post page
+    var JSLink = "https://maps.googleapis.com/maps/api/js?key=" + firebaseKEY + "&libraries=places&callback=initMap";
+    var JSElement = document.createElement('script');
+    JSElement.src = JSLink;
+    document.getElementsByTagName('body')[0].appendChild(JSElement);
+
     // Listen for form submission then execute submitForm function
     var reqform = document.getElementById("create-reqpost-form")
     reqform.addEventListener('submit', submitForm);
