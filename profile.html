@@ -4,155 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>My Profile</title>
-        
-        <!------------------------------------------------------------------------------>
-        <!-- Bootstrap for Mobile-first                                               -->
-        <!------------------------------------------------------------------------------>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-        <!------------------------------------------------------------------------------>
-        <!-- Add Firebase products that you want to use                               -->
-        <!------------------------------------------------------------------------------>
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
         <!------------------------------------------------------------------------------>
         <!-- CSS styles and scripts of for main page                                  -->
         <!------------------------------------------------------------------------------>
         <link rel="stylesheet" type="text/css" href="css/profile.css">
-        <script type='text/javascript' src='js/config.js'></script> 
-        <script src="js/firebase_config.js"></script>
-        <script src="js/user.js"></script>
         <script src="js/profile.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/nav.css">    
-        <link rel="stylesheet" type="text/css" href="css/sidebar.css">                                                   
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
-        <!-- favicon -->
-        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
         </head>
         
         <body>
-        <!-- User Related methods -->
-        <script>
-        document.addEventListener("DOMContentLoaded", function(event) { 
-            showName();
-            logout()
-          });
-        </script>
-        
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            
-            <a class="navbar-brand" href="main.html">COVolunteer</a>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button> -->
-        
-            <div id="navbarSupportedContent">
-                <div id="startnav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="chooserole.html">
-                            <div class="icon">
-                                <i class="fa fa-home"></i> Change your Role
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                    <a class="nav-link" href="main.html">
-                        <div class="icon">
-                            <i class="fa fa-edit"></i> Apply for Help
-                        </div>
-                    </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="createVolunteerPost.html">
-                            <div class="icon">
-                                <i class="fa fa-cart-plus"></i>  Create Helper Post
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="requestMain.html">
-                            <div class="icon">
-                                <i class="fa fa-align-left"></i> View all Help Requests
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="createRequestPost.html">
-                            <div class="icon">
-                                <i class="fa fa-cart-plus"></i>  Create Request Help Post
-                            </div>
-                        </a>
-                    </li>
-                </div>
-                    <ul class="nav justify-content-end end-nav navbar-nav mr-auto">
-                        <li class="navbar-text nav-item">
-                            <div class="icon">
-                                <i class="fa fa-user"></i> Welcome Back <b id="userName" style="padding-left: 1vw;">user</b>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html" id="logout">
-                                <div class="icon">
-                                    <i class="fa fa-sign-out-alt"></i>Logout
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </ul>
-                
-            </div>
-        </nav>
-        <nav id="sidebar" class="col-md-2 d-none d-md-block">
-            <div class="sidebar-sticky" >
-                <ul class="nav flex-column">
-                    <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile picture"/>
-                    <li class="nav-item profile-request">
-                        <a class="nav-link active" href="profile.html">
-                            <div class="icon">
-                                <i class="fa fa-address-card"></i> My Profile
-                            </div>
-                        </a>
-                        </li>
-                        <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
-                        <li class="nav-item profile-request">
-                            <a class="nav-link active" href="request.html">
-                                <div id="pendingRequests"class="icon">
-                                    <i class="fa fa-heart"></i> My Pending Requests
-                                </div>
-                            </a>
-                        </li>
-                        <!-- users to view all their completed requests-->
-                        <li class="nav-item profile-request">
-                            <a class="nav-link active" href="complete.html">
-                                <div class="icon">
-                                    <i class="fa fa-check-square"></i> Completed Requests
-                                </div>
-                            </a>
-                        </li>
-                        <!-- users to view the requests they've accepted but not yet completed -->
-                        <li class="nav-item profile-request">
-                            <a class="nav-link active" href="accept.html">
-                                <div class="icon">
-                                    <i class="fa fa-plus-square"></i> Accepted Requests
-                                </div>
-                            </a>
-                        </li>
-                </ul>
-            </div>
-        </nav>
-        <!--end of Nav and sidebar-->
-        <div class="main">
         <section class="profileContent">
             <img class="displayPicture" src="img/bcitLogo.png" alt="profile picture">
                 <div class="personalInfo">
@@ -164,10 +24,6 @@
                     <a href="editProfile.html" class="btn btn-primary">edit profile</a>
                     <!--include change dp later-->
         </section>
-        </div>
-                <script>
-                    getProfile()
-                </script>
     </body>
     <footer>
 

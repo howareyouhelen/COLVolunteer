@@ -79,6 +79,13 @@
                                     </div>
                                 </a>
                             </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#" id="createRequestPostPage">
+                                    <div class="icon">
+                                        <i class="fa fa-cart-plus"></i> Create Request Help Post
+                                    </div>
+                                </a>
+                            </li>
                     </div>
                     <ul class="nav justify-content-end end-nav navbar-nav">
                         <li class="navbar-text nav-item">
@@ -108,7 +115,7 @@
                     <ul class="nav flex-column">
                         <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile picture" />
                         <li class="nav-item profile-request">
-                            <a class="nav-link active" href="profile.html">
+                            <a class="nav-link active" href="#" id="profile">
                                 <div class="icon">
                                     <i class="fa fa-address-card"></i> My Profile
                                 </div>
@@ -173,21 +180,29 @@
                 $('#shopListPage').on('click', function () {
                     $('.main-content').load('helpseeker-shoppingList.html')
                     // $('<script>', { src: 'js/shoppingList.js'}).appendTo('head');
-                    $.getScript("js/shoppingList.js", function () {});
+                    $.getScript("js/shoppingList.js");
                 })
 
                 $('#completereq').on('click', function () {
                     $('.main-content').load('helpseeker-completereq.html')
-                    $.getScript("js/complete.js", function () {});
+                    $.getScript("js/complete.js");
                 })
 
                 $('#acceptreq').on('click', function () {
                     $('.main-content').load('helpseeker-acceptreq.html')
-                    $.getScript("js/accept.js", function () {});
+                    $.getScript("js/accept.js");
                 })
                 $('#requestreq').on('click', function () {
                     $('.main-content').load('helpseeker-requestreq.html')
-                    $.getScript("js/requestreq.js", function () {});
+                    $.getScript("js/requestreq.js");
+                })
+                $('#profile').on('click', function () {
+                    $('.main-content').load('profile.html')
+                    $.getScript("js/profile.js");
+                })
+                $('#createRequestPostPage').on('click', function () {
+                    $('.main-content').load('helpseeker-createRequestPost.html')
+                    $.getScript("js/createRequestPost.js");
                 })
             })
         </script>

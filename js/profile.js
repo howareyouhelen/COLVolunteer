@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    getProfile();
+})
+
 function getID() {
     //READ database to get the user information to display
     firebase.auth().onAuthStateChanged(function(user) {
