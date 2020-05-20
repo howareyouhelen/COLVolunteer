@@ -1,4 +1,5 @@
 $(document).ready(() =>{
+    // $( window ).on( "load", function() {
     //Text Input
     $("#listEntry").on('keydown', inputEnterKey);
     //Edit Button
