@@ -98,11 +98,40 @@ function requestAccepted(clicked_id){
     console.log("request accepted");
     console.log(clicked_id);
     auth.onAuthStateChanged((user) => {
+        db.collection("user").doc(user.uid).get().then(snap => {
+            var volName = snap.data().name;
+        
         db.collection("user").doc(user.uid).collection("requestForMe").doc(clicked_id).set(
             {reqAccepted:true,reqCompleted:false},{merge:true}
         )
+        db.collection("user").doc(user.uid).collection("requestForMe").doc(clicked_id).get().then(function(doc){
+            var requesterId = doc.data().fromUserId;
+            var volunteerPostId = doc.data().volPostDocId;
+            
+            console.log(requesterId);
+            console.log(volunteerPostId);
+            console.log(volName);
+            db.collection("user").doc(requesterId).collection("pastRequestsToOthers").where("volPostDocId","==",volunteerPostId).get().
+                then(querySnapshot => {
+                    querySnapshot.forEach(documentSnapshot => {
+                        var querry = documentSnapshot.ref.path;
+                        console.log(querry);
+                      console.log(`Found document at ${documentSnapshot.ref.path}`);
+                      var d = querry.split('/');
+                      console.log(d);
+                      var c = d[3];
+                      console.log(c);
+                      db.collection("user").doc(requesterId).collection("pastRequestsToOthers").doc(c).set(
+                        {reqAccepted:true,reqCompleted:false,volunteerName:volName},{merge:true}
+                      )
+            })
+            
+            
+        })
     })
     location.reload();
+})
+})
 }
 
 function requestDeclined(clicked_id){
