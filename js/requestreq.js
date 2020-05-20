@@ -3,7 +3,7 @@ $(document).ready(function () {
         var user = user.uid;
         currentUser = user;
         const list_div = document.querySelector("#list_div");
-        var reqRef = db.collection("requestpost").where("status", "==", "completed").where("postrequester_uid", "==", currentUser).orderBy("timestamp", "desc");
+        var reqRef = db.collection("requestpost").where("status", "==", "pending").where("postrequester_uid", "==", currentUser).orderBy("timestamp", "desc");
         
         //display all request posts dynamically
         reqRef.onSnapshot(function(querySnapshot){
@@ -17,7 +17,6 @@ $(document).ready(function () {
                     + "<p class='docref' style='visibility: hidden'>"
                     + doc.data().docRefid
                     + "</p>"
-                    + "<input id='help_btn' class='btn btn-primary' type='submit' value='Help Me'/>"
                     + "</div>";
             });
         });

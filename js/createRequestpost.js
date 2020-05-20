@@ -20,9 +20,10 @@ $(document).ready(function () {
         var message = getInputVal("message");
         var timestamp = gettimestamp;
         var postrequester_uid = currentUser;
+        var status = "pending";
 
         //save request post
-        savePost(items, needbydate, message, timestamp, postrequester_uid);
+        savePost(items, needbydate, message, timestamp, postrequester_uid, status);
     }
     
 
@@ -35,13 +36,14 @@ $(document).ready(function () {
     }
 
     // save requestpost to firebase
-    function savePost (items, needbydate, message, timestamp, postrequester_uid) {
+    function savePost (items, needbydate, message, timestamp, postrequester_uid, status) {
         db.collection("requestpost").add({
             items: items,
             needbydate: needbydate,
             message: message,
             timestamp: timestamp,
-            postrequester_uid: postrequester_uid
+            postrequester_uid: postrequester_uid,
+            status: status
         })
         .then(function(docRef) {
             docRef.set({
