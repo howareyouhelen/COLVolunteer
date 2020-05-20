@@ -26,7 +26,7 @@ $(document).ready(function () {
             $(".btn").click(function(){
                 $(this).val("Help on its way!").prop('disabled', true);
                 var matchID = $(this).siblings('.docref')[0].innerHTML;
-                var docRef = reqRef.doc(matchID);
+                var docRef = db.collection("requestpost").doc(matchID);
                 docRef.set({
                     volunteer_uid: currentUser,
                     status: "accepted"
