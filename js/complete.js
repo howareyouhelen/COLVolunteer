@@ -3,7 +3,7 @@ $(document).ready(function () {
         var user = user.uid;
         currentUser = user;
         const list_div = document.querySelector("#list_div");
-        var reqRef = db.collection("requestpost").where("status", "==", "completed").where("postrequester_uid", "==", currentUser).orderBy("timestamp", "desc");
+        var reqRef = db.collection("requestpost").where("status", "==", "completed").where("postrequester_uid", "==", currentUser).orderBy("timestamp", "desc").limit(5);
         
         //display all request posts dynamically
         reqRef.onSnapshot(function(querySnapshot){
