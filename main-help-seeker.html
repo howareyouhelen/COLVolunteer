@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>CoVolunteer</title>
+        <!-- This Page's JavaScript and CSS-->
+        <script src="js/addressNotification.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/map.js"></script>
+        <script defer src="js/createVolunteerPostSearchBar.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+        <link rel="stylesheet" type="text/css" href="css/searchBar.css"> <!-- firebase User -->
+        <link rel="stylesheet" type="text/css" href="css/nav.css">
+        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/pagesNavResponsive.css"> 
+
+        <script src="js/pagesNavPopUp.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
+        <!-- favicon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+        <!-- User Related methods -->
+    </head>
+    <body>
+        <header id="navPopUp">
+            <div id="popupSpace"></div>
+            <h1><a class="nav" id="navPopupBack">CoVolunteer</a></h1>
+            <h4><a class="nav" href="chooserole.html">Change Role</a></h4>
+            <h4><a class="nav" href="createRequestPost.html">Request Help</a></h4>
+            <h4><a class="nav" href="requestreq.html">My Requests</a></h4>
+            <h4><a class="nav" href="shoppingList.html">My Shopping List</a></h4>
+        </header>
+  
+
+
+
+            <!------------------------------------------------------------------------------>
+            <!-- Make a request button popup -- Button trigger modal                      -->
+            <!------------------------------------------------------------------------------>
+            <!-- To Trigger Popup, add:data-toggle="modal" data-target="#exampleModal" to the button element-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="volunteerName">Send Your Request To Animesh</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-container">
+                                <div>
+                                    <Form id="msg">
+                                        <fieldset>
+                                            <legend>Enter Message</legend>
+                                            <textarea type="text" name="message" id="msgEntry" required></textarea>
+                                        </fieldset>
+                                    </Form>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Your Current List</h5>
+                                        <h6 class="card-subtitle">
+                                        </h6>
+                                        <ul class="list-group current-list-group" id="currentList">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="send-request" data-dismiss="modal">Send
+                                Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of make a request button popup -->
+
+            
+            <!------------------------------------------------------------------------------>
+            <!--                        Main Content Starts                               -->
+            <!------------------------------------------------------------------------------>
+
+            <main class="main-content">
+                <section class="posts" id="item_cards">
+                    <!-- //////////////////////  This is Sample Request Post ///////////////////////////////-->
+
+                    <!-- <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Animesh Kaushal</h4>
+                            <div style="float:right">distance</div>
+                            <i class='fas fa-map-marker-alt' onclick="dropPin()"></i>
+                            <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Kitsilano</h6>
+                            <p class="card-text">
+                                I am going to liqour depot.
+                            </p>
+                            <button type="button" id="first" class="btn btn-outline-info make-request" data-toggle="modal" value="asd" data-target="#exampleModal">Make a request</button>
+                        </div>
+                    </div> -->
+
+                    <!-- //////////////////////  /////////////////////////////// ///////////////////////////////-->
+                </section>
+                    <aside id="map-container">
+                        <div id="map"></div>
+                    </aside>
+            </main>
+            <!--Testing Modal Notification window-->
+
+            <!-- The Modal -->
+            <!-- <div id="myModal" class="modal"> -->
+                <!-- Modal content -->
+                <!-- <div class="modal-content"> -->
+                    <!--<span class="close">&times;</span>-->
+                    <!-- <p>Please update <a href="editProfile.html">address</a></p>
+                </div>
+            </div> -->
+        <!-- This input is to make map work correctly -->
+        <input id="pac-input" class="controls form-control" type="text" style="display:none">
+        <script>
+            $(document).ready(() => {
+                showCurrentList();
+                sendRequest(makeARequestButtonDone);
+                workingWithNotifications();
+                sortPostsInDB();
+
+                showName();
+                logout()
+            })
+        </script>
+    </body>
+
+</html>

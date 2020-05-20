@@ -269,7 +269,7 @@ function displayPosts() {
                         })
                     })
                     order.doc(item.id).delete().then(function() {
-                        console.log("Document successfully deleted! " + item.id);
+                        // console.log("Document successfully deleted! " + item.id);
                     }).catch(function(error) {
                         console.error("Error removing document: ", error);
                     });
