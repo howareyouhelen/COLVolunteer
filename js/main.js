@@ -47,7 +47,9 @@ function sendRequest(callback) {
                                 volPostDocId: volPostId,
                                 myUID: volUId,
                                 docRefid: docid,
-                                reqAccepted: false
+                                reqAccepted: false,
+                                reqDeclined: false
+                                
                             })
                             volunteer.set({
                                 newMsg: true
