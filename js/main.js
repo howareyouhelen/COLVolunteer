@@ -136,9 +136,10 @@ function deactivatePastRequests() {
     })
 }
 
-
+// Drops a pin on the map based on the geolocation of the volunteer post.
+// The pin is dropped whenever the "drop pin" button is clicked.
 function dropPin() {
-    hideDistance()
+    // hideDistance()
     markers.forEach(function (marker) {
         marker.setMap(null);
     });
@@ -167,6 +168,10 @@ function dropPin() {
 }
 
 // Sorts the volPosts by distance and stores the order of volpostdocid in the meta data of the user
+// All the Volunteer Posts are read and using the logged-in user's current geolocation and the post's
+// geolocation, a distance is calculated. This distance is then saved into a metaData collection in the 
+// the database using distance as the document ID. Firebase automatically sorts all documents in ascending 
+// order of doc id. Distance of all posts change depending on the currently logged-in user.
 function sortPostsInDB() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -193,13 +198,16 @@ function sortPostsInDB() {
     })
 }
 
+// Function used for testing
 function hideDistance() {
     $('.distance').on('click', function() {
         $('.distance').hide();
     })
 }
 
-// displays the volposts according to the order in the user's metadata in the database
+// displays the volposts according to the order in the user's metadata in the database. The posts are sorted
+// automatically by firebase, as firebase automatically sorts doc ID in ascending order when it is saved. Each doc
+// is then displayed onto the page and then in the end, the metaData is deleted from the database.
 function displayPosts() {
     console.log("displaying posts")
     firebase.auth().onAuthStateChanged(function (user) {
@@ -252,23 +260,27 @@ function displayPosts() {
 
                         $(b_id).append(f);
 
-                        let info = 'class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal" onclick="makeRequestButtonEvent()"';
-                        var e = '<button type="button"' + info + 'id="' + y + 'button" value = ' + docId + '>' + 'Send Request</button>';
-                        $(b_id).append(e);
-
-                        x++;
-
                         let myMap = db.collection('user').doc(user.uid).collection('metaData').doc('map');
                         myMap.get().then(snap => {
                             let myGeopoint = snap.data().geolocation;
                             let distance = geopoint_distance(myGeopoint, storeGeopoint);
+                            distance = distance.toFixed(2);
+
+                            var dis = '<h6 class="card-title text-muted distance" id="' + y + 'distance"> distance: ' + distance + 'km</h6>';
+                            var dis_id = '#' + y + 'distance';
+                            $(b_id).append(dis);
+
+                            let info = 'class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal" onclick="makeRequestButtonEvent()"';
+                            var e = '<button type="button"' + info + 'id="' + y + 'button" value = ' + docId + '>' + 'Send Request</button>';
+                            $(b_id).append(e);
 
                             var pin = `<i class='fas fa-map-marker-alt' lat="${lat}" lng="${lng}" onclick="dropPin()"></i>`;
                             var btn = `<button type="button" class="btn btn-outline-primary btn-sm show-on-map" lat="${lat}" lng="${lng}" onclick="dropPin()">show on map</button>`
-                            var dis = '<div style="float:right" class="card-title distance" id="' + y + 'distance">' + distance + '</div>' + btn + pin;
+                            var bp =  btn + pin;
 
-                            $(b_id).append(dis);
+                            $(b_id).append(bp);
                         })
+                        x++;
                     })
                     order.doc(item.id).delete().then(function() {
                         // console.log("Document successfully deleted! " + item.id);
