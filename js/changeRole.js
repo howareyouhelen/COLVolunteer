@@ -1,7 +1,3 @@
-
-
-
-
 //Converts address into geolocation and sets in the user's database
 function userGeopoint() {
     auth.onAuthStateChanged(function (user) {
@@ -17,12 +13,14 @@ function userGeopoint() {
 function getUserLocation() {
     let x = document.getElementById("user-location");
 
+    // Gets current location of the user. location changes depending on where user is logged in
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(saveAndShowPosition);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 
+    // Process the user's current location(geolocation) 
     function saveAndShowPosition(position) {
         let currentPos = position.coords;
         let lat = currentPos.latitude;

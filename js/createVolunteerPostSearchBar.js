@@ -44,8 +44,8 @@ function initMap() {
 }
 
 // The main Map function. called inside initMap()
+// This function initilizes the map and the search bar.
 function initAutocomplete(geolocation) {
-    console.log("getmap")
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: geolocation._lat,
@@ -131,6 +131,7 @@ function initAutocomplete(geolocation) {
             content: document.getElementById('info-content')
         });
 
+        // This determines what is shown in the pop-up of the markers
         function showInfoWindow() {
             console.log(this)
             var marker = this;

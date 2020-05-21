@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // This controls the behaviour of the navbar hidden "bar" for the mobile view.
     $("#bars").on("click", showNav);
     $("#navPopupBack").on("click", hideNav);
     $("#navPopUp").on("click", hideNav);

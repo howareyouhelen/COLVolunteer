@@ -1,4 +1,5 @@
-//   // Draw a line showing the straight distance between the geopoints
+// Calculate the distance in km between point1 and point2. The points are in the format of
+// google geopoints.
 function geopoint_distance(pt1, pt2) {
     var R = 3958.8; // Radius of the Earth in miles
     var rlat1 = pt1._lat * (Math.PI/180); // Convert degrees to radians
@@ -10,7 +11,7 @@ function geopoint_distance(pt1, pt2) {
     return d * 1.60934; //convert from miles to km
 }
 
-//Converts address into geolocation and sets in the user's database
+// Converts address into geolocation and sets in the user's database
 function geocodeAddress(address) {
     let string = address.split(" ").join("+");
     const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=' + firebaseKEY;

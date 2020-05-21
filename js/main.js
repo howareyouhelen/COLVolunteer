@@ -20,7 +20,8 @@ function workingWithNotifications() {
 }
 
 
-//Sends the request to the volunteer --> shoppingList + msg
+// Sends the request to the volunteer --> current shoppingList +  a msg
+// Info regarding the sender is saved in the database.
 function sendRequest(callback) {
     $("#send-request").on('click', () => {
         let requestMsg = $('#msgEntry').val();
@@ -75,7 +76,10 @@ function sendRequest(callback) {
     })
 }
 
-//After Request is Sent, disables the make-a-request button
+// After a request is Sent, disables the make-a-request(send request) button.
+// Get all buttons with class .make-request, and matches the value of the button with 
+// that of the param (uid), if it matches, disable the button. The uid is the volunteerPost
+// docID in the database, it is saved as in the value attribute of the button.
 function makeARequestButtonDone(uid) {
     let buttons = $('button.make-request');
     for (let x = 0; x < buttons.length; x++) {
@@ -107,7 +111,8 @@ function makeRequestButtonEvent() {
 }
 
 
-//Put shopping list on Make-A-Request popup window --- by reading from database: user/shoppingList/currentList/list arr[]
+//Put shopping list on Make-A-Request popup window --- by reading from database: 
+// user/shoppingList/currentList/list arr[]
 function showCurrentList() {
     auth.onAuthStateChanged((user) => {
         if (user) {
@@ -122,7 +127,9 @@ function showCurrentList() {
     })
 }
 
-// Deactivates previously made request posts
+// Deactivates the "send request button" after a request has been sent. A post will be deactivated 
+// if the postID is in the logged-in user's past requests in the database. vPoId is the volunteerPost
+// docId in the database
 function deactivatePastRequests() {
     auth.onAuthStateChanged((user) => {
         if (user) {
@@ -198,7 +205,7 @@ function sortPostsInDB() {
     })
 }
 
-// Function used for testing
+// Function used for testing 
 function hideDistance() {
     $('.distance').on('click', function() {
         $('.distance').hide();
