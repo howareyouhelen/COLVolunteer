@@ -8,10 +8,11 @@ $(document).ready(()=>{
 
 function loadrequests(){
 
-    auth.onAuthStateChanged((user) => {
+
+    auth.onAuthStateChanged((user) => {//getting user
         console.log(user);
 
-        if(user){
+        if(user){//if user exists
 
             db.collection("user").doc(user.uid).set(
                 {newMsg: false},{merge:true}
@@ -124,15 +125,16 @@ function requestAccepted(clicked_id){
                       console.log(c);
                       db.collection("user").doc(requesterId).collection("pastRequestsToOthers").doc(c).set(
                         {reqAccepted:true,reqCompleted:false,volunteerName:volName},{merge:true}
-                      )
+                      ).then(location.reload())
             })
             
             
         })
     })
-    location.reload();
+    
 })
 })
+
 }
 
 function requestDeclined(clicked_id){
@@ -166,7 +168,7 @@ function requestDeclined(clicked_id){
                       console.log(c);
                       db.collection("user").doc(requesterId).collection("pastRequestsToOthers").doc(c).set(
                         {reqAccepted:false,reqCompleted:false,volunteerName:volName},{merge:true}
-                      )
+                      ).then(location.reload())
             })
             
             
@@ -175,5 +177,5 @@ function requestDeclined(clicked_id){
     
 })
 })
-    location.reload();
+    
 }
