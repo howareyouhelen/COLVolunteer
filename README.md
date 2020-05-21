@@ -3,6 +3,24 @@ COMP 2800
 During this critical period where the world is hit with COVID-19, this is an app that brings the community together by having volunteers shop for those in need. Moreover, allowing users to share information on where certain items were last seen in town.
 <hr>
 
+How repo is organized:
+We are using the Gitflow Workflow for our application on version controls, so our repo will be consisted of master, dev and feature branches. We sometimes push out hot fixes to dev but after each sprint, we will tag the merge to master. The app base will consist of our html files, including .md, .txt, .rules, .json. We then separate our files into js folder where all the .js files are at and a css folder where all the .css files are at.
+- COVolunteer
+    - .html
+    - .json
+    - .md
+    - .rules
+    - .txt
+    - js/ folder
+        - all .js files
+    - css/ folder
+        - all .css files
+    - img/ folder
+        - all .png files
+    - archived pages/ folder
+        - all archieved .html files
+<hr>
+
 Language(s) used in this application: 
 1. JavaScript
 2. JQuery
