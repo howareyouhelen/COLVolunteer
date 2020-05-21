@@ -32,7 +32,7 @@ function getProfile() {
     });
 }
 function displayProfile(user) {
-    document.getElementById("userName").innerHTML = user.name;
+    document.getElementById("user-name").innerHTML = user.name;
     console.log(user.name)
     document.getElementById("userEmail").innerHTML = user.email;
     console.log(user.email)
