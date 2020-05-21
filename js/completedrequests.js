@@ -26,7 +26,7 @@ function loadrequests(){
                     var requesterId = doc.data().fromUserId;
                     db.collection("user").doc(requesterId).get().then((snap1 =>{
                         var requesterName = snap1.data().name;
-                        var requesterAddress = snap1.data().address;
+                        //var requesterAddress = snap1.data().address;
                         var requesterEmail = snap1.data().email;
                         
 
@@ -40,7 +40,7 @@ function loadrequests(){
                     console.log(list);
                     console.log(requesterId);
                     console.log(requesterName);
-                    console.log(requesterAddress);
+                    //console.log(requesterAddress);
 
                     var y = "card" + x;
 
@@ -59,8 +59,8 @@ function loadrequests(){
 
                     $(b_id).append(c);
 
-                    var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'address">Requester\'s address: ' + requesterAddress + '</h6>';
-                    var d_id = '#' + y + 'address';
+                    // var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'address">Requester\'s address: ' + requesterAddress + '</h6>';
+                    // var d_id = '#' + y + 'address';
 
                     var da = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'email">Requester\'s email: ' + requesterEmail + '</h6>';
                     var d_id = '#' + y + 'email';

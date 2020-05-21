@@ -19,14 +19,14 @@ function loadrequests(){
             db.collection("user").doc(user.uid).collection("requestForMe").get().then((querySnapshot) => {
                 var x = 1;
                 querySnapshot.forEach(function (doc) {
-
+                    console.log(x);
                     var isaccepted = doc.data().reqAccepted;
                     var iscompleted = doc.data().reqCompleted;
                     if(isaccepted == true && iscompleted == false){
                     var requesterId = doc.data().fromUserId;
                     db.collection("user").doc(requesterId).get().then((snap1 =>{
                         var requesterName = snap1.data().name;
-                        var requesterAddress = snap1.data().address;
+                        //var requesterAddress = snap1.data().address;
                         var requesterEmail = snap1.data().email;
                         
 
@@ -40,8 +40,8 @@ function loadrequests(){
                     console.log(list);
                     console.log(requesterId);
                     console.log(requesterName);
-                    console.log(requesterAddress);
-
+                    //console.log(requesterAddress);
+                    console.log("card number " + x);
                     var y = "card" + x;
 
                     var z = '<div class="card" id="' + y + '"></div>';
@@ -59,8 +59,8 @@ function loadrequests(){
 
                     $(b_id).append(c);
 
-                    var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'address">Requester\'s address: ' + requesterAddress + '</h6>';
-                    var d_id = '#' + y + 'address';
+                    // var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'address">Requester\'s address: ' + requesterAddress + '</h6>';
+                    // var d_id = '#' + y + 'address';
 
                     var da = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'email">Requester\'s email: ' + requesterEmail + '</h6>';
                     var d_id = '#' + y + 'email';
@@ -82,7 +82,7 @@ function loadrequests(){
                     $(b_id).append(h);
 
                     
-                    
+                    console.log("x incremented");
                     x++;
                     
                 }))}
