@@ -89,13 +89,12 @@ html, body{
 .hvrbox.active .hvrbox-text_mobile {
 	display: block;
 }
-
+.twitter-share-button {
+	margin-top: 5px;
+	margin-left: 1vw;
+}
 
 /* Media Query */
-
-
-
-
 @media (max-width: 500px) {
     a.navbar-brand, div.icon {
 		display:none
@@ -107,6 +106,10 @@ html, body{
 
 	.caption{
 		font-size: 5vw;
+	}
+
+	.fb-share-button{
+		margin-left: 4vw;
 	}
 
 }
