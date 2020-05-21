@@ -1,20 +1,29 @@
-$(document).ready(()=>{
+/*
+all of the console.log statements are used for testing
+*/
+
+$(document).ready(() => {
     console.log("in js file");
     loadrequests();
-    
+
 })
 
-function loadrequests(){
+function loadrequests() {
 
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => { //getting user
         console.log(user);
 
-        if(user){
+        if (user) { //if user exists
 
-            db.collection("user").doc(user.uid).set(
-                {newMsg: false},{merge:true}
-            );
+            db.collection("user").doc(user.uid).set({
+                newMsg: false
+            }, {
+                merge: true
+            });
 
+            /*
+            loading all the requests by iterating through requestforMe sub-collection in user's doc
+            */
 
             db.collection("user").doc(user.uid).collection("requestForMe").get().then((querySnapshot) => {
                 var x = 1;
@@ -22,83 +31,89 @@ function loadrequests(){
                     console.log(x);
                     var isaccepted = doc.data().reqAccepted;
                     var iscompleted = doc.data().reqCompleted;
-                    if(isaccepted == true && iscompleted == false){
-                    var requesterId = doc.data().fromUserId;
-                    db.collection("user").doc(requesterId).get().then((snap1 =>{
-                        var requesterName = snap1.data().name;
-                        //var requesterAddress = snap1.data().address;
-                        var requesterEmail = snap1.data().email;
-                        
+                    if (isaccepted == true && iscompleted == false) { //checking for accepted requests.
+                        var requesterId = doc.data().fromUserId;
+                        db.collection("user").doc(requesterId).get().then((snap1 => {
+                            var requesterName = snap1.data().name;
+                            //var requesterAddress = snap1.data().address;
+                            var requesterEmail = snap1.data().email;
 
-                    console.log("test..." + requesterEmail);
-                    console.log("test..." + requesterName);
-                    var message = doc.data().message;
-                    var list = doc.data().list;
-                    var docRef = doc.data().docRefid;
-                    
-                    console.log(message);
-                    console.log(list);
-                    console.log(requesterId);
-                    console.log(requesterName);
-                    //console.log(requesterAddress);
-                    console.log("card number " + x);
-                    var y = "card" + x;
 
-                    var z = '<div class="card" id="' + y + '"></div>';
-                    var z_id = '#' + y;
+                            console.log("test..." + requesterEmail);
+                            console.log("test..." + requesterName);
+                            var message = doc.data().message;
+                            var list = doc.data().list;
+                            var docRef = doc.data().docRefid;
 
-                    $("#item_cards").append(z);
+                            console.log(message);
+                            console.log(list);
+                            console.log(requesterId);
+                            console.log(requesterName);
+                            //console.log(requesterAddress);
+                            console.log("card number " + x);
+                            var y = "card" + x;
 
-                    var b = '<div class="card-body" id="' + y + 'body">';
-                    var b_id = '#' + y + 'body';
+                            var z = '<div class="card" id="' + y + '"></div>';
+                            var z_id = '#' + y;
 
-                    $(z_id).append(b);
+                            $("#item_cards").append(z);
 
-                    var c = '<h4 class="card-title" id="' + y + 'name">Requester: ' + requesterName + '</h4>';
-                    var c_id = '#' + y + 'name';
+                            var b = '<div class="card-body" id="' + y + 'body">';
+                            var b_id = '#' + y + 'body';
 
-                    $(b_id).append(c);
+                            $(z_id).append(b);
 
-                    // var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'address">Requester\'s address: ' + requesterAddress + '</h6>';
-                    // var d_id = '#' + y + 'address';
+                            var c = '<h4 class="card-title" id="' + y + 'name">Requester: ' + requesterName + '</h4>';
+                            var c_id = '#' + y + 'name';
 
-                    var da = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'email">Requester\'s email: ' + requesterEmail + '</h6>';
-                    var d_id = '#' + y + 'email';
+                            $(b_id).append(c);
 
-                    $(b_id).append(da);
+                            // var d = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'address">Requester\'s address: ' + requesterAddress + '</h6>';
+                            // var d_id = '#' + y + 'address';
 
-                    var f = '<p class="card-text" id="' + y + 'message"> Message: ' + message + '</p>';
-                    var f_id = '#' + y + 'message';
+                            var da = '<h6 class="card-subtitle mb-2 text-muted" id="' + y + 'email">Requester\'s email: ' + requesterEmail + '</h6>';
+                            var d_id = '#' + y + 'email';
 
-                    var g = '<p class="card-text" id="' + y + 'list"> Items requested: ' + list + '</p>';
-                    var g_id = '#' + y + 'list';
+                            $(b_id).append(da);
 
-                    $(b_id).append(f);
-                    $(b_id).append(g);
-                    
-                    
+                            var f = '<p class="card-text" id="' + y + 'message"> Message: ' + message + '</p>';
+                            var f_id = '#' + y + 'message';
 
-                    var h = '<button type="button" class="btn btn-success" id=' + docRef + ' value = ' + docRef + ' onclick = "requestCompleted(this.id)" >' + 'Mark Complete</button>';
-                    $(b_id).append(h);
+                            var g = '<p class="card-text" id="' + y + 'list"> Items requested: ' + list + '</p>';
+                            var g_id = '#' + y + 'list';
 
-                    
-                    console.log("x incremented");
-                    x++;
-                    
-                }))}
+                            $(b_id).append(f);
+                            $(b_id).append(g);
+
+
+
+                            var h = '<button type="button" class="btn btn-success" id=' + docRef + ' value = ' + docRef + ' onclick = "requestCompleted(this.id)" >' + 'Mark Complete</button>';
+                            $(b_id).append(h);
+
+
+                            console.log("x incremented");
+                            x++; // incrementing x variable for card numbers.
+
+                        }))
+                    }
                 })
-            })         
-        }          
-    });               
+            })
+        }
+    });
 }
 
-function requestCompleted(clicked_id){
+/*
+    Mark complete button, changes the status of request to complete from accepted.
+*/
+function requestCompleted(clicked_id) {
     console.log("request accepted");
     console.log(clicked_id);
     auth.onAuthStateChanged((user) => {
-        db.collection("user").doc(user.uid).collection("requestForMe").doc(clicked_id).set(
-            {reqCompleted:true},{merge:true}
-        )
+        db.collection("user").doc(user.uid).collection("requestForMe").doc(clicked_id).set({
+            reqCompleted: true
+        }, {
+            merge: true
+        })
     })
     location.reload();
 }
