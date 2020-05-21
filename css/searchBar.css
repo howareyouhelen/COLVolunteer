@@ -66,6 +66,10 @@
         padding: 0 11px 0 13px;
         text-overflow: ellipsis;
         width: 400px;
+        background-image: url(../img/magnifying-glass.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        text-indent: 20px;
       }
 
       #pac-input:focus {

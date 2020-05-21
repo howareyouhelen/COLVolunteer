@@ -34,12 +34,13 @@
         <!-- JS -->
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <script src="js/sidebar.js"></script>
+        <!-- Mobile View JS -->
+        <script src="js/pagesNavPopUp.js"></script>
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/requestMain.css">
         <link rel="stylesheet" type="text/css" href="css/nav.css">
         <link rel="stylesheet" type="text/css" href="css/sidebar.css">
         <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
-
         <link rel="stylesheet" type="text/css" href="css/pagesNavResponsive.css">
         <!-- favicon -->
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
@@ -47,13 +48,29 @@
     </head>
 
     <body>
-
+        <!-------------------------------------------->
+        <!-- This is the hidden nav for mobile view -->
+        <!-------------------------------------------->
+        <header id="navPopUp">
+            <div id="popupSpace"></div>
+            <h1><a class="nav" id="navPopupBack">CoVolunteer</a></h1>
+            <h4><a class="nav" href="chooserole.html">Change Role</a></h4>
+            <h4><a class="nav" href="#"><i class="fa fa-heart createVolunteerPostPage"> Help Others</i></a></h4>
+            <h5><a class="nav request-sidebar" href="#">Pending Requests</a></h5>
+            <h5><a class="nav complete-sidebar" href="#">Completed Requests</a></h5>
+            <h5><a class="nav accept-sidebar" href="#">Accepted Requests</a></h5>
+        </header>
+        <!-------------------------------------------->
+        <!-- End of Hidden Mobile View Nav          -->
+        <!-------------------------------------------->
         <div class="grid-container-whole-page">
-            <!--Nav and sidebar-->
+            <!------------------------------------------------------------------------------>
+            <!--                              nav starts here                             -->
+            <!------------------------------------------------------------------------------>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a id="nav-logo" class="navLeft" href="volunteer-view.html"><img id="logo" src="img/logo.png"></a>
                 <a class="navbar-brand" href="volunteer-view.html">COVolunteer</a>
-
+                <img id="bars" src="img/bars2.png">
                 <div id="navbarSupportedContent">
                     <div id="startnav">
                         <ul class="navbar-nav mr-auto">
@@ -102,7 +119,7 @@
                             </a>
                         </li>
                         <li class="nav-item active glow">
-                            <a class="nav-link" href="#" id="createVolunteerPostPage">
+                            <a class="nav-link createVolunteerPostPage" href="#">
                                 <div class="icon">
                                     <i class="fa fa-plus-circle"></i> "Help Others"
                                 </div>
@@ -118,7 +135,7 @@
                         </li>
                         <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
                         <li class="nav-item profile-request req">
-                            <a class="nav-link active" href="#" id="request-sidebar">
+                            <a class="nav-link active request-sidebar" href="#">
                                 <div id="pendingRequests" class="icon">
                                     <i class="fa fa-handshake"></i> Pending
                                 </div>
@@ -126,7 +143,7 @@
                         </li>
                         <!-- users to view all their completed requests-->
                         <li class="nav-item profile-request req">
-                            <a class="nav-link active" href="#" id="complete-sidebar">
+                            <a class="nav-link active complete-sidebar" href="#">
                                 <div class="icon">
                                     <i class="fa fa-check-square"></i> Completed
                                 </div>
@@ -150,9 +167,6 @@
             <div class="main-content">
             </div>
 
-
-
-
             <!-- User Related methods -->
             <script>
                 document.addEventListener("DOMContentLoaded", function (event) {
@@ -161,20 +175,17 @@
 
                     $('.main-content').load('volunteer-main.html');
 
-
-
-
-
-                    $('#request-sidebar').on('click', function () {
+                    $('.request-sidebar').on('click', function () {
+                        console.log('hi')
                         $('.main-content').load('volunteer-request.html')
                         $.getScript("js/request.js");
                     })
-                    $('#complete-sidebar').on('click', function () {
+                    $('.complete-sidebar').on('click', function () {
                         $('.main-content').load('volunteer-complete.html')
                         $.getScript("js/completedrequests.js");
                     })
 
-                    $('#accept-sidebar').on('click', function () {
+                    $('.accept-sidebar').on('click', function () {
                         $('.main-content').load('volunteer-accept.html')
                         $.getScript("js/acceptedrequest.js");
                     })
@@ -183,7 +194,7 @@
                         $('.main-content').load('profile.html')
                         $.getScript("js/profile.js");
                     })
-                    $('#createVolunteerPostPage').on('click', function () {
+                    $('.createVolunteerPostPage').on('click', function () {
                         $('.main-content').load('volunteer-createVolunteerPost.html')
                         $.getScript("js/createVolunteerPostSearchBar.js");
                         $.getScript("js/volunteer.js");
