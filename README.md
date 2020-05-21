@@ -90,8 +90,8 @@ User<br>
     - newReq (boolean)<br>
 
     Under collection user, create 4 additional collections<br>
-    -metaData<br>
-        - map	<br>
+    - metaData<br>
+        - map<br>
             - Geolocation (geopoint)<br>
     - pastRequestsToOthers<br>
         - volPostDocId (STRING)<br>
@@ -109,14 +109,14 @@ User<br>
         - currentList<br>
             - List (ARRAY)<br>
 volunteerPosts<br>
-    date (STRING)<br>
-    geopoint (geopoint)<br>
-    store (STRING)<br>
-    storeAddress (STRING)<br>
-    volUID (STRING)<br>
-    voladdress (STRING)<br>
-    volemail (STRING)<br>
-    volname (STRING)<br>
+    - date (STRING)<br>
+    - geopoint (geopoint)<br>
+    - store (STRING)<br>
+    - storeAddress (STRING)<br>
+    - volUID (STRING)<br>
+    - voladdress (STRING)<br>
+    - volemail (STRING)<br>
+    - volname (STRING)<br>
 <br>
 <hr>
 Testing:<br>
