@@ -75,39 +75,39 @@ Configurations:<br>
 2. database setup please refer to #7 under<br>
 Example of a db structure after it is completed and app running with tests:<br>
 Requestpost<br>
-    docRefid (STRING)<br>
-    items (STRING)<br>
-    message (STRING)<br>
-    needbydate (STRING)<br>
-    postrequester_uid (STRING)<br>
-    timestamp (NUMBER)<br>
+    - docRefid (STRING)<br>
+    - items (STRING)<br>
+    - message (STRING)<br>
+    - needbydate (STRING)<br>
+    - postrequester_uid (STRING)<br>
+    - timestamp (NUMBER)<br>
 User<br>
-    address (STRING)<br>
-    currentVolpostDocId (STRING)<br>
-    Email (STRING)<br>
-    Name (STRING)<br>
-    newMsg (boolean)<br>
-    newReq (boolean)<br>
+    -address (STRING)<br>
+    -currentVolpostDocId (STRING)<br>
+    -Email (STRING)<br>
+    -Name (STRING)<br>
+    -newMsg (boolean)<br>
+    -newReq (boolean)<br>
 
     Under collection user, create 4 additional collections<br>
-    metaData<br>
-        map	<br>
-            Geolocation (geopoint)<br>
-    pastRequestsToOthers<br>
-        volPostDocId (STRING)<br>
-    requestForMe <br>
-        docRefid (STRING)<br>
-        fromUserId (STRING)<br>
-        List (ARRAY)<br>
-        message (STRING)<br>
-        myUID (STRING)<br>
-        reqAccepted (STRING)<br>
-        reqCompleted (STRING)<br>
-        reqDeclined (STRING)<br>
-        volPostDocId (STRING)<br>
-    shoppingList<br>
-        currentList<br>
-            List (ARRAY)<br>
+    -metaData<br>
+        - map	<br>
+            - Geolocation (geopoint)<br>
+    - pastRequestsToOthers<br>
+        - volPostDocId (STRING)<br>
+    - requestForMe <br>
+        - docRefid (STRING)<br>
+        - fromUserId (STRING)<br>
+        - List (ARRAY)<br>
+        - message (STRING)<br>
+        - myUID (STRING)<br>
+        - reqAccepted (STRING)<br>
+        - reqCompleted (STRING)<br>
+        - reqDeclined (STRING)<br>
+        - volPostDocId (STRING)<br>
+    - shoppingList<br>
+        - currentList<br>
+            - List (ARRAY)<br>
 volunteerPosts<br>
     date (STRING)<br>
     geopoint (geopoint)<br>
