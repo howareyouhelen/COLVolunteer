@@ -22,6 +22,9 @@ function workingWithNotifications() {
 
 // Sends the request to the volunteer --> current shoppingList +  a msg
 // Info regarding the sender is saved in the database.
+// The "callback" function is called at the end of the function, which would be the
+// "makeARequestButtonDone" function. This makes the make-a-request button inactive
+// after a request is sent.
 function sendRequest(callback) {
     $("#send-request").on('click', () => {
         let requestMsg = $('#msgEntry').val();
@@ -50,7 +53,7 @@ function sendRequest(callback) {
                                 docRefid: docid,
                                 reqAccepted: false,
                                 reqDeclined: false
-                                
+
                             })
                             volunteer.set({
                                 newMsg: true
@@ -76,13 +79,33 @@ function sendRequest(callback) {
     })
 }
 
+// Deactivates the "send request button" after a request has been sent. A post will be deactivated 
+// if the postID is in the logged-in user's past requests in the database. vPoId is the volunteerPost
+// docId in the database.
+// **This method is no longer being used**
+function deactivatePastRequests() {
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            db.collection('user').doc(user.uid).collection('pastRequestsToOthers').get().then((snap) => {
+                snap.forEach((doc) => {
+                    vPoId = doc.data().volPostDocId;
+                    makeARequestButtonDone(vPoId);
+                })
+            })
+        }
+    })
+}
+
 // After a request is Sent, disables the make-a-request(send request) button.
 // Get all buttons with class .make-request, and matches the value of the button with 
 // that of the param (uid), if it matches, disable the button. The uid is the volunteerPost
 // docID in the database, it is saved as in the value attribute of the button.
 function makeARequestButtonDone(uid) {
+    console.log(uid)
     let buttons = $('button.make-request');
+    console.log(buttons)
     for (let x = 0; x < buttons.length; x++) {
+        console.log(buttons[x].value)
         if (buttons[x].value === uid) {
             $(buttons[x]).html("Request Sent");
             $(buttons[x]).prop("disabled", true);
@@ -122,22 +145,6 @@ function showCurrentList() {
                 let data = snap.data();
                 for (let i = 0; i < data.list.length; i++)
                     $("#currentList").append('<li class="list-group-item">' + data.list[i] + '</li>');
-            })
-        }
-    })
-}
-
-// Deactivates the "send request button" after a request has been sent. A post will be deactivated 
-// if the postID is in the logged-in user's past requests in the database. vPoId is the volunteerPost
-// docId in the database
-function deactivatePastRequests() {
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-            db.collection('user').doc(user.uid).collection('pastRequestsToOthers').get().then((snap) => {
-                snap.forEach((doc) => {
-                    vPoId = doc.data().volPostDocId;
-                    makeARequestButtonDone(vPoId);
-                })
             })
         }
     })
@@ -192,7 +199,7 @@ function sortPostsInDB() {
                         var docId = doc.id;
                         var storeGeopoint = doc.data().geopoint; //geopoint._lat
                         let distance = geopoint_distance(myGeopoint, storeGeopoint);
-                        if((distance/10) <= 1) {
+                        if ((distance / 10) <= 1) {
                             distance = "0" + distance;
                         }
                         postOrder.doc("" + distance).set({
@@ -207,7 +214,7 @@ function sortPostsInDB() {
 
 // Function used for testing 
 function hideDistance() {
-    $('.distance').on('click', function() {
+    $('.distance').on('click', function () {
         $('.distance').hide();
     })
 }
@@ -268,6 +275,7 @@ function displayPosts() {
                         $(b_id).append(f);
 
                         let myMap = db.collection('user').doc(user.uid).collection('metaData').doc('map');
+                        let myPastReq = db.collection('user').doc(user.uid).collection('pastRequestsToOthers').orderBy('volPostDocId');
                         myMap.get().then(snap => {
                             let myGeopoint = snap.data().geolocation;
                             let distance = geopoint_distance(myGeopoint, storeGeopoint);
@@ -277,25 +285,39 @@ function displayPosts() {
                             var dis_id = '#' + y + 'distance';
                             $(b_id).append(dis);
 
-                            let info = 'class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal" onclick="makeRequestButtonEvent()"';
-                            var e = '<button type="button"' + info + 'id="' + y + 'button" value = ' + docId + '>' + 'Send Request</button>';
+                            let pastRequest = false;
+                            myPastReq.get().then(function(snap) {
+                                snap.forEach(function(item) {
+                                    if (item.data().volPostDocId == docId)
+                                    pastRequest = true;
+                                })
+                            }).then(function() {
+                                let info = 'class="btn btn-outline-info make-request" data-toggle="modal" data-target="#exampleModal" onclick="makeRequestButtonEvent()"';
+                                var e ='';
+                                if (pastRequest == false) {
+                                    e = '<button type="button"' + info + 'id="' + y + 'button" value = ' + docId + '>' + 'Send Request</button>';
+                                } else {
+                                    e = '<button type="button" disabled ' + info + 'id="' + y + 'button" value = ' + docId + '>' + 'Request Sent</button>';
+                                }
+
                             $(b_id).append(e);
+                            })
 
                             var pin = `<i class='fas fa-map-marker-alt' lat="${lat}" lng="${lng}" onclick="dropPin()"></i>`;
                             var btn = `<button type="button" class="btn btn-outline-primary btn-sm show-on-map" lat="${lat}" lng="${lng}" onclick="dropPin()">show on map</button>`
-                            var bp =  btn + pin;
+                            var bp = btn + pin;
 
                             $(b_id).append(bp);
                         })
                         x++;
                     })
-                    order.doc(item.id).delete().then(function() {
+                    order.doc(item.id).delete().then(function () {
                         // console.log("Document successfully deleted! " + item.id);
-                    }).catch(function(error) {
+                    }).catch(function (error) {
                         console.error("Error removing document: ", error);
                     });
                 })
-            }).then(deactivatePastRequests)
+            })
         }
     })
 }

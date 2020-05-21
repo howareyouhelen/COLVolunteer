@@ -177,6 +177,11 @@
         <script>
             $(document).ready(() => {
                 $('.main-content').load('helpseeker-main.html');
+                $.getScript("js/addressNotification.js");
+                $.getScript("js/main.js");
+                $.getScript("js/map.js");
+                $.getScript("js/createVolunteerPostSearchBar.js");
+                $.getScript("js/pagesNavPopUp.js");
 
                 $('.shopListPage').on('click', function () {
                     $('.main-content').load('helpseeker-shoppingList.html')
