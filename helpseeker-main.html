@@ -4,27 +4,21 @@
     <head>
         <meta charset="UTF-8">
         <title>CoVolunteer</title>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
         <!-- This Page's JavaScript and CSS-->
         <script src="js/addressNotification.js"></script>
         <script src="js/main.js"></script>
         <script src="js/map.js"></script>
         <script defer src="js/createVolunteerPostSearchBar.js"></script>
-        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
-        <link rel="stylesheet" type="text/css" href="css/searchBar.css"> <!-- firebase User -->
-        <link rel="stylesheet" type="text/css" href="css/nav.css">
-        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
-        <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/pagesNavResponsive.css"> 
 
         <script src="js/pagesNavPopUp.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
-        <!-- favicon -->
-        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-        <!-- User Related methods -->
+        <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
         <header id="navPopUp">
@@ -35,8 +29,8 @@
             <h4><a class="nav" href="requestreq.html">My Requests</a></h4>
             <h4><a class="nav" href="shoppingList.html">My Shopping List</a></h4>
         </header>
-  
-
+    
+                            
 
 
             <!------------------------------------------------------------------------------>
@@ -89,7 +83,6 @@
             <!--                        Main Content Starts                               -->
             <!------------------------------------------------------------------------------>
 
-            <main class="main-content">
                 <section class="posts" id="item_cards">
                     <!-- //////////////////////  This is Sample Request Post ///////////////////////////////-->
 
@@ -112,17 +105,6 @@
                     <aside id="map-container">
                         <div id="map"></div>
                     </aside>
-            </main>
-            <!--Testing Modal Notification window-->
-
-            <!-- The Modal -->
-            <!-- <div id="myModal" class="modal"> -->
-                <!-- Modal content -->
-                <!-- <div class="modal-content"> -->
-                    <!--<span class="close">&times;</span>-->
-                    <!-- <p>Please update <a href="editProfile.html">address</a></p>
-                </div>
-            </div> -->
         <!-- This input is to make map work correctly -->
         <input id="pac-input" class="controls form-control" type="text" style="display:none">
         <script>
@@ -134,6 +116,7 @@
 
                 showName();
                 logout()
+
             })
         </script>
     </body>

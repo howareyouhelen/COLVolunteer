@@ -45,6 +45,7 @@ function initMap() {
 
 // The main Map function. called inside initMap()
 function initAutocomplete(geolocation) {
+    console.log("getmap")
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: geolocation._lat,

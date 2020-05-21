@@ -14,7 +14,7 @@
       }
       main {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
         
       }
       
@@ -98,14 +98,13 @@
       
   /* The map CSS */
       #map {
-      height: 60vh;
+      height: 90vh;
       margin: auto;
-      width: 40vw;
+      width: 500px
       }
       
       #main-content-container{
           display: grid;
-          grid-template-columns: 1fr 1fr;
       }
   
       i.fas {

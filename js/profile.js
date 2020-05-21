@@ -1,3 +1,11 @@
+$(document).ready(function() {
+    getProfile();
+    $('#edit-profile').on('click', function() {
+        $('.main-content').load('editProfile.html')
+        $.getScript("js/editProfile.js");
+    })
+})
+
 function getID() {
     //READ database to get the user information to display
     firebase.auth().onAuthStateChanged(function(user) {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Create Request Post</title>
+
+        <script src="js/createRequestpost.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/createRequestpost.css">
+    </head>
+
+    <body>
+                <div id="success_bar">Successfully created request post.</div>
+                <h1>Create Request Post for Errands/Groceries</h1>
+                <hr>
+                <h5>Post items you want others to pick up for you</h5>
+                <form id="create-reqpost-form" class="validate">
+                    <div class="form-group">
+                        <label for="formControlInput2">What items do you need?</label>
+                        <textarea type="text" class="form-control" name="items" id="items"
+                            placeholder="item name(s) separated by , (comma)" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">When do you need the items by?</label>
+                        <input type="date" class="form-control" name="needbydate" id="needbydate" placeholder="MM-DD" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formControlInput2">Message to the volunteer</label>
+                        <textarea type="text" class="form-control" name="message" id="message"
+                            placeholder="type your message here"></textarea>
+                        <button id="req-submit-btn" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+    </body>
+</html>
