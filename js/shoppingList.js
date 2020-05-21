@@ -14,7 +14,8 @@ $(document).ready(() =>{
     //Below are functions
     ///////////////////////
 
-    //Put shopping list on Make-A-Request popup window --- by reading from database: user/shoppingList/currentList/list arr[]
+    // Put shopping list on Make-A-Request popup window --- by reading from database: 
+    // user/shoppingList/currentList/list arr[]
     function showCurrentList() {
         auth.onAuthStateChanged((user) => {
             if (user) {
@@ -32,7 +33,7 @@ $(document).ready(() =>{
         })
     }
         
-    //input values are submitted by pressing enter key
+    // input values are submitted by pressing enter key
     function inputEnterKey(e) {
         if (e.keyCode === 13) {
             e.preventDefault();
@@ -40,7 +41,7 @@ $(document).ready(() =>{
         }
     }
 
-    //Add input to llist <li>
+    // Add input to llist <li>
     function addToList() {
         let item = $("#listForm").serializeArray();
         if(item[0].value) 
@@ -49,14 +50,14 @@ $(document).ready(() =>{
         activateDeleteButton();
     }
 
-    //Activates the inactive delete button
+    // Activates the inactive delete button
     function activateDeleteButton() {
         if($("#currentList").children().length != 0)
             $("#editList").prop("disabled", false);
 
     }
 
-    //Saves the list to the database as user/uid/shoppingList/currentList/ array list[]
+    // Saves the list to the database as user/uid/shoppingList/currentList/ array list[]
     function saveListToCurrentList() {
         auth.onAuthStateChanged((user) =>{
             if (user) {
@@ -73,7 +74,7 @@ $(document).ready(() =>{
         });
     }
     
-    //addRemoveItemEvent handles the events of the editList button (delete list)
+    // addRemoveItemEvent handles the events of the editList button (delete list)
     function addRemoveItemEvent() {
         console.log("click")
         $("#listEntry").prop('disabled', true);

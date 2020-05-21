@@ -33,9 +33,6 @@ $(document).ready(function () {
     }
     
 
-
-  
-
     // Function to get form values 
     function getInputVal(id) {
         return $("#"+id).val();
