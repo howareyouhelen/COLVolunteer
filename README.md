@@ -82,12 +82,12 @@ Requestpost<br>
     - postrequester_uid (STRING)<br>
     - timestamp (NUMBER)<br>
 User<br>
-    -address (STRING)<br>
-    -currentVolpostDocId (STRING)<br>
-    -Email (STRING)<br>
-    -Name (STRING)<br>
-    -newMsg (boolean)<br>
-    -newReq (boolean)<br>
+    - address (STRING)<br>
+    - currentVolpostDocId (STRING)<br>
+    - Email (STRING)<br>
+    - Name (STRING)<br>
+    - newMsg (boolean)<br>
+    - newReq (boolean)<br>
 
     Under collection user, create 4 additional collections<br>
     -metaData<br>
