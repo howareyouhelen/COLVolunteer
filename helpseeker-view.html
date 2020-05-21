@@ -41,21 +41,29 @@
         <link rel="stylesheet" type="text/css" href="css/sidebar.css">
         <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
         <link rel="stylesheet" type="text/css" href="css/pagesNavResponsive.css"> 
-
+        <link rel="stylesheet" type="text/css" href="css/helpseeker-colour-change.css"> 
+        <!-- Mobile View JS -->
         <script src="js/pagesNavPopUp.js"></script>
         <!-- favicon -->
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-        <!-- User Related methods -->
     </head>
     <body>
+        <!-------------------------------------------->
+        <!-- This is the hidden nav for mobile view -->
+        <!-------------------------------------------->
         <header id="navPopUp">
             <div id="popupSpace"></div>
             <h1><a class="nav" id="navPopupBack">CoVolunteer</a></h1>
             <h4><a class="nav" href="chooserole.html">Change Role</a></h4>
-            <h4><a class="nav" href="createRequestPost.html">Request Help</a></h4>
-            <h4><a class="nav" href="requestreq.html">My Requests</a></h4>
-            <h4><a class="nav" href="shoppingList.html">My Shopping List</a></h4>
+            <h4><a class="nav createRequestPostPage" href="#"><i class="fa fa-plus-circle"> Help Me</i></a></h4>
+            <h4><a class="nav shopListPage" href="#">My Shopping List</a></h4>
+            <h5><a class="nav requestreq" href="#">Pending Requests</a></h5>
+            <h5><a class="nav completereq" href="#">Completed Requests</a></h5>
+            <h5><a class="nav acceptreq" href="#">Accepted Requests</a></h5>
         </header>
+        <!-------------------------------------------->
+        <!-- End of Hidden Mobile View Nav          -->
+        <!-------------------------------------------->
         <div class="grid-container-whole-page">
             <!------------------------------------------------------------------------------>
             <!--                              nav starts here                             -->
@@ -64,7 +72,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a id ="nav-logo" class="navLeft" href="helpseeker-view.html"><img id="logo" src="img/logo.png"></a>
                 <a class="navbar-brand" href="helpseeker-view.html">COVolunteer</a>
-                <img id="bars" src="img/bars.png">
+                <img id="bars" src="img/bars2.png">
                 <div id="navbarSupportedContent">
                     <ul class="nav justify-content-end end-nav navbar-nav">
                         <li class="navbar-text nav-item">
@@ -108,7 +116,7 @@
                             </a>
                         </li>
                         <li class="nav-item active glow">
-                            <a class="nav-link" href="#" id="createRequestPostPage">
+                            <a class="nav-link createRequestPostPage" href="#">
                                 <div class="icon">
                                     <i class="fa fa-plus-circle"></i> "Help-Me"
                                 </div>
@@ -124,7 +132,7 @@
                         </li>
                         <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
                         <li class="nav-item profile-request req">
-                            <a class="nav-link active" href="#" id="requestreq">
+                            <a class="nav-link active requestreq" href="#">
                                 <div id="pendingRequests" class="icon">
                                     <i class="fa fa-handshake"></i> Pending
                                 </div>
@@ -132,7 +140,7 @@
                         </li>
                         <!-- users to view all their completed requests-->
                         <li class="nav-item profile-request req">
-                            <a class="nav-link active" href="#" id="completereq">
+                            <a class="nav-link active completereq" href="#">
                                 <div class="icon">
                                     <i class="fa fa-check-square"></i> Completed
                                 </div>
@@ -140,7 +148,7 @@
                         </li>
                         <!-- users to view the requests they've accepted but not yet completed -->
                         <li class="nav-item profile-request req">
-                            <a class="nav-link active" href="#" id="acceptreq">
+                            <a class="nav-link active acceptreq" href="#">
                                 <div class="icon">
                                     <i class="fa fa-plus-square"></i> Accepted
                                 </div>
@@ -148,7 +156,7 @@
                         </li>
                         <!-- users to view the requests Shopping List -->
                         <li class="nav-item profile-request">
-                            <a class="nav-link active" id="shopListPage" href="#" >
+                            <a class="nav-link active shopListPage"  href="#" >
                                 <div class="icon" id="shopListPage">
                                     <i class="fa fa-list-alt"></i> Shopping List
                                 </div>
@@ -170,22 +178,22 @@
             $(document).ready(() => {
                 $('.main-content').load('helpseeker-main.html');
 
-                $('#shopListPage').on('click', function () {
+                $('.shopListPage').on('click', function () {
                     $('.main-content').load('helpseeker-shoppingList.html')
                     // $('<script>', { src: 'js/shoppingList.js'}).appendTo('head');
                     $.getScript("js/shoppingList.js");
                 })
 
-                $('#completereq').on('click', function () {
+                $('.completereq').on('click', function () {
                     $('.main-content').load('helpseeker-completereq.html')
                     $.getScript("js/complete.js");
                 })
 
-                $('#acceptreq').on('click', function () {
+                $('.acceptreq').on('click', function () {
                     $('.main-content').load('helpseeker-acceptreq.html')
                     $.getScript("js/accept.js");
                 })
-                $('#requestreq').on('click', function () {
+                $('.requestreq').on('click', function () {
                     $('.main-content').load('helpseeker-requestreq.html')
                     $.getScript("js/requestreq.js");
                 })
@@ -193,7 +201,7 @@
                     $('.main-content').load('profile.html')
                     $.getScript("js/profile.js");
                 })
-                $('#createRequestPostPage').on('click', function () {
+                $('.createRequestPostPage').on('click', function () {
                     $('.main-content').load('helpseeker-createRequestPost.html')
                     $.getScript("js/createRequestPost.js");
                 })

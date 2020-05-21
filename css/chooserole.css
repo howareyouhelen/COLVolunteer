@@ -28,11 +28,6 @@ html, body{
     padding: 0;
 }
 
-#test{
-    height:20px;
-    background-color: #00bce7;
-}
-	
 .hvrbox, .hvrbox * {
 	box-sizing: border-box;
 	width: 35vw;

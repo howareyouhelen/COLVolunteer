@@ -21,3 +21,32 @@ label {
 #vol-submit-btn .btn .btn-primary {
     color: #2E3192;
 }
+
+@media (max-width: 765px) {
+    #map {
+        height: 33vh;
+        margin: auto;
+        margin-top: 2vh;
+        width: 95vw;
+        }
+    #main-content-container {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        overflow-x:hidden;
+        /* overflow-y:scroll; */
+    }
+
+    .main-content {
+        overflow: auto;
+        overflow-x:hidden;
+    }
+
+    /* This is the div that contains all posts */
+    #item_cards {
+    height: 50vh;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    width:auto;
+    margin-bottom: 1vh;
+}
+}
