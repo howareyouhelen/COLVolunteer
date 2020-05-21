@@ -59,6 +59,53 @@ Start up APP:
 3. Run the following command: npm install http-server
 4. To start up server locally run the following command: http-server
 
+Configurations:
+1. configuration on firebase for WEB API KEY please refer to #6
+2. database setup please refer to #7 under
+Example of a db structure after it is completed and app running with tests:
+Requestpost
+    docRefid (STRING)
+    items (STRING)
+    message (STRING)
+    needbydate (STRING)
+    postrequester_uid (STRING)
+    timestamp (NUMBER)
+User
+    address (STRING)
+    currentVolpostDocId (STRING)
+    Email (STRING)
+    Name (STRING)
+    newMsg (boolean)
+    newReq (boolean)
+
+    Under collection user, create 4 additional collections
+    metaData
+        map	
+            Geolocation (geopoint)
+    pastRequestsToOthers
+        volPostDocId (STRING)
+    requestForMe 
+        docRefid (STRING)
+        fromUserId (STRING)
+        List (ARRAY)
+        message (STRING)
+        myUID (STRING)
+        reqAccepted (STRING)
+        reqCompleted (STRING)
+        reqDeclined (STRING)
+        volPostDocId (STRING)
+    shoppingList
+        currentList
+            List (ARRAY)
+volunteerPosts
+    date (STRING)
+    geopoint (geopoint)
+    store (STRING)
+    storeAddress (STRING)
+    volUID (STRING)
+    voladdress (STRING)
+    volemail (STRING)
+    volname (STRING)
 
 <hr>
 Testing:
