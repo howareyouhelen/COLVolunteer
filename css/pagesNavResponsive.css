@@ -67,5 +67,11 @@
         height: 90vh;
         overflow-x: scroll;
     }
-
+}
+    /* This is for mobile view, to hide the toolbar on top and bottom of phone screen */
+    @media (max-width: 450px) {
+    body,html {
+        height: 101vh;
+        overflow: auto;
+    }
 }
