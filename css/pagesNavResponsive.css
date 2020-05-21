@@ -34,7 +34,8 @@
     display:none;
 }
 #logo{
-    display: none;
+    width: 7vh;
+    margin-right: 0.5vw;
 }
 
 @media (max-width: 765px) {
@@ -49,7 +50,6 @@
     }
     #logo{
         display: block;
-        width: 7vh;
     }
     .grid-container-whole-page {
         grid-template-areas:

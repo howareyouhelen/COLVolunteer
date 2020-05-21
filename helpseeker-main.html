@@ -5,14 +5,6 @@
         <meta charset="UTF-8">
         <title>CoVolunteer</title>
 
-        <!------------------------------------------------------------------------------>
-        <!-- Bootstrap for Mobile-first                                               -->
-        <!------------------------------------------------------------------------------>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimal-ui">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <!------------------------------------------------------------------------------>
         <!-- Add Firebase products that you want to use                               -->
@@ -23,19 +15,10 @@
         <script src="js/map.js"></script>
         <script defer src="js/createVolunteerPostSearchBar.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="css/searchBar.css"> <!-- firebase User -->
-        <link rel="stylesheet" type="text/css" href="css/nav.css">
-        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
-        <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/pagesNavResponsive.css"> 
 
         <script src="js/pagesNavPopUp.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- favicon -->
-        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-        <!-- User Related methods -->
+        <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
         <header id="navPopUp">
@@ -100,7 +83,6 @@
             <!--                        Main Content Starts                               -->
             <!------------------------------------------------------------------------------>
 
-            <main class="main-content">
                 <section class="posts" id="item_cards">
                     <!-- //////////////////////  This is Sample Request Post ///////////////////////////////-->
 
@@ -123,7 +105,6 @@
                     <aside id="map-container">
                         <div id="map"></div>
                     </aside>
-            </main>
         <!-- This input is to make map work correctly -->
         <input id="pac-input" class="controls form-control" type="text" style="display:none">
         <script>
@@ -136,11 +117,6 @@
                 showName();
                 logout()
 
-                $('#load-main-content').on('click', function() {
-                    $('.main-content').load('main-help-seeker.html')
-                    // $('.main-content').load('request.html')
-                    console.log("hi")
-                })
             })
         </script>
     </body>
