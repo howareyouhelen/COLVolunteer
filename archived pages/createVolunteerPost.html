@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Create Volunteer Post</title>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script type='text/javascript' src='js/config.js'></script> <!-- API Key-->
+        <script type='text/javascript' src="js/firebase_config.js"></script> <!-- Firebase Config -->
+        <script type='text/javascript' src="js/user.js"></script> <!-- firebase User -->
+
+        <!-- <script type='text/javascript' src="js/map.js"></script>    -->
+        <script src="js/volunteer.js"></script>
+        <script defer src="js/createVolunteerPostSearchBar.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/volunteer.css">
+        <link rel="stylesheet" type="text/css" href="css/nav.css">
+        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="css/allPagesLayout.css">
+        <link rel="stylesheet" type="text/css" href="css/searchBar.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://use.fontawesome.com/45d1426d9b.js"></script>
+        <!-- favicon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    </head>
+
+    <body>
+        <div class="grid-container-whole-page">
+            <!--Nav and sidebar-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+                <a class="navbar-brand" href="main.html">COVolunteer</a>
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button> -->
+
+                <div id="navbarSupportedContent">
+                    <div id="startnav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="chooserole.html">
+                                    <div class="icon">
+                                        <i class="fa fa-home"></i> Change your Role
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="requestMain.html">
+                                    <div class="icon">
+                                        <i class="fa fa-align-left"></i> View all Help Requests
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="createVolunteerPost.html">
+                                    <div class="icon">
+                                        <i class="fa fa-cart-plus"></i> Create Helper Post
+                                    </div>
+                                </a>
+                            </li>
+                    </div>
+                    <ul class="nav justify-content-end end-nav navbar-nav">
+                        <li class="navbar-text nav-item">
+                            <div class="icon">
+                                <i class="fa fa-user"></i> Welcome Back <b id="userName"
+                                    style="padding-left: 1vw;">user</b>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html" id="logout">
+                                <div class="icon">
+                                    <i class="fa fa-sign-out"></i>Logout
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    </ul>
+
+                </div>
+            </nav>
+            <nav id="sidebar" class="col-md-2 d-none d-md-block">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile picture" />
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="profile.html">
+                                <div class="icon">
+                                    <i class="fa fa-address-card"></i> My Profile
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view requests on their volunteer post, click accept or decline on the requests-->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="request.html">
+                                <div id="pendingRequests" class="icon">
+                                    <i class="fa fa-heart"></i> My Pending Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view all their completed requests-->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="complete.html">
+                                <div class="icon">
+                                    <i class="fa fa-check-square"></i> Completed Requests
+                                </div>
+                            </a>
+                        </li>
+                        <!-- users to view the requests they've accepted but not yet completed -->
+                        <li class="nav-item profile-request">
+                            <a class="nav-link active" href="accept.html">
+                                <div class="icon">
+                                    <i class="fa fa-plus-square"></i> Accepted Requests
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--end of Nav and sidebar-->
+            <div class="main main-content">
+                <h1>Create Helper Post for Errands/Groceries</h1>
+                <hr>
+                <main id="main-content-container">
+                    <div id='info-storage' style="display:none"></div>
+                    <section>
+                        <form id="create-post-form" class="validate" action="main.html">
+                            <div class="form-group">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput2">Which store will you head to?</label>
+                                    <div class="form-inline">
+                                        <input id="pac-input" class="controls form-control" type="text"
+                                            placeholder="store name" required>
+                                    </div>
+                                    <div class="invalid-feedback">Please tell us which store you will visit</div>
+                                </div>
+                                <div class="form-horizontal">
+                                    <label for="store-address">Store Address</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="store-address"
+                                            placeholder="Street, City, Province" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date">When are you heading to the store?</label>
+                                    <input type="date" class="form-control" id="date" placeholder="MM-DD" required>
+                                </div>
+                                <button id="vol-submit-btn" type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </section>
+                    <aside id="map-container">
+                        <div id="map"></div>
+                    </aside>
+                </main>
+                <!-- START : This is the popup window of the markers on the map when clicked  -->
+                <aside>
+                    <div style="display: none">
+                        <div id="info-content">
+                            <table>
+                                <tr id="iw-url-row" class="iw_table_row">
+                                    <td id="iw-icon" class="iw_table_icon"></td>
+                                    <td id="iw-url"></td>
+                                </tr>
+                                <tr id="iw-phone-row" class="iw_table_row">
+                                    <td class="iw_attribute_name">Name:</td>
+                                    <td id="iw-name"></td>
+                                </tr>
+                                <tr id="iw-address-row" class="iw_table_row">
+                                    <td class="iw_attribute_name">Address:</td>
+                                    <td id="iw-address"></td>
+                                </tr>
+                                <tr id="iw-address-row" class="iw_table_row">
+                                    <td class="iw_attribute_name">Business Status:</td>
+                                    <td id="iw-status"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+            <!-- END : This is the popup window of the markers on the map when clicked  -->
+            <script>
+                $(document).ready(function () {
+                    var reqform = document.getElementById("create-post-form")
+                    reqform.addEventListener('submit', submitpost);
+                    var userId;
+                    var volemail;
+                    var voladdress;
+                    var volname;
+                    firebase.auth().onAuthStateChanged(function (user) {
+                        if (user) {
+                            // console.log("inside auth");
+                            // console.log(user);
+                            userId = user.uid;
+                            // console.log(userId);
+                            db.collection("user").doc(userId).onSnapshot(function (snap) {
+                                // console.log("getting  user info");
+
+                                volname = snap.data().name;
+                                volemail = snap.data().email;
+                                voladdress = snap.data().address;
+
+                                // console.log(userId);
+                                // console.log(volname);
+                                // console.log(volemail);
+                                // console.log(voladdress);
+                            })
+                        } else {
+                            // No user is signed in.
+                        }
+                    });
+
+                    $('#vol-submit-btn').on('click', function () {
+                        let lat = $('#info-storage').attr('lat');
+                        let lng = $('#info-storage').attr('lng');
+                        console.log(lat)
+                        console.log(lng)
+                        console.log($('#info-storage').attr('name'))
+                    })
+
+                    function submitpost(event) {
+                        if ($('#info-storage').attr('name') !== undefined) {
+                            $('#pac-input').val($('#info-storage').attr('name'));
+                            $('#store-address').val($('#info-storage').attr('address'));
+                        }
+                        var store = $('#pac-input').val();
+                        var address = $('#store-address').val();
+                        var date = $('#date').val();
+                        let lat = parseFloat($('#info-storage').attr('lat'));
+                        let lng = parseFloat($('#info-storage').attr('lng'));
+                        db.collection("volunteerPosts").add({
+                            volname: volname,
+                            volemail: volemail,
+                            store: store,
+                            storeAddress: address,
+                            date: date,
+                            voladdress: voladdress,
+                            volUId: userId,
+                            geopoint: new firebase.firestore.GeoPoint(lat, lng)
+                        });
+                    }
+                });
+            </script>
+
+
+            <!-- User Related methods -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function (event) {
+                    showName();
+                    logout()
+                });
+            </script>
+    </body>
+
+</html>

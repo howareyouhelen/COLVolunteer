@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Shopping List</title>
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <link rel="stylesheet" type="text/css" href="css/shoppingList.css"> <!-- CSS -->
+        <!-- <script src="js/shoppingList.js"></script> -->
+
+    </head>
+
+    <body>
+            <!------------------------------------------------------------------------------>
+            <!--                        Main Content Starts                               -->
+            <!------------------------------------------------------------------------------>
+            <!--Current Shopping List-->
+                <!-- zombie bunny div where the easter egg will happen-->
+                <div id="zombie_bunny_div"></div>
+                <div id="success_bar">Congratulations! A COVID19 apocalypse shopping list is now written into your
+                    account.</div>
+                <div id="main-content-title">
+                    <h1>Build your shopping list</h1>
+                    <h5 class="save-list-reminder">Enter items you wish for others to buy</h5>
+                    <h6 class="save-list-reminder">*Must Save List to keep changes*</h6>
+                    <hr>
+                </div>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-body" style="padding-bottom: 0;">
+                            <Form id="listForm">
+                                <fieldset class="shopping-list">
+                                    <h5 class="card-title">Current List</h5>
+                                    <Form id="listForm"></Form>
+                                    <input type="text" class="form-control" placeholder="enter items" name="ListInput"
+                                        id="listEntry" autocomplete="off">
+                                </fieldset>
+                            </Form>
+                        </div>
+                        <div class="card-body" style="padding-top: 0; padding-bottom:0; text-align: center;">
+                            <div class="btn-group">
+                                <button id="editList" type="button" class="btn btn-outline-danger btn-sm"
+                                    data-toggle="button" style="margin-left:0" disabled>Delete</button>
+                                <button id="addToList" type="button" class="btn btn-secondary btn-sm"
+                                    style="margin:auto">Add Item</button>
+                                <button id="submitList" type="button" class="btn btn-primary btn-sm"
+                                    style="margin:auto">Save List</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group current-list-group" id="currentList">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="mobile">COVolunteer by BBY-24. This is an easter egg click me if you can ever see this</div>
+      
+    </body>
+
+</html>

@@ -1,6 +1,5 @@
 #create-reqpost-form {
     display:grid;
-    border-left: 1px solid gray;
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 1.5%;
@@ -11,7 +10,7 @@
        margin-top: 5%;
    }
    
-   h1 {
+   h1, h5 {
        text-align: center;
    }
    
@@ -22,6 +21,15 @@
    #req-submit-btn .btn .btn-primary {
        color: #2E3192;
    }
-   
-   }
+
+  #success_bar {
+    display:none;
+    z-index: 10;
+    background-color: #B8E986;
+    font-family: sans-serif;
+    font-size: 2em;
+    margin-left: 0px;
+    height: 5%;
+    width: 100%;
+}
    

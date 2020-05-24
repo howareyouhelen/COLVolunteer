@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+        <title>All Request Post</title>
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script src="js/config.js"></script>
+        <script defer src="js/firebase_config.js"></script>
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="css/nav.css">   
+        <link rel="stylesheet" type="text/css" href="css/pagesNavResponsive.css"> 
+        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="css/chooserole.css">
+        <link rel="stylesheet" type="text/css" href="css/chooserole-colour-change.css">
+
+        <script src="js/pagesNavPopUp.js"></script>
+        <script src="js/changeRole.js"></script>     
+        <!-- favicon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    </head>
+    <body>
+        <!--Nav-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) { 
+                showName();
+                logout();
+                getUserLocation();
+            });
+            
+        </script>
+        <div id="user-location" style="display: none"></div>
+            <header id="navPopUp">
+                <div id="popupSpace"></div>
+                <h1><a class="nav" id="navPopupBack">CoVolunteer</a></h1>
+                <h4><a class="nav" href="features.html">Features</a></h4>
+                <h4><a class="nav" href="about.html">About</a></h4>
+                <h4><a class="nav logout" href="index.html">Logout</a></h4>
+                <!-- <h6 id="user-location">location</h6> -->
+            </header>
+        <nav id="nav-bar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+            <a id ="nav-logo" class="navLeft" href="#"><img id="logo" src="img/logo.png"></a>
+            <a class="navbar-brand" href="#">COVolunteer</a>
+            <div class="fb-share-button" data-href="https://covolunteer-7d403.web.app" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a></div>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <ul class="nav justify-content-end end-nav navbar-nav">
+                        <li class="navbar-text nav-item">
+                            <div class="icon">
+                                <i class="fa fa-user"></i> Welcome Back 
+                                <b id="userName" style="padding-left: 1vw;">user</b>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html" id="logout">
+                                <div class="icon">
+                                    <i class="fa fa-sign-out"></i>Logout
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </ul>
+                </div>
+            </div>
+            <img id="bars" src="img/bars2.png">
+        </nav>
+        <!--end of Nav-->
+        <div id="page-container" class="main main-content">
+        <h1 is="heading">Select Your Role in COVID-19</h1>
+        <div id="role-container">
+            <div id="volunteer-role" class="option-div hvrbox">
+                <a href="volunteer-view.html">
+                    <img src="img/giving.jpg">
+                    <div class="hvrbox-layer_top">
+                        <div class="hvrbox-text">
+                            <h4>Volunteer</h4>
+                            I want to help others in need by picking up groceries or running errands for them during this world epidemic.
+                        </div>
+                    </div>
+                </a>
+                <p class="caption">I am a Giver</p>
+            </div>
+            <div id="requestee-role" class="option-div hvrbox">
+                <a href="helpseeker-view.html">
+                    <img src="img/receiving.png">
+                    <div class="hvrbox-layer_top">
+                        <div class="hvrbox-text">
+                            <h4>Help-seeker</h4>
+                            I am looking for someone who can help me in picking up groceries or running errands for me during this epidemic.
+                        </div>
+                    </div>
+                </a>
+                <p class="caption">I am a Taker</p>
+            </div>
+        </div>
+        </div>
+        <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0"></script>
+    </body>
+</html>

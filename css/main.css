@@ -1,5 +1,6 @@
 body{
     background-color:gainsboro;
+    overflow:hidden;
 }
 .profile_photo {
     position: relative;
@@ -17,28 +18,24 @@ body{
     width: 70px;
 }
 
-.btn btn-outline-info {
+.btn .btn-outline-info {
     float: right;
 }
 
 header {
-
-    margin: 10px;
-   
+    /* margin: 10px; */
     height: 100px;
     background-color: darkmagenta;
 }
 
 
 .posts {
-    margin-left:10px;
+    padding-right:1vw;
     float:left;
-    width:82%;
-
+    width:58vw;
 }
 
 .card {
-    background-color: lightgreen;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -54,8 +51,7 @@ header {
 /* modal sample css from w3schools */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    /* position: fixed; Stay in place */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -72,7 +68,7 @@ header {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    max-width: 50%;
+    max-width: 30vw;
   }
   
   /* The Close Button */
@@ -90,4 +86,62 @@ header {
     cursor: pointer;
   }
 
-    
+
+
+  /* The map CSS */
+    #map {
+    height: 90vh;
+    margin: auto;
+    width: 34vw;
+    }
+    .main-content {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        overflow:hidden;
+    }
+
+    /* This is the div that contains all posts */
+    #item_cards {
+        height: 90vh;
+        overflow-x: hidden; /* Disable horizontal scroll */
+        width:auto;
+    }
+
+    /* Below is the buttons for pins to drop on map */
+    i.fas {
+        color:red;
+        font-size: 20px;
+        float: right;
+    }
+    i.fas:hover {
+        cursor:pointer;
+    }
+    .show-on-map {
+        float: right;
+        margin: 0 1vw 0 1vw;
+    }
+
+    @media (max-width: 765px) {
+        #map {
+            height: 33vh;
+            margin: auto;
+            margin-top: 2vh;
+            width: 95vw;
+            }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            overflow-x:hidden;
+            /* overflow-y:scroll; */
+        }
+
+
+        /* This is the div that contains all posts */
+        #item_cards {
+        height: 50vh;
+        overflow-x: hidden; /* Disable horizontal scroll */
+        width:auto;
+        margin-bottom: 1vh;
+    }
+    }

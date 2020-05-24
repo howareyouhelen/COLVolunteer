@@ -1,9 +1,9 @@
-nav {
+#navPopUp {
     background-image: linear-gradient(to right, rgba(12, 158, 243, 0.918), #00BCE7, rgb(108, 228, 255));
     display: none;
     height: 100vh;
 }
-nav a {
+#navPopUp a {
     margin: auto;
     width: min-content;
     text-align: center;
@@ -23,8 +23,23 @@ nav a {
     background-color: #2E3192;
     border-bottom: 2px solid transparent;
 }
-nav a.nav:hover {
+#navPopUp a.nav:hover {
     cursor: pointer;
     border-bottom: 2px solid transparent;
     text-decoration: underline;
+}
+#bars {
+    display:none;
+}
+
+
+@media (max-width: 765px) {
+    
+    #bars {
+        display: block;
+    }
+    a.navbar-brand, div.icon {
+		display:none
+	}
+
 }

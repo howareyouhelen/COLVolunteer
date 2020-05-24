@@ -1,4 +1,6 @@
-createUser();
+$(document).ready(function() {
+    createUser();
+})
 
 // Fucntion that creates a new document in the users collection
 function createUser() {
@@ -25,9 +27,43 @@ function createUser() {
 function showName() {
     auth.onAuthStateChanged(function (user) {
         if(user) {
-            document.getElementById("hello").innerHTML = user.displayName;
+            document.getElementById("userName").innerHTML = user.displayName;
         }
     });
+}
+
+/**
+ * logs the user out when the button with ID logout is clicked
+ */
+function logout() {
+    const logout = document.getElementById('logout');
+    logout.addEventListener('click', (e) =>{
+        auth.signOut().then(( )=> {
+            console.log('user signed out');
+        });
+    })
+}
+
+//Converts address into geolocation and sets in the user's database
+function userGeopoint() {
+    auth.onAuthStateChanged(function (user) {
+        db.collection('user').doc(user.uid).get().then(snap => {
+            let address = snap.data().address;
+            let string = address.split(" ").join("+");
+            const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=' + firebaseKEY;
+            $.ajax({
+                url: Url,
+                type: "GET",
+                success: function (response) {
+                    let userGeopoint = db.collection('user').doc(user.uid).collection('metaData').doc('map');
+                    let location = response.results[0].geometry.location;
+                    userGeopoint.set({
+                        geolocation: new firebase.firestore.GeoPoint(location.lat, location.lng)
+                    });
+                }
+            })
+        })
+    })
 }
 
 var address = "";
@@ -60,19 +96,7 @@ function showTest() {
 // Retrieve
 document.getElementById("result").innerHTML = sessionStorage.getItem("userAddress");
 }
-/**
- * logs the user out when the button with ID logout is clicked
- */
-function logout() {
-    const logout = document.getElementById('logout');
-    logout.addEventListener('click', (e) =>{
-        e.preventDefault();
-        auth.signOut().then(( )=> {
-            console.log('user signed out');
-        });
-        location.reload();
-    })
-}
+
 
 
   

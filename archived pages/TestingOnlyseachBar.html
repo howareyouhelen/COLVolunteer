@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<title>searchBar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
+        
+        <script src="js/map.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/searchBar.css"> 
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+
+
+        <style>
+
+          .iw_table_row {
+            height: 18px;
+          }
+          .iw_attribute_name {
+            font-weight: bold;
+            text-align: right;
+          }
+          .iw_table_icon {
+            text-align: right;
+          }
+        </style>
+  </head>
+  <body>
+
+
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map"></div>
+
+
+
+
+    <div style="display: none">
+      <div id="info-content">
+        <table>
+          <tr id="iw-url-row" class="iw_table_row">
+            <td id="iw-icon" class="iw_table_icon"></td>
+            <td id="iw-url"></td>
+          </tr>
+          <tr id="iw-phone-row" class="iw_table_row">
+            <td class="iw_attribute_name">Name:</td>
+            <td id="iw-name"></td>
+          </tr>
+          <tr id="iw-address-row" class="iw_table_row">
+            <td class="iw_attribute_name">Address:</td>
+            <td id="iw-address"></td>
+          </tr>
+          <tr id="iw-address-row" class="iw_table_row">
+            <td class="iw_attribute_name">Business Status:</td>
+            <td id="iw-status"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      
+
+
+      //Converts address into geolocation and sets in the user's database
+      function geocodeAddress(callback) {
+        auth.onAuthStateChanged(function (user) {
+          db.collection('user').doc(user.uid).get().then( snap => {
+            let address = snap.data().address;
+            let string = address.split(" ").join("+");
+            const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=' + firebaseKEY;
+            $.ajax({
+              url: Url,
+              type: "GET",
+              success: function(response) {
+                let userGeopoint = db.collection('user').doc(user.uid).collection('metaData').doc('map');
+                let location = response.results[0].geometry.location;
+                userGeopoint.set({ 
+                  geolocation : new firebase.firestore.GeoPoint(  location.lat, location.lng  )
+                });
+              }
+            })
+          })
+        })
+        callback();
+      }
+      // This example adds a search box to a map, using the Google Place Autocomplete
+      // feature. People can enter geographical searches. The search box will return a
+      // pick list containing a mix of places and predicted search terms.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      // console.log(user)
+function initMap() {
+  geocodeAddress(obtainGeolocation);
+
+  function obtainGeolocation() {
+    auth.onAuthStateChanged(function (user) {
+    let userMap = db.collection('user').doc(user.uid).collection('metaData').doc('map');
+    userMap.get().then(snap => {
+        let userGeolocation = snap.data().geolocation;
+        initAutocomplete(userGeolocation);
+      })
+    })
+
+  }
+  
+  }
+
+      
+      function initAutocomplete(geolocation) {
+        console.log(geolocation)
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: geolocation._lat, lng: geolocation._long},
+          zoom: 13,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+
+
+//         var home = new google.maps.Marker({
+//     position: geolcation,
+//     title:"Hello World!"
+// });
+
+// To add the marker to the map, call setMap();
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+
+          // markers.push(new google.maps.Marker({
+          //     map: map,
+          //     icon: "img/delete.png",
+          //     title: "home",
+          //     position: geolocation
+          //   }));
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              address: place.formatted_address,
+              status : place.business_status,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+
+          markers.forEach(function(marker) {
+            google.maps.event.addListener(marker, 'click', showInfoWindow)
+          });
+
+
+          var infoWindow = new google.maps.InfoWindow({
+          content: document.getElementById('info-content')
+        });
+
+        function showInfoWindow() {
+          console.log(this)
+          var marker = this;
+          infoWindow.open(map, marker);
+          $('#iw-name').html(marker.title);
+          $('#iw-address').html(marker.address);
+          $('#iw-status').html(marker.status);
+
+        }
+
+        });
+      }
+
+
+        //API for GoogleMapS
+        var JSLink = "https://maps.googleapis.com/maps/api/js?key=" + firebaseKEY + "&libraries=places&callback=initMap";
+            var JSElement = document.createElement('script');
+            JSElement.src = JSLink;
+            document.getElementsByTagName('body')[0].appendChild(JSElement);
+        
+        
+        </script>
+
+  </body>
+</html>

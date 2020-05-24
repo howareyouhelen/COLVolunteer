@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Create Volunteer Post</title>
+
+        <!-- <script src="js/volunteer.js"></script>
+        <script defer src="js/createVolunteerPostSearchBar.js"></script> -->
+
+        <link rel="stylesheet" type="text/css" href="css/searchBar.css">
+        <link rel="stylesheet" type="text/css" href="css/volunteer.css">
+
+    </head>
+
+    <body>
+                <h1>Create Helper Post for Errands/Groceries</h1>
+                <hr>
+                <main id="main-content-container">
+                    <div id='info-storage' style="display:none"></div>
+                    <section>
+                        <form id="create-post-form" class="validate" action="volunteer-view.html">
+                            <div class="form-group">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput2">Which store will you head to?</label>
+                                    <div class="form-inline">
+                                        <input id="pac-input" class="controls form-control" type="text"
+                                            placeholder="store" required>
+                                    </div>
+                                    <div class="invalid-feedback">Please tell us which store you will visit</div>
+                                </div>
+                                <div class="form-horizontal">
+                                    <label for="store-address">Store Address</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="store-address"
+                                            placeholder="Street, City, Province" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="date">When are you heading to the store?</label>
+                                    <input type="date" class="form-control" id="date" placeholder="MM-DD" required>
+                                </div>
+                                <button id="vol-submit-btn" type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </section>
+                    <aside id="map-container">
+                        <div id="map"></div>
+                    </aside>
+                </main>
+                <!-- START : This is the popup window of the markers on the map when clicked  -->
+                <aside>
+                    <div style="display: none">
+                        <div id="info-content">
+                            <table>
+                                <tr id="iw-url-row" class="iw_table_row">
+                                    <td id="iw-icon" class="iw_table_icon"></td>
+                                    <td id="iw-url"></td>
+                                </tr>
+                                <tr id="iw-phone-row" class="iw_table_row">
+                                    <td class="iw_attribute_name">Name:</td>
+                                    <td id="iw-name"></td>
+                                </tr>
+                                <tr id="iw-address-row" class="iw_table_row">
+                                    <td class="iw_attribute_name">Address:</td>
+                                    <td id="iw-address"></td>
+                                </tr>
+                                <tr id="iw-address-row" class="iw_table_row">
+                                    <td class="iw_attribute_name">Business Status:</td>
+                                    <td id="iw-status"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </aside>
+
+            <!-- END : This is the popup window of the markers on the map when clicked  -->
+            <script>
+                $(document).ready(function () {
+                    var reqform = document.getElementById("create-post-form")
+                    reqform.addEventListener('submit', submitpost);
+                    var userId;
+                    var volemail;
+                    var voladdress;
+                    var volname;
+                    firebase.auth().onAuthStateChanged(function (user) {
+                        if (user) {
+                            // console.log("inside auth");
+                            // console.log(user);
+                            userId = user.uid;
+                            // console.log(userId);
+                            db.collection("user").doc(userId).onSnapshot(function (snap) {
+                                // console.log("getting  user info");
+
+                                volname = snap.data().name;
+                                volemail = snap.data().email;
+                                voladdress = snap.data().address;
+
+                                // console.log(userId);
+                                // console.log(volname);
+                                // console.log(volemail);
+                                // console.log(voladdress);
+                            })
+                        } else {
+                            // No user is signed in.
+                        }
+                    });
+
+                    $('#vol-submit-btn').on('click', function () {
+                        let lat = $('#info-storage').attr('lat');
+                        let lng = $('#info-storage').attr('lng');
+                        console.log(lat)
+                        console.log(lng)
+                        console.log($('#info-storage').attr('name'))
+                    })
+
+                    function submitpost(event) {
+                        if ($('#info-storage').attr('name') !== undefined) {
+                            $('#pac-input').val($('#info-storage').attr('name'));
+                            $('#store-address').val($('#info-storage').attr('address'));
+                        }
+                        var store = $('#pac-input').val();
+                        var address = $('#store-address').val();
+                        var date = $('#date').val();
+                        let lat = parseFloat($('#info-storage').attr('lat'));
+                        let lng = parseFloat($('#info-storage').attr('lng'));
+                        db.collection("volunteerPosts").add({
+                            volname: volname,
+                            volemail: volemail,
+                            store: store,
+                            storeAddress: address,
+                            date: date,
+                            voladdress: voladdress,
+                            volUId: userId,
+                            geopoint: new firebase.firestore.GeoPoint(lat, lng)
+                        });
+                    }
+                });
+            </script>
+
+    </body>
+
+</html>

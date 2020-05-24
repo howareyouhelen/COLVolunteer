@@ -33,3 +33,10 @@ footer {
     justify-content: center;  
 }
 
+/* Apply these styles when the width is < 500 px */
+@media (max-width: 500px) {
+    header>div>h1{
+        display:none;
+        width:auto;
+    }
+}

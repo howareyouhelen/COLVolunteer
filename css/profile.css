@@ -5,3 +5,7 @@
     max-width: 100px;
     max-height: 100px;
 }
+.main {
+    margin-left: 180px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+  }

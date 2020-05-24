@@ -1,4 +1,4 @@
-.sidebar {
+/* #sidebar {
     padding-top: 10%;
     padding-left: 20%;
     height: 100%;
@@ -19,4 +19,68 @@
     position: relative;
     float: left;
     
+} */
+
+#sidebar {
+    height: 100vh; /* Full-height: remove this if you want "auto" height */
+    width: 13.5vw; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    margin-top: 10vh;
+    z-index: 2; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #2E3192;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    padding-right: 20px;
 }
+
+.nav-item a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    margin-top: 15px;
+  }
+
+.nav-item a:hover {
+color: #00BCE7;
+}
+
+.profile-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  color: #fff;
+  padding: 0 0 1vh 1vw;
+}
+
+.req {
+    display:none;
+    margin-left: 1.5vw;
+}
+
+.glow {
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0064e6, 0 0 40px #002ae6, 0 0 50px #2300e6, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #4da9ff, 0 0 40px #4dd5ff, 0 0 50px #4ddbff, 0 0 60px #4dbeff, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
+
+@media screen and (max-height: 450px) {
+    #sidebar {position: fixed;}
+    .nav-item {padding-top: 15px;}
+    .nav-item a {font-size: 18px;}
+  }

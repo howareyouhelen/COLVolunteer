@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<title>map</title>
+<link rel="stylesheet" type="text/css" href="css/accept.css">
+
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------>
+        <script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
+        
+        <script src="js/map.js"></script>
+
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;
+        width: 600px;
+       }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+    <!--The div elements for the map and message -->
+      <div id="map"></div>
+      <div id="msg"></div>
+    </div>
+<p id="address">address</p>
+
+    <script>
+
+//var firebaseKEY = config.FIREBASE_KEY;
+        // $(document).ready(function() {
+        //     $("#address").html(sessionStorage.getItem("userAddress"));
+        // })
+
+// const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=<KEY>'
+//         console.log(response.results[0].address_components[1].short_name);
+//         console.log(response.results[0].geometry.location.lat);
+//         console.log(response.results[0].geometry.location.lng);
+
+
+//converts address into lng and lat object, then stores it into session storage of your determined storageName
+function geocodeAddress(address, storageName) {
+    let place;
+    let string = address.split(" ").join("+");
+    const Url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + string + '&key=' + firebaseKEY;
+    $.ajax({
+        url: Url,
+        type: "GET",
+        success: function(response) {
+            // sessionStorage only stores strings. So we stringify the response.
+            sessionStorage.setItem(storageName, JSON.stringify(response.results[0].geometry.location));
+        }
+    })
+}
+
+//Retrieves saved address as a lat, lng object
+function retrieveAdress(storageName) {
+    let temp =  sessionStorage.getItem(storageName);
+    return $.parseJSON(temp);
+}
+
+function userAddress() {
+    return sessionStorage.getItem("userAddress");
+}
+    geocodeAddress(userAddress(), "userCoordinates");
+        console.log(retrieveAdress("userCoordinates"));
+
+// Initialize and add the map
+var map;
+function initMap() {
+  // The map, centered on Central Park
+  const center = {lat: 49.2501606, lng: -123.0009816};
+  const options = {zoom: 13, scaleControl: true, center: center};
+  map = new google.maps.Map(
+      document.getElementById('map'), options);
+  // Locations of landmarks
+  const dakota = {lat: 40.7767644, lng: -73.9761399};
+  const frick = {lat: 40.771209, lng: -73.9673991};
+  const bcit = {lat: 49.2501606, lng: -123.0009816};
+  const metrotown = {lat:49.22641549999999, lng:-123.0005262};
+  const home = retrieveAdress("userCoordinates")
+  console.log(home);
+  // The markers for The Dakota and The Frick Collection
+
+
+
+//   console.log(bcit);
+// Before adding markers:
+
+bounds  = new google.maps.LatLngBounds();
+// Everytime you add a new marker:
+var mk1 = new google.maps.Marker({position: bcit, map: map});
+loc = new google.maps.LatLng(mk1.position.lat(), mk1.position.lng());
+bounds.extend(loc);
+
+var mk2 = new google.maps.Marker({position: metrotown, map: map});
+loc = new google.maps.LatLng(mk2.position.lat(), mk2.position.lng());
+bounds.extend(loc);
+
+// var mk3 = new google.maps.Marker({position: home, map: map});
+// loc = new google.maps.LatLng(mk3.position.lat(), mk3.position.lng());
+// bounds.extend(loc);
+
+// After all markers have been added:
+
+map.fitBounds(bounds);       // auto-zoom
+map.panToBounds(bounds);     // auto-center
+
+
+// var mk1 = new google.maps.Marker({position: bcit, map: map});
+var mk2 = new google.maps.Marker({position: metrotown, map: map});
+var line = new google.maps.Polyline({path: [bcit, metrotown], map: map});
+
+// Calculate and display the distance between markers
+var distance = haversine_distance(mk1, mk2);
+  document.getElementById('msg').innerHTML = "Distance between markers: " + distance.toFixed(2) + " km.";
+
+
+//   // Draw a line showing the straight distance between the markers
+function haversine_distance(mk1, mk2) {
+      var R = 3958.8; // Radius of the Earth in miles
+      var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
+      var rlat2 = mk2.position.lat() * (Math.PI/180); // Convert degrees to radians
+      var difflat = rlat2-rlat1; // Radian difference (latitudes)
+      var difflon = (mk2.position.lng()-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+
+      var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+      return d * 1.60934; //convert from miles to km
+}
+
+
+
+
+let directionsService = new google.maps.DirectionsService();
+let directionsRenderer = new google.maps.DirectionsRenderer();
+directionsRenderer.setMap(map); // Existing map object displays directions
+// Create route from existing points used for markers
+const route = {
+    origin: metrotown,
+    destination: bcit,
+    travelMode: 'DRIVING'
+}
+
+directionsService.route(route,
+  function(response, status) { // anonymous function to capture directions
+    if (status !== 'OK') {
+      window.alert('Directions request failed due to ' + status);
+      return;
+    } else {
+      directionsRenderer.setDirections(response); // Add route to the map
+      var directionsData = response.routes[0].legs[0]; // Get data about the mapped route
+      if (!directionsData) {
+        window.alert('Directions request failed');
+        return;
+      }
+      else {
+        document.getElementById('msg').innerHTML += " Driving distance is " + directionsData.distance.text + " (" + directionsData.duration.text + ").";
+      }
+    }
+  });
+}
+
+
+    </script>
+
+
+
+<script type="text/javascript"> 
+  var JSLink = "/Folder/sub_folder/version.js?version=" + Math.random();
+  JSElement.src = JSLink;
+</script>
+  </body>
+</html>

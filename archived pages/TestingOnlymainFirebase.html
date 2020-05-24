@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CoVolunteer</title>
+
+        <!------------------------------------------------------------------------------>
+        <!-- Bootstrap for Mobile-first                                               -->
+        <!------------------------------------------------------------------------------>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- Add Firebase products that you want to use                               -->
+        <!------------------------------------------------------------------------------>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+        <!------------------------------------------------------------------------------>
+        <!-- CSS styles and scripts of for this page                                  -->
+        <!------------------------------------------------------------------------------> 
+        <script type='text/javascript' src='js/config.js'></script>                                 <!-- API Key-->
+        <script src="js/firebase_config.js"></script>                                               <!-- Firebase Config -->
+        <script src="js/user.js"></script>                                                          <!-- firebase User -->
+        <!-- This Page's JavaScript and CSS-->
+        <link rel="stylesheet" type="text/css" href="css/main.css">                                 <!-- CSS -->
+
+    </head>
+
+    <body>
+        <h1> Test </h1>
+
+        <h2>Let's read from the database: <span id="stuff"> stuff </span></h2>
+
+        <h2>Hello  <span id="userName">user</span></h2>
+
+        <span id="testuser">address</span>
+
+        <button id="logout">Logout</button>
+
+        <span id="result">storage test</span>
+
+
+        <a href="map.html">map</a>
+
+        <a href="shoppingList.html">shoppingList</a>
+        <script>
+
+
+
+            auth.onAuthStateChanged((user) => {
+                if(!user) {
+                    console.log("not logged in")
+                }
+            db.collection('quotes').doc('789').onSnapshot(function (snap) {
+                console.log("current data is ...", snap.data());
+                document.getElementById("stuff").innerHTML = snap.data().message;
+                //another way is snap.data()["message"]
+            });
+
+            db.collection('quotes').doc('7890').set({
+                message: "this is test"
+            });
+            
+            
+            // citiesRef.doc().collection("test").doc().set({test: "test"});
+            // db.collection("test").add({thetest: "test"});
+
+            // var citiesRef = db.collection("citieserf");
+            // citiesRef.doc("SF").set({
+            //     name: "San Francisco",
+            //     state: "CA",
+            //     country: "USA",
+            //     capital: false,
+            //     population: 860000,
+            //     regions: ["west_coast", "norcal"]
+            // });
+            // citiesRef.doc("LA").set({
+            //     name: "Los Angeles",
+            //     state: "CA",
+            //     country: "USA",
+            //     capital: false,
+            //     population: 3900000,
+            //     regions: ["west_coast", "socal"]
+            // });
+
+            }) 
+        </script>
+
+
+        <script>
+            createUser();
+            showName();
+            logout();
+            storeAddress();
+            showTest();
+
+            console.log(sessionStorage.getItem("userAddress"));
+            console.log(address);
+        </script>
+    </body>
+
+</html>
